@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase/firebase";
-
+import Footer from "./components/footer/Footer";
+import Navbar from "./components/nav/Navbar";
+import Header from "./components/header/Header";
 function App() {
   const [projects, setProjects] = useState([]);
 
@@ -20,33 +22,10 @@ function App() {
 
   return (
     <div className="layout">
-      <div className="header">
-        <div className="header-test"></div>
-        <p>Mohammed Suhail Rahman</p>
-      </div>
-      <div className="nav">
-        <ul>
-          <li>
-            <a href="#">A</a>
-          </li>
-          <li>
-            <a href="#">A</a>
-          </li>
-          <li>
-            <a href="#">A</a>
-          </li>
-          <li>
-            <a href="#">A</a>
-          </li>
-        </ul>
-      </div>
-      <div className="window-frame">
-        {/* Main scrollable content goes here */}
-      </div>
-      <div className="footer">
-        <div className="header-test"></div>
-        <p>FOOTER</p>
-      </div>
+      <Header />
+      <Navbar />
+      <section className="window-frame"></section>
+      <Footer />
     </div>
   );
 }

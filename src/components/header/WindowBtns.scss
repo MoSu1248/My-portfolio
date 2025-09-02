@@ -1,0 +1,11 @@
+.header_window-btns {
+  width: 10%;
+  ul {
+    height: 100%;
+    display: flex;
+    list-style: none;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+  }
+}
