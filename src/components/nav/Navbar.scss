@@ -1,0 +1,35 @@
+.nav {
+  grid-row: 2 / 3;
+  grid-column: 1 / 2;
+  width: 3rem;
+  border: 1px solid rgba(128, 128, 128, 0.5);
+  backdrop-filter: blur(10px); /* glass effect */
+  z-index: 10; /* above the lights */
+
+  ul {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    gap: 1.5rem;
+    list-style: none;
+
+    li {
+      cursor: pointer;
+      transition: 0.3s ease-in-out;
+      fill: #969595;
+
+      &:hover {
+        transform: scale(1.1);
+        fill: white;
+      }
+
+      &.active {
+        transform: scale(1.1);
+        fill: white;
+      }
+    }
+  }
+}

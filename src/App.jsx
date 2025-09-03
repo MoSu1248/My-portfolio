@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase/firebase";
-import Footer from "./components/footer/Footer";
-import Navbar from "./components/nav/Navbar";
-import Header from "./components/header/Header";
+import Home from "./pages/Home/Home";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import ProjectsView from './pages/ProjectView/ProjectView'
+
+import Layout from "./components/Layout/Layout";
 function App() {
   const [projects, setProjects] = useState([]);
 
@@ -21,12 +22,14 @@ function App() {
   }, []);
 
   return (
-    <div className="layout">
-      <Header />
-      <Navbar />
-      <section className="window-frame"></section>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="/projects" element={<ProjectsView />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

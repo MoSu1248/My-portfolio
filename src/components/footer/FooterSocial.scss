@@ -8,5 +8,24 @@
     display: flex;
     justify-content: space-evenly;
     list-style: none;
+
+    li {
+      transition: 0.3s ease-in-out;
+      fill: #969595;
+    }
+
+    li:hover {
+      transform: scale(1.1);
+      fill: white;
+    }
+
+    .leetcode {
+      fill: none;
+      stroke: #969595;
+    }
+
+    .leetcode:hover {
+      stroke: white;
+    }
   }
 }
