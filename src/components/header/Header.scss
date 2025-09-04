@@ -1,18 +1,41 @@
+/*HEADER STYLING*/
+
 .header {
   display: flex;
   grid-column: 1 / 3;
   text-align: center;
   height: 2.5rem;
-  border: 1px solid rgba(128, 128, 128, 0.5);
+  border: 2px solid var(--borders-standard);
   color: white;
   background-color: transparent;
-
+  justify-content: space-between;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   p {
     margin: auto;
 
     span {
-      margin: 0.5rem;
-      color: #d74856;
+      margin: 0.1rem;
+    }
+
+    .hero {
+      color: var(--red);
+    }
+
+    .about {
+      color: var(--blue);
+    }
+
+    .project {
+      color: var(--purple);
+    }
+
+    .skills {
+      color: var(--green);
+    }
+
+    .contact {
+      color: var(--yellow);
     }
   }
 }

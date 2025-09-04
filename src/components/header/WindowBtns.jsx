@@ -6,8 +6,8 @@ export default function WindowBtns() {
       <ul>
         <li>
           <svg
-            width="14"
-            height="14"
+            width="12"
+            height="12"
             viewBox="0 0 6 1"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -17,8 +17,8 @@ export default function WindowBtns() {
         </li>
         <li>
           <svg
-            width="14"
-            height="14"
+            width="12"
+            height="12"
             viewBox="0 0 6 5"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -31,8 +31,8 @@ export default function WindowBtns() {
         </li>
         <li>
           <svg
-            width="14"
-            height="14"
+            width="12"
+            height="12"
             viewBox="0 0 6 6"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"

@@ -1,4 +1,22 @@
 .about {
   min-height: 100%;
   color: white;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.about__window {
+  width: 35rem;
+  background-color: var(--background);
+  backdrop-filter: blur(10px);
+
+  border-radius: 5px;
+  border: 1px solid var(--borders-standard);
+}
+
+.about-me {
+  width: 35rem;
+}
+
+.me-online {
 }

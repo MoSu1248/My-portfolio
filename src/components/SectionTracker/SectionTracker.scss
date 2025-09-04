@@ -1,0 +1,33 @@
+.section-tracker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 1rem;
+
+  .arrow {
+    font-size: 0.8rem;
+    color: #7c7c7c;
+    font-weight: bold;
+  }
+
+  .section-name {
+    font-size: 0.8rem;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade {
+  display: inline-block;
+  animation: fadeIn 0.7s ease-out;
+}

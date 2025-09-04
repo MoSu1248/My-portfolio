@@ -1,0 +1,21 @@
+/* Scrollbar styling using a variable */
+::-webkit-scrollbar {
+  width: 5px;
+  height: fit-content;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  padding: 1rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(
+    --scrollbar-thumb,
+    var(--red)
+  ); /* fallback to your default */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-thumb, var(--red));
+}

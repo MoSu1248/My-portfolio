@@ -1,0 +1,59 @@
+import { createContext, useState, useEffect } from "react";
+import ScrollBarUpdater from "../ScrollBarUpdater/ScrollBarUpdater";
+export const AppState = createContext();
+
+export default function AppStateProvider({ children }) {
+  const [currentSection, setCurrentSection] = useState("");
+  const [theme, setTheme] = useState({ color: "white" });
+
+  useEffect(() => {
+    const sections = ["hero", "about", "project", "skills", "contact"];
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setCurrentSection(entry.target.id);
+
+            switch (entry.target.id) {
+              case "about":
+                setTheme({ color: "var(--blue)" });
+                break;
+              case "project":
+                setTheme({ color: "var(--purple)" });
+                break;
+              case "skills":
+                setTheme({ color: "var(--green)" });
+                break;
+              case "contact":
+                setTheme({ color: "var(--yellow)" });
+                break;
+              default:
+                setTheme({ color: "var(--red)" });
+            }
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    sections.forEach((id) => {
+      const sectionEl = document.getElementById(id);
+      if (sectionEl) observer.observe(sectionEl);
+    });
+
+    return () => {
+      sections.forEach((id) => {
+        const sectionEl = document.getElementById(id);
+        if (sectionEl) observer.unobserve(sectionEl);
+      });
+    };
+  }, []);
+
+  return (
+    <AppState.Provider value={{ currentSection, theme }}>
+      {children}
+      <ScrollBarUpdater />
+    </AppState.Provider>
+  );
+}

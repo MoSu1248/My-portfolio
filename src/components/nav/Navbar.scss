@@ -2,9 +2,12 @@
   grid-row: 2 / 3;
   grid-column: 1 / 2;
   width: 3rem;
-  border: 1px solid rgba(128, 128, 128, 0.5);
-  backdrop-filter: blur(10px); /* glass effect */
-  z-index: 10; /* above the lights */
+  border: 2px solid var(--borders-standard);
+  border-bottom: 0;
+  border-top: 0;
+  backdrop-filter: blur(10px);
+
+  z-index: 10;
 
   ul {
     margin: auto;
@@ -19,16 +22,16 @@
     li {
       cursor: pointer;
       transition: 0.3s ease-in-out;
-      fill: #969595;
+      fill: var(--icon-standard);
 
       &:hover {
-        transform: scale(1.1);
-        fill: white;
+        transform: scale(1.2);
+        fill: var(--icon-hover);
       }
 
       &.active {
-        transform: scale(1.1);
-        fill: white;
+        transform: scale(1.2);
+        fill: var(--icon-hover);
       }
     }
   }

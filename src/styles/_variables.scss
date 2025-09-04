@@ -1,0 +1,53 @@
+@use "./mixins" as *;
+
+/* Reusable Variables */
+
+/* ROOT VARIABLES */
+:root {
+  /* Colors */
+  --background: #111111ea;
+  --borders-standard: rgba(128, 128, 128, 0.322);
+  --borders-hover: rgba(255, 255, 255, 0.712);
+
+  --icon-standard: #969595b4;
+  --icon-hover: rgba(255, 255, 255, 0.932);
+
+  --red: #d74856;
+  --blue: #526999;
+  --green: #94fd88cb;
+  --purple: #a955f7c9;
+  --yellow: #eab208d5;
+
+  /* Typography */
+
+  --font-family-body: "body", sans-serif;
+  --font-family-heading: "headings", sans-serif;
+
+  --h1-font-size: 3rem;
+  --h2-font-size: 2.5rem;
+  --h3-font-size: 1.25rem;
+  --p-font-size: 1rem;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+}
+
+/* SCSS VARIABLES  */
+
+/* Breakpoints */
+$bp-mobile: 40.625em; // 600px
+$bp-tablet: 56.25em; // 900px
+$bp-desktop: 75em; // 1200px
+
+$text-line-height: (
+  h1: 1.1,
+  h2: 1.2,
+  h3: 1.3,
+  p: 1.6,
+);
+
+$letter-spacing: (
+  h1: 3px,
+  h2: 2px,
+  h3: 5px,
+);

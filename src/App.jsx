@@ -3,8 +3,8 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase/firebase";
 import Home from "./pages/Home/Home";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import ProjectsView from './pages/ProjectView/ProjectView'
-
+import ProjectsView from "./pages/ProjectView/ProjectView";
+import AppStateProvider from "./components/AppStateProvider/AppStateProvider";
 import Layout from "./components/Layout/Layout";
 function App() {
   const [projects, setProjects] = useState([]);
@@ -23,12 +23,14 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="/projects" element={<ProjectsView />} />
-        </Route>
-      </Routes>
+      <AppStateProvider>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="/projects" element={<ProjectsView />} />
+          </Route>
+        </Routes>
+      </AppStateProvider>
     </BrowserRouter>
   );
 }

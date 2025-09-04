@@ -1,9 +1,31 @@
+/*THEME TOGGLE STYLING*/
+
 .theme-toggle {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-right: 2px solid rgba(128, 128, 128, 0.5);
-  width: 3rem;
+  border-right: 2px solid rgba(128, 128, 128, 0.322);
+  width: 2.9rem;
   height: 100%;
   cursor: pointer;
+
+  /*CHANGE BASED ON CURRENT ACTIVE SECTION*/
+
+  .toggle__icon {
+    &-hero {
+      fill: var(--red);
+    }
+    &-about {
+      fill: var(--blue);
+    }
+    &-project {
+      fill: var(--purple);
+    }
+    &-skills {
+      fill: var(--green);
+    }
+    &-contact {
+      fill: var(--yellow);
+    }
+  }
 }
