@@ -12,7 +12,7 @@ export default function Header() {
     <section className="header">
       <Logo />
       <p>
-        mohammed<span className={currentSection}>&lt;suhail&gt;</span>rahman
+        mohammed<span className={`header__${currentSection}`}>&lt;suhail&gt;</span>rahman
       </p>
       <WindowBtns />
     </section>

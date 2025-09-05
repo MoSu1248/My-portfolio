@@ -6,17 +6,36 @@
 }
 
 .about__window {
-  width: 35rem;
   background-color: var(--background);
   backdrop-filter: blur(10px);
-
   border-radius: 5px;
+  position: absolute;
   border: 1px solid var(--borders-standard);
 }
 
 .about-me {
-  width: 35rem;
+  top: 10%;
+  left: 30%;
+  width: 40rem;
+  z-index: 10;
 }
 
 .me-online {
+  top: 40%;
+  left: 60%;
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+}
+
+.working-on {
+  top: 58%;
+  left: 28%;
+  width: 30rem;
+}
+
+.where-i-work {
+  top: 43%;
+  left: 18%;
+  width: 25rem;
 }

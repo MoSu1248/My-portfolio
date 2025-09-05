@@ -10,6 +10,7 @@ import "./About.scss";
 
 const About = forwardRef(() => {
   const [cards, setCards] = useState([]);
+  const [zIndex, setZIndex] = useState(0);
   const ref = useRef();
 
   useEffect(() => {
@@ -28,16 +29,32 @@ const About = forwardRef(() => {
     fetchCards();
   }, []);
 
+  const handleClick = (e) => {
+    const el = e.currentTarget;
+
+    let maxZ = 0;
+    document.querySelectorAll(".drag-elements").forEach((card) => {
+      const z = parseInt(window.getComputedStyle(card).zIndex) || 0;
+      if (z > maxZ) maxZ = z;
+    });
+
+    el.style.zIndex = maxZ + 1;
+  };
+
   return (
     <section ref={ref} id="about" className="about">
       {cards.length > 0 ? (
         cards.map((card) => (
           <motion.div
-            className={`about__window ${card.id}`}
+            style={{
+              zIndex,
+            }}
+            onMouseDown={(e) => handleClick(e)}
+            className={`about__window ${card.id} drag-elements`}
             key={card.id}
             drag
             dragConstraints={ref}
-            dragElastic={1}
+            dragElastic={0.5}
           >
             <WindowHeader card={card.title} drag="x" />
             <WindowContent card={card} />

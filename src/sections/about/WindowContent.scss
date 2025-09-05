@@ -1,10 +1,23 @@
 .about__window-content {
   padding: 1rem 1rem;
-  p {
+  ul {
+    list-style: none;
+    color: var(--white);
+    padding: 0 1rem;
     font-weight: 400;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
+    margin: 0.5rem 0;
     span {
       margin-right: 1rem;
     }
+  }
+
+  .link-styling {
+    font-weight: 400;
+    font-size: 0.85rem;
+    margin: 0.5rem;
+    color: var(--white);
+    text-decoration: none;
+    display: flex;
   }
 }

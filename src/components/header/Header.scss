@@ -12,29 +12,30 @@
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   p {
+    height: fit-content;
     margin: auto;
 
     span {
       margin: 0.1rem;
     }
 
-    .hero {
+    .header__hero {
       color: var(--red);
     }
 
-    .about {
+    .header__about {
       color: var(--blue);
     }
 
-    .project {
+    .header__project {
       color: var(--purple);
     }
 
-    .skills {
+    .header__skills {
       color: var(--green);
     }
 
-    .contact {
+    .header__contact {
       color: var(--yellow);
     }
   }
