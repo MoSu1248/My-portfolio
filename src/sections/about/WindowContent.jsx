@@ -19,7 +19,7 @@ export default function WindowContent({ card }) {
                 rel="noopener noreferrer"
                 className="link-styling"
               >
-                {item.label} ↗
+                {item.label} <span>↗</span>
               </a>
             </li>
           </ul>

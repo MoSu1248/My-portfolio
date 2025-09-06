@@ -41,11 +41,44 @@ const About = forwardRef(() => {
     el.style.zIndex = maxZ + 1;
   };
 
+  const container = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.5,
+        delayChildren: 1,
+      },
+    },
+  };
+
+  const child = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { duration: 0.4, ease: "easeOut" },
+    },
+  };
+
   return (
-    <section ref={ref} id="about" className="about">
+    <motion.section ref={ref} id="about" className="about">
       {cards.length > 0 ? (
-        cards.map((card) => (
+        cards.map((card, index) => (
           <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            viewport={{ amount: 0.6, once: true }}
+            whileInView={{
+              opacity: 1,
+              scale: 1,
+              transition: {
+                duration: 0.4,
+                ease: "easeOut",
+                delay: index * 0.1,
+              },
+            }}
+            whileHover={{
+              scale: 1.05,
+              transition: { type: "spring", stiffness: 300, damping: 15 },
+            }}
             style={{
               zIndex,
             }}
@@ -54,7 +87,7 @@ const About = forwardRef(() => {
             key={card.id}
             drag
             dragConstraints={ref}
-            dragElastic={0.5}
+            dragElastic={0}
           >
             <WindowHeader card={card.title} drag="x" />
             <WindowContent card={card} />
@@ -63,7 +96,7 @@ const About = forwardRef(() => {
       ) : (
         <p>Loading...</p>
       )}
-    </section>
+    </motion.section>
   );
 });
 

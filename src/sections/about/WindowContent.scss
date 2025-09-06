@@ -19,5 +19,11 @@
     color: var(--white);
     text-decoration: none;
     display: flex;
+    transform: 0.2s ease-out;
+
+    &:hover {
+      transform: scale(1.05);
+      color: var(--blue);
+    }
   }
 }
