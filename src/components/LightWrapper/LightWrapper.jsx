@@ -1,19 +1,20 @@
-import React, { UseEffect } from "react";
+import React, { useContext, UseEffect } from "react";
 import { motion } from "framer-motion";
 import "./LightWrapper.scss";
+import { AppState } from "../AppStateProvider/AppStateProvider";
 
 const sectionColors = {
-  hero: "#d74856", // red-ish glow
-  about: "#35b374ff", // teal glow
-  contact: "#f39923ff", // yellow glow
-  skills: "#1d4d7aff",
-  project: "#3ab9bdff",
+  hero: "#d74856",
+  about: "#526999",
+  contact: "#eab208d5",
+  skills: "#377937",
+  project: "#a955f7c9",
 };
 
-const LightWrapper = ({ count = 2, currentSection }) => {
-  const color = sectionColors[currentSection] || "#ffffff";
+const LightWrapper = ({ count = 2 }) => {
+  const { currentSection } = useContext(AppState);
 
-  console.log(currentSection);
+  const color = sectionColors[currentSection] || "#d74856";
 
   const lights = Array.from({ length: count }, () => ({
     color,
@@ -24,14 +25,14 @@ const LightWrapper = ({ count = 2, currentSection }) => {
     <div className="fixed top-0 left-0 w-screen h-screen pointer-events-none z-0">
       {lights.map((light, i) => (
         <motion.div
-          animate={{
-            y: [0, 105, 0],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+          // animate={{
+          //   x: [0, 40, 0],
+          // }}
+          // transition={{
+          //   duration: 6,
+          //   repeat: Infinity,
+          //   ease: "easeInOut",
+          // }}
           key={i}
           className={`light-${i} light-styling`}
           style={{

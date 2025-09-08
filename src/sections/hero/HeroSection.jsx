@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import "./HeroSection.scss";
-import test from '../../assets/hero/test2.svg'
+import test from "../../assets/hero/test2.svg";
 
 const HeroSection = forwardRef((props, ref) => {
   return (

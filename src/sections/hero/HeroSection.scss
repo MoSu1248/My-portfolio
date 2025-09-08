@@ -1,12 +1,13 @@
 .hero {
   height: 100%;
   color: white;
+  position: relative;
 }
 
-.test {
-  mix-blend-mode: overlay;
-  font-size: 35rem;
-  text-align: center;
-  font-weight: 800;
-  font-family: "headings";
+img {
+  transform: rotate(50deg);
+  transform: skewY(50deg);
+  position: absolute;
+  margin: 25rem 50rem;
+  height: 5rem;
 }

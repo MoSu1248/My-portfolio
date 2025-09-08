@@ -48,9 +48,7 @@ export default function MainPage() {
 
   return (
     <div className="home">
-      <div className="fixed top-0 left-0 w-screen h-screen pointer-events-none z-0">
-        {/* <LightWrapper currentSection={currentSection} /> */}
-      </div>
+      <LightWrapper />
       <Hero />
       <About />
       <Project />

@@ -1,5 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import ScrollBarUpdater from "../ScrollBarUpdater/ScrollBarUpdater";
+import LightWrapper from "../LightWrapper/LightWrapper";
+
 export const AppState = createContext();
 
 export default function AppStateProvider({ children }) {

@@ -6,8 +6,9 @@
 }
 
 .about__window {
-  background-color: var(--background);
+  background: var(--glass-background);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-radius: 5px;
   position: absolute;
   border: 1px solid var(--borders-standard);
@@ -30,7 +31,7 @@
 
 .working-on {
   top: 58%;
-  left: 28%;
+  left: 30%;
   width: 30rem;
 }
 

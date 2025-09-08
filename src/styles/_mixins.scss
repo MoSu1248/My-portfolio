@@ -1,0 +1,23 @@
+/* Mixin Styling */
+
+@mixin h1-styling($color: var(--white)) {
+  font-size: var(--h1-font-size);
+  color: $color;
+  text-transform: uppercase;
+  font-family: "headings";
+}
+
+@mixin h2-styling($color: var(--white)) {
+  font-size: var(--h2-font-size);
+
+  color: $color;
+  text-transform: uppercase;
+  font-family: "headings";
+}
+
+@mixin h3-styling($color: var(--white)) {
+  font-size: var(--h3-font-size);
+  color: $color;
+  text-transform: uppercase;
+  font-family: "headings";
+}

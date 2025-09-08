@@ -5,17 +5,20 @@
 /* ROOT VARIABLES */
 :root {
   /* Colors */
-  --background: #111111ea;
+  --background: #111111d0;
   --borders-standard: rgba(128, 128, 128, 0.322);
   --borders-hover: rgba(255, 255, 255, 0.712);
-  
+  --grey: #8888887a;
+  --glass-background: rgba(255, 255, 255, 0.05);
+  --glass-background2: rgba(0, 0, 0, 0.3);
+
   --white: #ffffffe7;
   --icon-standard: #969595b4;
   --icon-hover: rgba(255, 255, 255, 0.932);
 
   --red: #d74856;
   --blue: #526999;
-  --green: #265626;
+  --green: #377937;
   --purple: #a955f7c9;
   --yellow: #eab208d5;
 

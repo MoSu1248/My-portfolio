@@ -1,7 +1,7 @@
 @font-face {
   font-family: "headings";
-  src: url("../fonts/PPObject.ttf") format("opentype");
-  font-weigh: 600;
+  src: url("../fonts/ObjectSansRegular.otf") format("opentype");
+  font-weigh: var(--font-weight-regular);
   font-style: normal;
 }
 
