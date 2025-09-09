@@ -2,53 +2,14 @@ import React, { useEffect, useRef, useState } from "react";
 import Hero from "../../sections/hero/HeroSection";
 import About from "../../sections/about/About";
 import "./Home.scss";
-import LightWrapper from "../../components/LightWrapper/LightWrapper";
-import { useInView } from "framer-motion";
-import Project from "../../sections/projects/projects";
+import Project from "../../sections/projects/Project";
 import Contact from "../../sections/contact/Contact";
 import Skills from "../../sections/skills/skills";
 
 export default function MainPage() {
-  // const heroRef = useRef(null);
-  // const aboutRef = useRef(null);
-  // const projectRef = useRef(null);
-  // const contactRef = useRef(null);
-  // const skillsRef = useRef(null);
-
-  // const [currentSection, setCurrentSection] = useState("hero");
-
-  // const isHomeInView = useInView(heroRef, { margin: "-50% 0px -50% 0px" });
-  // const isAboutInView = useInView(aboutRef, { margin: "-50% 0px -50% 0px" });
-  // const isSkillsInView = useInView(skillsRef, { margin: "-50% 0px -50% 0px" });
-  // const isProjectInView = useInView(projectRef, {
-  //   margin: "-50% 0px -50% 0px",
-  // });
-  // const isContactInView = useInView(contactRef, {
-  //   margin: "-50% 0px -50% 0px",
-  // });
-
-  // useEffect(() => {
-  //   if (isHomeInView) setCurrentSection("hero");
-  // }, [isHomeInView]);
-
-  // useEffect(() => {
-  //   if (isAboutInView) setCurrentSection("about");
-  // }, [isAboutInView]);
-
-  // useEffect(() => {
-  //   if (isSkillsInView) setCurrentSection("skills");
-  // }, [isSkillsInView]);
-
-  // useEffect(() => {
-  //   if (isProjectInView) setCurrentSection("project");
-  // }, [isProjectInView]);
-  // useEffect(() => {
-  //   if (isContactInView) setCurrentSection("contact");
-  // }, [isContactInView]);
 
   return (
     <div className="home">
-      <LightWrapper />
       <Hero />
       <About />
       <Project />

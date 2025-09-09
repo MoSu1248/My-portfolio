@@ -19,10 +19,10 @@ export default function AppStateProvider({ children }) {
 
             switch (entry.target.id) {
               case "about":
-                setTheme({ color: "var(--blue)" });
+                setTheme({ color: "var(--purple)" });
                 break;
               case "project":
-                setTheme({ color: "var(--purple)" });
+                setTheme({ color: "var(--red)" });
                 break;
               case "skills":
                 setTheme({ color: "var(--green)" });
@@ -31,7 +31,7 @@ export default function AppStateProvider({ children }) {
                 setTheme({ color: "var(--yellow)" });
                 break;
               default:
-                setTheme({ color: "var(--red)" });
+                setTheme({ color: "var(--blue)" });
             }
           }
         });
@@ -54,6 +54,7 @@ export default function AppStateProvider({ children }) {
 
   return (
     <AppState.Provider value={{ currentSection, theme }}>
+      <LightWrapper />
       {children}
       <ScrollBarUpdater />
     </AppState.Provider>

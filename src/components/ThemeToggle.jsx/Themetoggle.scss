@@ -13,13 +13,13 @@
 
   .toggle__icon {
     &-hero {
-      fill: var(--red);
-    }
-    &-about {
       fill: var(--blue);
     }
-    &-project {
+    &-about {
       fill: var(--purple);
+    }
+    &-project {
+      fill: var(--red);
     }
     &-skills {
       fill: var(--green);

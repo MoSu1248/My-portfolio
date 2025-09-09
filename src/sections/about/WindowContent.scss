@@ -10,20 +10,22 @@
     span {
       margin-right: 1rem;
     }
-  }
 
-  .link-styling {
-    font-weight: 400;
-    font-size: 0.85rem;
-    margin: 0.5rem;
-    color: var(--white);
-    text-decoration: none;
-    display: flex;
-    transform: 0.2s ease-out;
+    .link-styling {
+      font-weight: 400;
+      font-size: 0.85rem;
+      margin: 0.5rem;
+      color: var(--white);
+      text-decoration: none;
+      display: flex;
+      transform: 0.2s ease;
 
-    &:hover {
-      transform: scale(1.05);
-      color: var(--blue);
+      &:hover {
+        transform: 0.2s ease;
+
+        transform: scale(1.1);
+        color: var(--blue);
+      }
     }
   }
 }

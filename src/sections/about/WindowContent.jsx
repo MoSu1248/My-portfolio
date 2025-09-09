@@ -6,14 +6,13 @@ export default function WindowContent({ card }) {
     <div className="about__window-content">
       {card.content.map((item, idx) =>
         typeof item === "string" ? (
-          <ul>
-            <li key={idx}>{item}</li>
+          <ul key={idx}>
+            <li>{item}</li>
           </ul>
         ) : item.url ? (
-          <ul>
+          <ul key={idx}>
             <li>
               <a
-                key={idx}
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"

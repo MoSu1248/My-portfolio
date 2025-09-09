@@ -15,21 +15,22 @@
   p {
     height: fit-content;
     margin: auto;
+    margin-left: 41.5%;
 
     span {
       margin: 0.1rem;
     }
 
     .header__hero {
-      color: var(--red);
-    }
-
-    .header__about {
       color: var(--blue);
     }
 
-    .header__project {
+    .header__about {
       color: var(--purple);
+    }
+
+    .header__project {
+      color: var(--red);
     }
 
     .header__skills {

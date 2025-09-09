@@ -4,11 +4,11 @@ import "./LightWrapper.scss";
 import { AppState } from "../AppStateProvider/AppStateProvider";
 
 const sectionColors = {
-  hero: "#d74856",
-  about: "#526999",
-  contact: "#eab208d5",
-  skills: "#377937",
-  project: "#a955f7c9",
+  hero: "#5178b3",
+  about: "#a566f0",
+  project: "#d95c66",
+  skills: "#399149",
+  contact: "#e3ad0f",
 };
 
 const LightWrapper = ({ count = 2 }) => {
@@ -25,14 +25,14 @@ const LightWrapper = ({ count = 2 }) => {
     <div className="fixed top-0 left-0 w-screen h-screen pointer-events-none z-0">
       {lights.map((light, i) => (
         <motion.div
-          // animate={{
-          //   x: [0, 40, 0],
-          // }}
-          // transition={{
-          //   duration: 6,
-          //   repeat: Infinity,
-          //   ease: "easeInOut",
-          // }}
+          animate={{
+            x: [0, 80, 0],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
           key={i}
           className={`light-${i} light-styling`}
           style={{
@@ -40,8 +40,8 @@ const LightWrapper = ({ count = 2 }) => {
             width: `600px`,
             height: `600px`,
             borderRadius: "50%",
-            opacity: 0.3,
-            filter: "blur(100px)",
+            opacity: 0.5,
+            filter: "blur(120px)",
             backgroundColor: light.color,
           }}
         />

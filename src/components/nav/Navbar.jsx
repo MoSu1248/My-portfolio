@@ -17,6 +17,7 @@ export default function Nav() {
           >
             <a href={`#${item.name}`}>
               <svg
+                className="icon-styling"
                 width={item.dimensions.width}
                 height={item.dimensions.height}
                 viewBox={item.dimensions.viewBox}

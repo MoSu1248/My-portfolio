@@ -12,10 +12,10 @@
 ::-webkit-scrollbar-thumb {
   background-color: var(
     --scrollbar-thumb,
-    var(--red)
+    var(--blue)
   ); /* fallback to your default */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: var(--scrollbar-thumb, var(--red));
+  background-color: var(--scrollbar-thumb, var(--blue));
 }

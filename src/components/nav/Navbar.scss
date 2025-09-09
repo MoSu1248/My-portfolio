@@ -20,8 +20,23 @@
 
     li {
       cursor: pointer;
-      transition: 0.3s ease-in-out;
+      transition: 0.2s ease;
       fill: var(--icon-standard);
+      
+     
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      a {
+        width: 100%;
+        height: fit-content;
+      }
+
+      .icon-styling {
+        width: 100%;
+      }
 
       &:hover {
         transform: scale(1.2);
