@@ -1,118 +1,103 @@
 import React, { forwardRef } from "react";
-import { motion } from "framer-motion";
+import { NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { collection, getDocs, query } from "firebase/firestore";
+import { motion, AnimatePresence, useSpring, animate } from "framer-motion";
+import { db } from "../../firebase/firebase";
+import ProjectsGrid from "./ProjectsGrid";
+import { useMotionValue } from "framer-motion";
+import ProjectDetails from "./ProjectDetails";
+
+import ProjectGridWrapper from "./ProjectGridWrapper";
+
 import "./projects.scss";
+import ViewMoreBtn from "./ViewMoreBtn";
 
 const Project = forwardRef((props, ref) => {
-  return (
-    <section ref={ref} id="project" className="project-section">
-      <div className="project-container">
-        <motion.div
-          className="project-card"
-          initial={{ opacity: 0, y: 60 }}
-          viewport={{ amount: 0.8, once: true }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-            transition: {
-              duration: 0.3,
-              ease: "easeOut",
-              delay: 0.1,
-            },
-          }}
-          whileHover={{ scale: 1.05, type: "spring" }}
-        >
-          <div className="card-number">
-            <p>01</p>
-          </div>
-          <div className="project-content">
-            <h2>Audiophile</h2>
-            <div className="technology">
-              <ul>
-                <li>React</li>
-                <li>Css</li>
-                <li>Figma</li>
-              </ul>
-            </div>
-          </div>
-          <div className="image">IMG</div>
-          <div className="date-containter">
-            <p>
-              2024 <span>↗</span>
-            </p>
-          </div>
-        </motion.div>
-        <motion.div
-          className="project-card"
-          initial={{ opacity: 0, y: 60 }}
-          viewport={{ amount: 0.8, once: true }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-            transition: {
-              duration: 0.3,
+  const [projects, setProjects] = useState([]);
+  const [allProjects, setAllProjects] = useState([]);
+  const [viewAll, setViewAll] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
 
-              ease: "easeOut",
-              delay: 0.4,
-            },
-          }}
-          whileHover={{ scale: 1.05, type: "spring" }}
-        >
-          <div className="card-number">
-            <p>01</p>
-          </div>
-          <div className="project-content">
-            <h2>Audiophile</h2>
-            <div className="technology">
-              <ul>
-                <li>React</li>
-                <li>Css</li>
-                <li>Figma</li>
-              </ul>
-            </div>
-          </div>
-          <div className="image">IMG</div>
-          <div className="date-containter">
-            <p>
-              2024 <span>↗</span>
-            </p>
-          </div>
-        </motion.div>
-        <motion.div
-          className="project-card"
-          initial={{ opacity: 0, y: 60 }}
-          viewport={{ amount: 0.8, once: true }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-            transition: {
-              duration: 0.3,
-              ease: "easeOut",
-              delay: 0.6,
-            },
-          }}
-          whileHover={{ scale: 1.05, type: "spring" }}
-        >
-          <div className="card-number">
-            <p>01</p>
-          </div>
-          <div className="project-content">
-            <h2>Audiophile</h2>
-            <div className="technology">
-              <ul>
-                <li>React</li>
-                <li>Css</li>
-                <li>Figma</li>
-              </ul>
-            </div>
-          </div>
-          <div className="image">IMG</div>
-          <div className="date-containter">
-            <p>
-              2024 <span>↗</span>
-            </p>
-          </div>
-        </motion.div>
-      </div>
+  const containerY = useMotionValue(0);
+  const containerX = useMotionValue(0);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const snapshot = await getDocs(query(collection(db, "projects")));
+      const initialData = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setProjects(initialData.filter((project) => project.order !== undefined));
+      setAllProjects(initialData);
+    };
+    fetchProjects();
+  }, []);
+
+  const handleViewMore = () => {
+    setProjects(allProjects);
+    setViewAll(true);
+  };
+
+  const handleViewLess = () => {
+    setProjects(projects.filter((project) => project.order !== undefined));
+    setViewAll(false);
+    animate(containerX, 0, { duration: 0.1, ease: "easeOut" });
+    animate(containerY, 0, { duration: 0.1, ease: "easeOut" });
+  };
+
+  const smoothX = useSpring(containerX, { stiffness: 25, damping: 20 });
+  const smoothY = useSpring(containerY, { stiffness: 25, damping: 20 });
+
+  const handleMouseMove = (e) => {
+    if (!viewAll) return;
+    const maxShiftX = 200;
+    const maxShiftY = 200;
+
+    const moveX = (e.clientX / window.innerWidth - 0.5) * 2 * -maxShiftX;
+    const moveY = (e.clientY / window.innerHeight - 0.5) * 2 * -maxShiftY;
+
+    containerX.set(moveX);
+    containerY.set(moveY);
+  };
+
+  const handleSelectProject = (project) => setSelectedProject(project);
+  const handleBack = () => setSelectedProject(null);
+
+  return (
+    <section
+      ref={ref}
+      id="project"
+      className="project-section"
+      onMouseLeave={() => {
+        animate(containerX, 0, { duration: 0.3, ease: "easeOut" });
+        animate(containerY, 0, { duration: 0.3, ease: "easeOut" });
+      }}
+    >
+      <ProjectGridWrapper
+        viewAll={viewAll}
+        containerX={smoothX}
+        containerY={smoothY}
+        onMouseMove={handleMouseMove}
+      >
+        {selectedProject ? (
+          <ProjectDetails project={selectedProject} onBack={handleBack} />
+        ) : (
+          <motion.div key="grid" layout className="project-grid-container">
+            <ProjectsGrid
+              projects={projects}
+              viewAll={viewAll}
+              onSelect={setSelectedProject}
+            />
+          </motion.div>
+        )}
+      </ProjectGridWrapper>
+      <ViewMoreBtn
+        viewAll={viewAll}
+        handleViewMore={handleViewMore}
+        handleViewLess={handleViewLess}
+      />
     </section>
   );
 });

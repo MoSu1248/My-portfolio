@@ -1,0 +1,14 @@
+.btn-styling {
+  cursor: pointer;
+  border: 1px solid var(--borders-standard);
+  color: var(--white);
+  margin: 0.5rem auto;
+  border-radius: 5px;
+  padding: 1rem;
+  width: 20%;
+  background-color: var(--glass-background);
+}
+
+.btn-less {
+  position: absolute;
+}
