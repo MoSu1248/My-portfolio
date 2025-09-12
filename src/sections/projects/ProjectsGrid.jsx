@@ -1,67 +1,102 @@
-import React, { useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import ProjectCard from "./projectCard";
+import { useRef, useState } from "react";
+import ProjectCard from "./ProjectCard";
+import ViewMoreBtn from "./ViewMoreBtn";
 import "./projects.scss";
 
-export default function ProjectsGrid({ projects, onSelect, viewAll }) {
-  const galleryRef = useRef(null);
-
-  // Mouse move effect
-  useEffect(() => {
-    const handleMove = (e) => {
-      if (!galleryRef.current || !viewAll) return;
-
-      const gallery = galleryRef.current;
-      const rect = gallery.getBoundingClientRect();
-
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
-
-      const maxShiftX = 400;
-      const maxShiftY = 400;
-
-      const deltaX = ((centerX - e.clientX) / rect.width) * maxShiftX;
-      const deltaY = ((centerY - e.clientY) / rect.height) * maxShiftY;
-
-      gallery.style.transform = `translate(calc(-50% + ${deltaX}px), calc(-50% + ${deltaY}px))`;
-    };
-
-    const container = document.querySelector(".project-section");
-    if (container) container.addEventListener("mousemove", handleMove);
-
-    // Reset transform on cleanup
-    return () => {
-      if (container) container.removeEventListener("mousemove", handleMove);
-      if (galleryRef.current)
-        galleryRef.current.style.transform = "translate(-50%, -50%)";
-    };
-  }, [viewAll]);
+export default function ProjectsGrid({
+  projects,
+  viewAll,
+  onSelect,
+  handleViewMore,
+  handleViewLess,
+  selected,
+  handleClick,
+}) {
+  const galleryWrapperRef = useRef(null);
+  const [animationsDone, setAnimationsDone] = useState(false);
 
   return (
-    <div className="project-section">
-      <AnimatePresence>
-        <div className="container">
-          <div className="gallery" ref={galleryRef}>
-            {projects.map((project, index) => (
+    <motion.div className="gallery-wrapper" ref={galleryWrapperRef}>
+      <div className="gallery">
+        {/* Animate the first 3 cards */}
+        <AnimatePresence initial={false}>
+          {!viewAll &&
+            projects.slice(0, 3).map((project, index) => (
               <motion.div
-                key={`row-${index}`}
-                layout
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
+                layout={!selected} // stop grid layout animation while a card is selected
+                key={project.id || index}
                 className="row"
+                style={{ perspective: 1000 }}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.2,
+                  ease: "easeOut",
+                }}
+                exit={{ opacity: 0, y: -40, scale: 0.98 }}
               >
                 <ProjectCard
-                  project={project}
+                  layoutId={
+                    selected?.id === project.id
+                      ? `card-${project.id}`
+                      : undefined
+                  }
                   index={index}
+                  project={project}
                   onSelect={onSelect}
+                  viewAll={viewAll}
+                  selected={selected}
+                  handleClick={handleClick}
                 />
               </motion.div>
             ))}
-          </div>
-        </div>
-      </AnimatePresence>
-    </div>
+        </AnimatePresence>
+
+        {/* Animate full gallery when viewAll */}
+        {viewAll &&
+          projects.slice(0, 9).map((project, index) => (
+            <motion.div
+              layout={!selected} // same here
+              key={project.id || index}
+              className={`row order-${project.order}`}
+              initial={{ opacity: 0, scale: 1.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{
+                duration: 1,
+                delay: index * 0.2,
+                ease: "easeOut",
+              }}
+              style={{
+                pointerEvents: animationsDone ? "auto" : "none",
+                perspective: 1000,
+              }}
+              onAnimationComplete={() => setAnimationsDone(true)}
+            >
+              <ProjectCard
+                layoutId={
+                  selected?.id === project.id ? `card-${project.id}` : undefined
+                }
+                index={index}
+                project={project}
+                onSelect={onSelect}
+                viewAll={viewAll}
+                selected={selected}
+                handleClick={handleClick}
+              />
+            </motion.div>
+          ))}
+
+        {/* ViewMore / ViewLess buttons */}
+        {!viewAll && (
+          <ViewMoreBtn viewAll={viewAll} handleViewMore={handleViewMore} />
+        )}
+        {viewAll && selected && (
+          <ViewMoreBtn viewAll={viewAll} handleViewLess={handleViewLess} />
+        )}
+      </div>
+    </motion.div>
   );
 }

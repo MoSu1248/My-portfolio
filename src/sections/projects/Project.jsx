@@ -1,15 +1,10 @@
-import React, { forwardRef } from "react";
-import { NavLink } from "react-router-dom";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, forwardRef } from "react";
+import { useMotionValue, useSpring, animate } from "framer-motion";
 import { collection, getDocs, query } from "firebase/firestore";
-import { motion, AnimatePresence, useSpring, animate } from "framer-motion";
-import { db } from "../../firebase/firebase";
 import ProjectsGrid from "./ProjectsGrid";
-import { useMotionValue } from "framer-motion";
-import ProjectDetails from "./ProjectDetails";
-
 import ProjectGridWrapper from "./ProjectGridWrapper";
-
+import ProjectDetails from "./ProjectDetails";
+import { db } from "../../firebase/firebase";
 import "./projects.scss";
 import ViewMoreBtn from "./ViewMoreBtn";
 
@@ -17,10 +12,15 @@ const Project = forwardRef((props, ref) => {
   const [projects, setProjects] = useState([]);
   const [allProjects, setAllProjects] = useState([]);
   const [viewAll, setViewAll] = useState(false);
+  const [selected, setSelected] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
+  const [animationsDone, setAnimationsDone] = useState(false);
 
-  const containerY = useMotionValue(0);
   const containerX = useMotionValue(0);
+  const containerY = useMotionValue(0);
+
+  const smoothX = useSpring(containerX, { stiffness: 25, damping: 20 });
+  const smoothY = useSpring(containerY, { stiffness: 25, damping: 20 });
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -29,76 +29,138 @@ const Project = forwardRef((props, ref) => {
         id: doc.id,
         ...doc.data(),
       }));
-      setProjects(initialData.filter((project) => project.order !== undefined));
+      setProjects(initialData.filter((p) => p.order !== undefined));
       setAllProjects(initialData);
     };
     fetchProjects();
   }, []);
 
-  const handleViewMore = () => {
-    setProjects(allProjects);
-    setViewAll(true);
-  };
+  const [mouseEnabled, setMouseEnabled] = useState(false);
 
-  const handleViewLess = () => {
-    setProjects(projects.filter((project) => project.order !== undefined));
-    setViewAll(false);
-    animate(containerX, 0, { duration: 0.1, ease: "easeOut" });
-    animate(containerY, 0, { duration: 0.1, ease: "easeOut" });
-  };
+  useEffect(() => {
+    if (!viewAll) return;
 
-  const smoothX = useSpring(containerX, { stiffness: 25, damping: 20 });
-  const smoothY = useSpring(containerY, { stiffness: 25, damping: 20 });
+    const timer = setTimeout(() => {
+      setMouseEnabled(true);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [viewAll]);
 
   const handleMouseMove = (e) => {
-    if (!viewAll) return;
-    const maxShiftX = 200;
-    const maxShiftY = 200;
+    if (!viewAll || !mouseEnabled) return;
 
-    const moveX = (e.clientX / window.innerWidth - 0.5) * 2 * -maxShiftX;
-    const moveY = (e.clientY / window.innerHeight - 0.5) * 2 * -maxShiftY;
+    const maxShiftX = 600;
+    const maxShiftY = 700;
+
+    const moveX = (e.clientX / window.innerWidth - 0.5) * maxShiftX * -1;
+    const moveY = (e.clientY / window.innerHeight - 0.5) * maxShiftY * -1;
 
     containerX.set(moveX);
     containerY.set(moveY);
   };
 
-  const handleSelectProject = (project) => setSelectedProject(project);
-  const handleBack = () => setSelectedProject(null);
+  const handleMouseLeave = () => {
+    animate(containerX, 0, { duration: 0.2 });
+    animate(containerY, 0, { duration: 0.2 });
+  };
+
+  const handleViewMore = () => {
+    setProjects(allProjects);
+    setViewAll(true);
+
+    animate(containerX, 0, { duration: 0.1 });
+    animate(containerY, 0, { duration: 0.1 });
+  };
+
+  const handleViewLess = () => {
+    setProjects(allProjects.filter((p) => p.order !== undefined).slice(0, 3));
+    setViewAll(false);
+    animate(containerX, 0, { duration: 0.1 });
+    animate(containerY, 0, { duration: 0.1 });
+  };
+
+  const handleClick = (params, params2) => {
+    setSelected(true);
+    setViewAll(params2);
+    setSelectedProject(params);
+  };
+
+  const handleBack = () => {
+    setSelected(false);
+    setSelectedProject(null);
+    animate(containerX, 0, { duration: 0.1 });
+    animate(containerY, 0, { duration: 0.1 });
+  };
+
+  useEffect(() => {
+    const scrollContainer =
+      document.querySelector(".window-frame") &&
+      document.querySelector(".home");
+
+    if (!scrollContainer) return;
+
+    if (selected) {
+      scrollContainer.style.overflow = "hidden";
+    } else {
+      scrollContainer.style.overflow = "scroll";
+    }
+
+    return () => {
+      if (scrollContainer) {
+        scrollContainer.style.overflow = "scroll";
+      }
+    };
+  }, [selected]);
+
+  console.log(selected);
 
   return (
     <section
+      className="project-section"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      onMouseEnter={handleMouseLeave}
       ref={ref}
       id="project"
-      className="project-section"
-      onMouseLeave={() => {
-        animate(containerX, 0, { duration: 0.3, ease: "easeOut" });
-        animate(containerY, 0, { duration: 0.3, ease: "easeOut" });
-      }}
     >
-      <ProjectGridWrapper
-        viewAll={viewAll}
-        containerX={smoothX}
-        containerY={smoothY}
-        onMouseMove={handleMouseMove}
-      >
-        {selectedProject ? (
-          <ProjectDetails project={selectedProject} onBack={handleBack} />
-        ) : (
-          <motion.div key="grid" layout className="project-grid-container">
-            <ProjectsGrid
-              projects={projects}
-              viewAll={viewAll}
-              onSelect={setSelectedProject}
-            />
-          </motion.div>
-        )}
-      </ProjectGridWrapper>
-      <ViewMoreBtn
-        viewAll={viewAll}
-        handleViewMore={handleViewMore}
-        handleViewLess={handleViewLess}
-      />
+      {selectedProject ? (
+        <ProjectDetails
+          handleBack={() => handleBack()}
+          project={selectedProject}
+          onBack={() => setSelectedProject(null)}
+        />
+      ) : (
+        <ProjectGridWrapper
+          containerX={smoothX}
+          containerY={smoothY}
+          viewAll={viewAll}
+        >
+          <ProjectsGrid
+            projects={projects}
+            viewAll={viewAll}
+            onSelect={setSelectedProject}
+            handleViewMore={handleViewMore}
+            handleViewLess={handleViewLess}
+            // selected={setSelected}
+            handleClick={handleClick}
+          />
+        </ProjectGridWrapper>
+      )}
+
+      {viewAll && selected === false ? (
+        <ViewMoreBtn
+          handleViewLess={handleViewLess}
+          handleViewMore={handleViewMore}
+          viewAll={viewAll}
+        />
+      ) : (
+        ""
+      )}
     </section>
   );
 });
+
+Project.displayName = "Project";
+
 export default Project;
