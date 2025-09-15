@@ -1,17 +1,17 @@
-
-
 .test-container {
-  overflow: scroll;
-  height: 100%;
+  height: 82%;
+  margin: 0rem 1rem;
+  border-radius: 5px;
+  background-color: var(--projects-background);
+  border: 1px solid var(--borders-standard);
 
-
-    img {
-        position: relative;
-      width: 10%;
-      height: 10%;
-      margin: 0;
-      transform: rotate(0deg) skewY(0deg); // start neutral
-      transition: transform 0.4s ease, opacity 0.4s ease;
-      opacity: 1;
-    }
+  img {
+    position: relative;
+    width: 10%;
+    height: 10%;
+    margin: 0;
+    transform: rotate(0deg) skewY(0deg); // start neutral
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    opacity: 1;
+  }
 }

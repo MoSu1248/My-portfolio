@@ -39,6 +39,8 @@
     }
 
     &:hover {
+      transform: scale(1.1);
+      
       .card-number {
         width: 0%;
         opacity: 0;
@@ -46,10 +48,11 @@
       }
 
       .project-content {
-        width: 35%;
+        width: 40%;
+        margin-left: -10%;
       }
 
-      .date-containter {
+      .date-container {
         span {
           top: -12px;
           right: -20px;
@@ -130,21 +133,27 @@
       transform: rotate(-10deg);
     }
 
-    .date-containter {
+    .date-container {
       position: relative;
-      font-size: 0.75rem;
       height: 100%;
-      color: var(--icon-standard);
+
       display: flex;
-    }
-    span {
-      top: -10px;
-      right: -50px;
-      font-size: 1.5rem;
-      position: absolute;
-      transition: 0.3s ease;
-      width: 0rem;
-      opacity: 0;
+
+      p {
+        font-size: 0.75rem;
+
+        color: var(--icon-standard);
+      }
+
+      span {
+        top: -10px;
+        right: -10px;
+        font-size: 1.5rem;
+        position: absolute;
+        transition: 0.3s ease;
+        width: 0rem;
+        opacity: 0;
+      }
     }
   }
 }
@@ -162,9 +171,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
- 
-  gap: 0.5rem;
 }
 
 .row {

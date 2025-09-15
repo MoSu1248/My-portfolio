@@ -1,14 +1,8 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion, scale } from "framer-motion";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { useState, useEffect, useRef } from "react";
 
-export default function ProjectCard({
-  project,
-  viewAll,
-  index,
-
-  handleClick,
-}) {
+export default function ProjectCard({ project, viewAll, handleClick }) {
   const [imageUrl, setImageUrl] = useState(
     "https://t3.ftcdn.net/jpg/02/49/64/56/360_F_249645657_ItyPSZ5b14Bqdc2rtoOzlEq5Z7SQpd7x.jpg"
   );
