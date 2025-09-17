@@ -40,7 +40,7 @@
 
     &:hover {
       transform: scale(1.1);
-      
+
       .card-number {
         width: 0%;
         opacity: 0;
@@ -217,9 +217,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr); // fixed 3 columns
       grid-auto-rows: minmax(300px, auto);
-      gap: 8rem;
-      justify-items: start;
-      align-items: start;
+      gap: 1rem;
 
       .order-01 {
         grid-column: 2 / 3 !important;

@@ -18,7 +18,7 @@ const Project = forwardRef((props, ref) => {
 
   const containerX = useMotionValue(0);
   const containerY = useMotionValue(0);
-
+  const [mouseEnabled, setMouseEnabled] = useState(false);
   const smoothX = useSpring(containerX, { stiffness: 25, damping: 20 });
   const smoothY = useSpring(containerY, { stiffness: 25, damping: 20 });
 
@@ -34,8 +34,6 @@ const Project = forwardRef((props, ref) => {
     };
     fetchProjects();
   }, []);
-
-  const [mouseEnabled, setMouseEnabled] = useState(false);
 
   useEffect(() => {
     if (!viewAll) return;
@@ -101,6 +99,8 @@ const Project = forwardRef((props, ref) => {
     if (!scrollContainer) return;
 
     if (selected) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+
       scrollContainer.style.overflow = "hidden";
     } else {
       scrollContainer.style.overflow = "scroll";
@@ -121,8 +121,6 @@ const Project = forwardRef((props, ref) => {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onMouseEnter={handleMouseLeave}
-      ref={ref}
-      id="project"
     >
       {selectedProject ? (
         <ProjectDetails
@@ -142,7 +140,6 @@ const Project = forwardRef((props, ref) => {
             onSelect={setSelectedProject}
             handleViewMore={handleViewMore}
             handleViewLess={handleViewLess}
-            // selected={setSelected}
             handleClick={handleClick}
           />
         </ProjectGridWrapper>

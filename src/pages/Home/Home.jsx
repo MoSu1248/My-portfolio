@@ -5,14 +5,15 @@ import "./Home.scss";
 import Project from "../../sections/projects/Project";
 import Contact from "../../sections/contact/Contact";
 import Skills from "../../sections/skills/skills";
+import Assignments from "../../sections/assignsments/assignments";
 
 export default function MainPage() {
-
   return (
     <div className="home">
       <Hero />
       <About />
-      <Project />
+      {/* <Project /> */}
+      <Assignments />
       <Skills />
       <Contact />
     </div>

@@ -26,87 +26,87 @@ export default function ProjectCard({ project, viewAll, handleClick }) {
     return () => clearTimeout(timer);
   }, []);
 
-  const handleMouseMove = (e) => {
-    if (!hoverEnabled || !cardRef.current) return;
+  // const handleMouseMove = (e) => {
+  //   if (!hoverEnabled || !cardRef.current) return;
 
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+  //   const rect = cardRef.current.getBoundingClientRect();
+  //   const x = e.clientX - rect.left;
+  //   const y = e.clientY - rect.top;
 
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
+  //   const centerX = rect.width / 2;
+  //   const centerY = rect.height / 2;
 
-    const rotateX = ((y - centerY) / centerY) * -8;
-    const rotateY = ((x - centerX) / centerX) * 8;
+  //   const rotateX = ((y - centerY) / centerY) * -8;
+  //   const rotateY = ((x - centerX) / centerX) * 8;
 
-    setRotate({ x: rotateX, y: rotateY });
-  };
+  //   setRotate({ x: rotateX, y: rotateY });
+  // };
 
-  const handleMouseLeave = () => {
-    if (!hoverEnabled) return;
-    setRotate({ x: 0, y: 0 });
-  };
+  // const handleMouseLeave = () => {
+  //   if (!hoverEnabled) return;
+  //   setRotate({ x: 0, y: 0 });
+  // };
 
   if (viewAll) {
     return (
-      <motion.div
-        layout={viewAll}
-        layoutId={`card-${project.id}`}
-        ref={cardRef}
-        className={`project-card order-${project.order}`}
-        style={{ perspective: 1000 }}
-        onClick={() => handleClick(project, viewAll)}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        whileHover={
-          hoverEnabled
-            ? {
-                boxShadow: "0 12px 30px rgba(0,0,0,0.8)",
-                transition: { duration: 0.25, ease: "easeOut" },
-              }
-            : {}
-        }
-        animate={{
-          rotateX: rotate.x,
-          rotateY: rotate.y,
-          transition: { type: "spring", stiffness: 200, damping: 15 },
-        }}
-      >
-        <div className="image-grid">
-          <img src={imageUrl} alt={project.title} />
-        </div>
-        <div className="content-overlay">
-          <div className="project-content">
-            <h2>{project.title}</h2>
-            <div className="technology">
-              <ul>
-                {project.techStack?.slice(0, 4).map((item, idx) => (
-                  <li key={idx}>{item}</li>
-                ))}
-              </ul>
+        <motion.div
+          // layout={viewAll}
+          layoutId={`card-${project.id}`}
+          // ref={cardRef}
+          className={`project-card order-${project.order}`}
+          // style={{ perspective: 1000 }}
+          onClick={() => handleClick(project, viewAll)}
+          // onMouseMove={handleMouseMove}
+          // onMouseLeave={handleMouseLeave}
+          // whileHover={
+          //   hoverEnabled
+          //     ? {
+          //         boxShadow: "0 12px 30px rgba(0,0,0,0.8)",
+          //         transition: { duration: 0.25, ease: "easeOut" },
+          //       }
+          //     : {}
+          // }
+          // animate={{
+          //   rotateX: rotate.x,
+          //   rotateY: rotate.y,
+          //   transition: { type: "spring", stiffness: 200, damping: 15 },
+          // }}
+        >
+          <div className="image-grid">
+            <img src={imageUrl} alt={project.title} />
+          </div>
+          <div className="content-overlay">
+            <div className="project-content">
+              <h2>{project.title}</h2>
+              <div className="technology">
+                <ul>
+                  {project.techStack?.slice(0, 4).map((item, idx) => (
+                    <li key={idx}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div className="date-container">
+              <p>
+                2024<span>↗</span>
+              </p>
             </div>
           </div>
-          <div className="date-container">
-            <p>
-              2024<span>↗</span>
-            </p>
-          </div>
-        </div>
-      </motion.div>
+        </motion.div>
     );
   }
 
   return (
     <motion.div
-      layout
-      layoutId={`card-${project.id}`}
-      ref={cardRef}
+     
+      // layoutId={`card-${project.id}`}
+      // ref={cardRef}
       className={`project-card order-${project.order}`}
-      transition={{
-        layout: { duration: 0.02, type: "tween" }, // smooth morph
-      }}
+      // transition={{
+      //   layout: { duration: 0.2, type: "tween" }, // smooth morph
+      // }}
       onClick={() => handleClick(project, viewAll)}
-      style={{ perspective: 1000, rotateX: rotate.x, rotateY: rotate.y }}
+      // style={{ perspective: 1000, rotateX: rotate.x, rotateY: rotate.y }}
     >
       <div className="card-number">
         <p>{project.order}</p>

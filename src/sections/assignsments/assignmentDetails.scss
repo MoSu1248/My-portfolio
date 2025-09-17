@@ -1,0 +1,16 @@
+.details__container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(12, 12, 12, 0.849);
+  border-radius: 5px;
+  z-index: 1000;
+  padding: 0.5rem;
+}
+
+.project__container {
+  border-radius: 5px;
+  border: 1px solid var(--borders-standard);
+}
