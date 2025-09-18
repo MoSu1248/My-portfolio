@@ -27,7 +27,9 @@ export default function InitialCard({ project, onClick, viewAll }) {
         <p>{project.order}</p>
       </div>
       <div className="project-content">
-        <h2>{project.title}</h2>
+        <motion.h2 layoutId={`heading-${project.id}`}>
+          {project.title}
+        </motion.h2>
         <div className="technology">
           <ul>
             {project.techStack?.slice(0, 4).map((item, idx) => (
@@ -36,9 +38,15 @@ export default function InitialCard({ project, onClick, viewAll }) {
           </ul>
         </div>
       </div>
-      <div className="image">
-        <img src={imageUrl} alt={project.title} className="img-styling" />
+
+      <div className="image-styling">
+        <motion.img
+          layoutId={`img-${project.id}`}
+          src={imageUrl}
+          alt={project.title}
+        />
       </div>
+
       <div className="date-container">
         <p>
           2024<span>↗</span>

@@ -24,12 +24,20 @@ export default function AllCards({ project, handleClick, viewAll }) {
       className={`project-card order-${project.order}`}
       onClick={() => handleClick(project)}
     >
-      <div className="image-grid">
-        <img src={imageUrl} alt={project.title} />
+      <div className="all-card-image-container">
+        <motion.img
+          layoutId={`img-${project.id}`}
+          src={imageUrl}
+          alt={project.title}
+          className="all-card-image"
+        />
       </div>
+
       <div className="content-overlay">
         <div className="project-content">
-          <h2>{project.title}</h2>
+          <motion.h2 layoutId={`heading-${project.id}`}>
+            {project.title}
+          </motion.h2>
           <div className="technology">
             <ul>
               {project.techStack?.slice(0, 4).map((item, idx) => (
