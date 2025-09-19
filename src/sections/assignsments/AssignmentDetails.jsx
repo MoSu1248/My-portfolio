@@ -3,6 +3,8 @@ import "./assignmentDetails.scss";
 import { AnimatePresence, easeIn, motion } from "framer-motion";
 import { getDownloadURL, getStorage, ref } from "firebase/storage";
 import { useEffect, useState } from "react";
+import SkillIcons from "../../data/SkillIcons";
+import Carousel from "./Carousel";
 
 export default function AssignmentDetails({ project, handleBack, viewAll }) {
   const [imageUrl, setImageUrl] = useState(
@@ -117,12 +119,16 @@ export default function AssignmentDetails({ project, handleBack, viewAll }) {
               <h3>Links</h3>
               <ul>
                 <li>
-                  <a href={project.liveUrl}>
+                  <a className="link" href={project.liveUrl}>
                     Live link<span>↗</span>
+                    <span class="corner top-right"></span>
+                    <span class="corner bottom-left"></span>
                   </a>
                 </li>
                 <li>
-                  <a href={project.repo}>
+                  <a href={project.repo} className="link">
+                    <span class="corner top-right"></span>
+                    <span class="corner bottom-left"></span>
                     Github Repo<span>↗</span>
                   </a>
                 </li>
@@ -131,9 +137,15 @@ export default function AssignmentDetails({ project, handleBack, viewAll }) {
             <div className="project__description-technology">
               <h3>Technology</h3>
               <ul>
-                {project.techStack?.slice(0, 4).map((item, index) => (
-                  <li key={index}>{item}</li>
-                ))}
+                {project.techStack?.map((item, index) => {
+                  const Icon = SkillIcons[item]; // grab the component
+                  return (
+                    <li key={index} className="flex items-center gap-2">
+                      {Icon ? <Icon className="skill-icon-styling" /> : null}
+                      {item}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           </div>

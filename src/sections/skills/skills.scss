@@ -51,20 +51,31 @@
     cursor: pointer;
     text-align: center;
     border-radius: 5px;
+    gap: 1rem;
     border: 1px solid var(--borders-standard);
     color: var(--borders-standard);
     transition: 0.3s ease;
     background: var(--glass-background);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+   
+
     h5 {
       line-height: 1.5rem;
       font-weight: var(--font-weight-regular);
     }
 
     .skill-icon {
-      fill: var(--borders-standard);
       height: 3rem;
+      width: 1.5rem;
+
+      & path {
+        color: var(--borders-standard);
+      }
+    }
+
+    .skill-icon path {
+      transition: 0.3s ease;
     }
 
     &:hover {
@@ -72,7 +83,11 @@
       color: var(--borders-hover);
 
       .skill-icon {
-        fill: var(--borders-hover);
+       
+      }
+
+      path {
+        color: var(--borders-hover);
       }
     }
   }
