@@ -1,10 +1,10 @@
 import React from "react";
 import "./assignmentDetails.scss";
-import { AnimatePresence, easeIn, motion } from "framer-motion";
+import { AnimatePresence, delay, easeIn, easeOut, motion } from "framer-motion";
 import { getDownloadURL, getStorage, ref } from "firebase/storage";
 import { useEffect, useState } from "react";
 import SkillIcons from "../../data/SkillIcons";
-import Carousel from "./Carousel";
+// import Carousel from "./Carousel";
 
 export default function AssignmentDetails({ project, handleBack, viewAll }) {
   const [imageUrl, setImageUrl] = useState(
@@ -34,13 +34,13 @@ export default function AssignmentDetails({ project, handleBack, viewAll }) {
           className={` light-0`}
           style={{
             position: "absolute",
-            width: `600px`,
-            height: `600px`,
+            width: `800px`,
+            height: `800px`,
             borderRadius: "50%",
-            filter: "blur(100px)",
+            filter: "blur(80px)",
             backgroundColor: "#d74856",
-            right: `-40px`,
-            top: `-10px`,
+            right: `-80px`,
+            top: `-200px`,
           }}
         />
       </div>
@@ -56,13 +56,13 @@ export default function AssignmentDetails({ project, handleBack, viewAll }) {
           className={` light-1`}
           style={{
             position: "absolute",
-            width: `600px`,
-            height: `600px`,
+            width: `800px`,
+            height: `800px`,
             borderRadius: "50%",
-            filter: "blur(100px)",
-            backgroundColor: "#d74856",
-            right: `-10px`,
-            bottom: `50px`,
+            filter: "blur(80px)",
+            backgroundColor: "#d74856ff",
+            left: `-80px`,
+            bottom: `-80px`,
           }}
         />
       </div>
@@ -94,60 +94,102 @@ export default function AssignmentDetails({ project, handleBack, viewAll }) {
             </button>
             <p>{project.title}</p>
           </div>
-          <div className="detail-image-container">
-            <motion.img
-              layoutId={`img-${project.id}`}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-              src={imageUrl}
-              alt={project.title}
-              className="detail-img-styling"
-            />
+          <div className="text-container">
+            <div className="detail-image-container">
+              <motion.img
+                layoutId={`img-${project.id}`}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+                src={imageUrl}
+                alt={project.title}
+                className="detail-img-styling"
+              />
+            </div>
+            {/* <Carousel images={project.projectImages} /> */}
+
+            <div className="project__description">
+              <motion.h2
+                initial={{ x: 40, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.5, ease: "easeOut", duration: 0.5 }}
+              >
+                {project.title}
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7 }}
+              >
+                {project.description}
+              </motion.p>
+              <div className="highlights">
+                {/* <h3>Technology</h3> */}
+                <ul>
+                  {project.highlights?.map((item, index) => {
+                    return (
+                      <motion.li
+                        initial={{ opacity: 0, y: 15 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.8 + index * 0.1 }}
+                        key={index}
+                        className="flex items-center gap-2"
+                      >
+                        {item}
+                      </motion.li>
+                    );
+                  })}
+                </ul>
+              </div>
+              <div className="project__description-links">
+                {/* <h3>Links</h3> */}
+                <ul>
+                  <motion.li
+                    initial={{ scale: 0.9 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 1, duration: 0.5 }}
+                  >
+                    <a className="link" href={project.liveUrl}>
+                      <p className="link-text">Live Site</p>
+                      <span className="link-icon">↗</span>
+                      <span class="corner top-right"></span>
+                      <span class="corner bottom-left"></span>
+                    </a>
+                  </motion.li>
+                  <motion.li
+                    initial={{ scale: 0.9 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 1, duration: 0.5 }}
+                  >
+                    <a href={project.repo} className="link">
+                      <span class="corner top-right"></span>
+                      <span class="corner bottom-left"></span>
+                      <p className="link-text">Github Repo</p>
+                      <span className="link-icon">↗</span>
+                    </a>
+                  </motion.li>
+                </ul>
+              </div>
+            </div>
           </div>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.7, duration: 0.5 }}
-          >
-            {project.description}
-          </motion.p>
-
-          <div className="project__description">
-            <div className="project__description-highlights"></div>
-            <div className="project__description-links">
-              <h3>Links</h3>
-              <ul>
-                <li>
-                  <a className="link" href={project.liveUrl}>
-                    Live link<span>↗</span>
-                    <span class="corner top-right"></span>
-                    <span class="corner bottom-left"></span>
-                  </a>
-                </li>
-                <li>
-                  <a href={project.repo} className="link">
-                    <span class="corner top-right"></span>
-                    <span class="corner bottom-left"></span>
-                    Github Repo<span>↗</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="project__description-technology">
-              <h3>Technology</h3>
-              <ul>
-                {project.techStack?.map((item, index) => {
-                  const Icon = SkillIcons[item]; // grab the component
-                  return (
-                    <li key={index} className="flex items-center gap-2">
-                      {Icon ? <Icon className="skill-icon-styling" /> : null}
-                      {item}
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
+          <div className="project__description-technology">
+            {/* <h3>Technology</h3> */}
+            <ul>
+              {project.techStack?.map((item, index) => {
+                const Icon = SkillIcons[item]; // grab the component
+                return (
+                  <motion.li
+                    key={index}
+                    className="flex items-center gap-2"
+                    initial={{ y: 30, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 1.2, ease: "easeOut" }}
+                  >
+                    {Icon ? <Icon className="skill-icon-styling" /> : null}
+                    {item}
+                  </motion.li>
+                );
+              })}
+            </ul>
           </div>
         </motion.div>
       </motion.div>
