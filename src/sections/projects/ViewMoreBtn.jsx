@@ -6,18 +6,20 @@ export default function ViewMoreBtn({
   viewAll,
   handleViewLess,
   handleViewMore,
+  exit,
 }) {
   return (
     <>
       {!viewAll && (
         <motion.button
-          initial={{ opacity: 0, scale: 0 }}
-          whileInView={{
-            opacity: 1,
-            scale: 1,
-            transition: { duration: 0.3, ease: "easeOut", delay: 0.8 },
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{
+            delay: 1.2,
+            duration: 0.4,
+            ease: `easeOut`,
           }}
-          viewport={{ amount: 0.8, once: true }}
+          viewport={{ once: true, amount: 0.8 }}
           className="btn-styling"
           onClick={() => handleViewMore()}
           whileHover={{ scale: 1.05, type: "spring" }}
@@ -40,7 +42,7 @@ export default function ViewMoreBtn({
           whileHover={{ scale: 1.05, type: "spring" }}
           whileTap={{ scale: 0.85 }}
           className="btn-styling btn-less"
-          onClick={() => handleViewLess()}
+          onClick={(() => handleViewLess())}
         >
           View Less
         </button>

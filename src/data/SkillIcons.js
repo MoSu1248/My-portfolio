@@ -22,6 +22,7 @@ import Sql from "../assets/skills/Sql.svg?react";
 import Version from "../assets/skills/Version.svg?react";
 import Vite from "../assets/skills/Vite.svg?react";
 import Bootstrap from "../assets/skills/Bootstrap.svg?react";
+import Graphql from "../assets/skills/Graphql.svg?react";
 
 const SkillIcons = {
   React: ReactIcon,
@@ -48,6 +49,7 @@ const SkillIcons = {
   Sql,
   Version,
   Vite,
+  Graphql,
 };
 
 export default SkillIcons;

@@ -15,7 +15,6 @@ const Assignments = forwardRef((props, ref) => {
   const [viewAll, setViewAll] = useState(false);
   const [selected, setSelected] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
-  //   const [animationsDone, setAnimationsDone] = useState(false);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -47,27 +46,9 @@ const Assignments = forwardRef((props, ref) => {
 
   const handleClick = (params) => {
     setSelected(true);
-    // setViewAll(params2);
     setSelectedProject(params);
   };
 
-  const containerX = useMotionValue(0);
-  const containerY = useMotionValue(0);
-  const smoothX = useSpring(containerX, { stiffness: 25, damping: 20 });
-  const smoothY = useSpring(containerY, { stiffness: 25, damping: 20 });
-
-  const handleMouseMove = (e) => {
-    const maxShiftX = 600;
-    const maxShiftY = 700;
-
-    const moveX = (e.clientX / window.innerWidth - 0.5) * maxShiftX * -1;
-    const moveY = (e.clientY / window.innerHeight - 0.5) * maxShiftY * -1;
-
-    console.log("movment");
-
-    containerX.set(moveX);
-    containerY.set(moveY);
-  };
 
   return (
     <section className="assignments-section" ref={ref} id="project">
@@ -80,12 +61,9 @@ const Assignments = forwardRef((props, ref) => {
       )}
       {viewAll ? (
         <AllAssignments
-          containerX={smoothX}
-          containerY={smoothY}
           projects={projects}
           onClick={handleClick}
           viewAll={viewAll}
-          handleViewLess={handleViewLess}
         />
       ) : (
         <InitialAssignments

@@ -4,7 +4,7 @@ import { AnimatePresence, delay, easeIn, easeOut, motion } from "framer-motion";
 import { getDownloadURL, getStorage, ref } from "firebase/storage";
 import { useEffect, useState } from "react";
 import SkillIcons from "../../data/SkillIcons";
-// import Carousel from "./Carousel";
+import Carousel from "./Carousel";
 
 export default function AssignmentDetails({ project, handleBack, viewAll }) {
   const [imageUrl, setImageUrl] = useState(
@@ -12,17 +12,17 @@ export default function AssignmentDetails({ project, handleBack, viewAll }) {
   );
 
   useEffect(() => {
-    if (project.image) {
+    if (project.imageThumbnail) {
       const storage = getStorage();
-      const imageRef = ref(storage, project.image);
+      const imageRef = ref(storage, project.imageThumbnail);
       getDownloadURL(imageRef)
         .then((url) => setImageUrl(url))
         .catch((err) => console.error("Failed to get image URL:", err));
     }
-  }, [project.image]);
+  }, [project.imageThumbnail]);
 
   return (
-    <AnimatePresence>
+    <AnimatePresence key={project.title}>
       <div className="fixed top-0 left-0 w-screen h-screen pointer-events-none z-0">
         <motion.div
           animate={{ opacity: 1 }}
@@ -77,8 +77,8 @@ export default function AssignmentDetails({ project, handleBack, viewAll }) {
             <button
               onClick={handleBack}
               className="back__btn"
-              whileHover={{ scale: 1.05, type: "spring" }}
-              whileTap={{ scale: 0.85 }}
+              whilehover={{ scale: 1.05, type: "spring" }}
+              whiletap={{ scale: 0.85 }}
             >
               <svg
                 width="30"
@@ -95,17 +95,7 @@ export default function AssignmentDetails({ project, handleBack, viewAll }) {
             <p>{project.title}</p>
           </div>
           <div className="text-container">
-            <div className="detail-image-container">
-              <motion.img
-                layoutId={`img-${project.id}`}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-                src={imageUrl}
-                alt={project.title}
-                className="detail-img-styling"
-              />
-            </div>
-            {/* <Carousel images={project.projectImages} /> */}
+            <Carousel images={project.projectImages} />
 
             <div className="project__description">
               <motion.h2
@@ -151,8 +141,8 @@ export default function AssignmentDetails({ project, handleBack, viewAll }) {
                     <a className="link" href={project.liveUrl}>
                       <p className="link-text">Live Site</p>
                       <span className="link-icon">↗</span>
-                      <span class="corner top-right"></span>
-                      <span class="corner bottom-left"></span>
+                      <span className="corner top-right"></span>
+                      <span className="corner bottom-left"></span>
                     </a>
                   </motion.li>
                   <motion.li
@@ -161,8 +151,8 @@ export default function AssignmentDetails({ project, handleBack, viewAll }) {
                     transition={{ delay: 1, duration: 0.5 }}
                   >
                     <a href={project.repo} className="link">
-                      <span class="corner top-right"></span>
-                      <span class="corner bottom-left"></span>
+                      <span className="corner top-right"></span>
+                      <span className="corner bottom-left"></span>
                       <p className="link-text">Github Repo</p>
                       <span className="link-icon">↗</span>
                     </a>
@@ -180,8 +170,16 @@ export default function AssignmentDetails({ project, handleBack, viewAll }) {
                   <motion.li
                     key={index}
                     className="flex items-center gap-2"
-                    initial={{ y: 30, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
+                    initial={{
+                      y: 30,
+                      opacity: 0,
+                      boxShadow: "none",
+                    }}
+                    animate={{
+                      y: 0,
+                      opacity: 1,
+                      boxShadow: "0 8px 5px rgba(0, 0, 0, 0.459)",
+                    }}
                     transition={{ delay: 1.2, ease: "easeOut" }}
                   >
                     {Icon ? <Icon className="skill-icon-styling" /> : null}

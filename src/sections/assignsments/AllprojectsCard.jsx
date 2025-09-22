@@ -1,0 +1,71 @@
+import { motion, transform } from "framer-motion";
+import React from "react";
+import "./AllProjectsCard.scss";
+
+export default function AllprojectsCard() {
+  const bricks = Array.from({ length: 9 });
+
+  const containerVariants = {
+    hover: {
+      transition: {
+        staggerChildren: 0.05,
+      },
+    },
+  };
+
+  const brickVariants = {
+    rest: { x: 0, y: 0 },
+    hover: (i) => {
+      const directions = [
+        { x: -30, y: -30 },
+        { x: 0, y: -30 },
+        { x: 30, y: -30 },
+        { x: -30, y: 0 },
+        { x: 0, y: 0 },
+        { x: 30, y: 0 },
+        { x: -30, y: 30 },
+        { x: 0, y: 30 },
+        { x: 30, y: 30 },
+      ];
+      return {
+        ...directions[i],
+        transition: { type: "spring", stiffness: 120, damping: 8 },
+      };
+    },
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        delay: 1.4,
+        duration: 1,
+        type: "spring",
+        damping: 15,
+        stiffness: 40,
+      }}
+      style={{ height: `100%` }}
+    >
+      <motion.div
+        className="all-projects-card"
+        initial="rest"
+        whileHover="hover"
+        animate="rest"
+        variants={containerVariants}
+      >
+        {bricks.map((_, i) => (
+          <motion.div
+            key={i}
+            className="brick"
+            custom={i}
+            variants={brickVariants}
+          />
+        ))}
+        <div className="overlay">
+          <h3>All Projects</h3>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}

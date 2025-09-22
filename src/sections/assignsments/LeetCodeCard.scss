@@ -1,0 +1,44 @@
+.leetcode-card {
+  width: 100%;
+  height: 100%;
+
+  cursor: pointer;
+  border-radius: 5px;
+
+  display: flex;
+  padding: 2rem;
+  p {
+    color: #00ff88;
+    margin-left: 1rem;
+  }
+
+  .blink {
+    animation: blink 1s infinite;
+  }
+}
+
+.leetcode-card {
+  display: flex;
+  max-height: 17rem;
+  max-width: 32rem;
+  background-color: var(--glass-background);
+  border: 1px solid var(--borders-standard);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+  transition: 0.3s ease-out;
+
+  &:hover {
+    border: 1px solid #00ff881e;
+    box-shadow: 0 5px 10px #00ff882f;
+  }
+
+  .blink {
+    display: inline-block;
+    animation: blink 0.8s step-start infinite;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}

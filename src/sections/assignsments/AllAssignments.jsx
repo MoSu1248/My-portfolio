@@ -1,20 +1,18 @@
 import {
   animate,
   motion,
+  scale,
   useMotionValue,
   useSpring,
 } from "framer-motion";
 import React, { useRef } from "react";
 import AllCards from "./AllCards";
 import ViewMoreBtn from "../projects/ViewMoreBtn";
-
 import "./AllAssignments.scss";
-export default function AllAssignments({
-  projects,
-  onClick,
-  handleViewLess,
-  viewAll,
-}) {
+import AllprojectsCard from "./AllprojectsCard";
+import LeetCodeCard from "./LeetCodeCard";
+
+export default function AllAssignments({ projects, onClick, viewAll }) {
   const galleryWrapperRef = useRef(null);
 
   const containerX = useMotionValue(0);
@@ -24,7 +22,7 @@ export default function AllAssignments({
 
   const handleMouseMove = (e) => {
     const maxShiftX = 600;
-    const maxShiftY = 900;
+    const maxShiftY = 1000;
 
     const moveX = (e.clientX / window.innerWidth - 0.5) * maxShiftX * -1;
     const moveY = (e.clientY / window.innerHeight - 0.5) * maxShiftY * -1;
@@ -51,14 +49,28 @@ export default function AllAssignments({
       }}
     >
       <motion.div className="all-container" ref={galleryWrapperRef}>
-        <motion.div className="grid-container">
+        <motion.div
+          className="grid-container"
+          initial={{ zoom: `30%`, translateX: `800px` }}
+          animate={{ zoom: `100%`, translateX: `0px` }}
+          transition={{
+            delay: 2,
+            duration: 1,
+            type: "spring",
+            damping: 15,
+            stiffness: 40,
+          }}
+        >
           {projects.slice(0, 9).map((project, index) => (
             <AllCards
+              index={index}
               project={project}
               viewAll={viewAll}
               handleClick={onClick}
             />
           ))}
+          <AllprojectsCard />
+          <LeetCodeCard />
         </motion.div>
       </motion.div>
     </motion.div>
