@@ -7,6 +7,7 @@ export const AppState = createContext();
 export default function AppStateProvider({ children }) {
   const [currentSection, setCurrentSection] = useState("");
   const [theme, setTheme] = useState({ color: "white" });
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   useEffect(() => {
     const sections = ["hero", "about", "project", "skills", "contact"];
@@ -53,7 +54,9 @@ export default function AppStateProvider({ children }) {
   }, []);
 
   return (
-    <AppState.Provider value={{ currentSection, theme }}>
+    <AppState.Provider
+      value={{ currentSection, theme, lightboxOpen, setLightboxOpen }}
+    >
       <LightWrapper />
       {children}
       <ScrollBarUpdater />

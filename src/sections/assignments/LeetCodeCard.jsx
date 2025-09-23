@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./LeetCodeCard.scss";
 import { motion } from "framer-motion";
 
-export default function LeetCodeCard() {
+export default function LeetCodeCard({ leetCode }) {
   const text = "LeetCode";
   const [displayed, setDisplayed] = useState("");
   const [index, setIndex] = useState(0);
@@ -28,6 +28,7 @@ export default function LeetCodeCard() {
 
   return (
     <motion.div
+      onClick={() => leetCode(true)}
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{

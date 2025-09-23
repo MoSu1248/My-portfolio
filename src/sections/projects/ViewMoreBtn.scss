@@ -3,7 +3,7 @@
   border: 1px solid var(--borders-standard);
   background-color: var(--glass-background);
   padding: 0.5rem 1rem;
-  margin-right: 1.5rem;
+  margin-right: 2rem;
   font-family: "body";
   display: flex;
   justify-content: center;
@@ -23,6 +23,7 @@
   }
 
   &:hover {
+    transform: scale(1.05);
     border: 1px solid var(--borders-hover);
     background-color: white;
     color: var(--background);

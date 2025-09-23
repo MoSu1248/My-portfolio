@@ -3,9 +3,16 @@ import "./Navbar.scss";
 import { navIcons } from "../../data/Navicons";
 import { AppState } from "../AppStateProvider/AppStateProvider";
 
-export default function Nav() {
+export default function Nav({ scrollTo }) {
   const { currentSection } = useContext(AppState);
   const icons = navIcons;
+
+  const handleClick = (e, sectionId) => {
+    e.preventDefault(); // prevent default anchor jump
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+    scrollTo(section.offsetTop);
+  };
 
   return (
     <div className="nav">
@@ -15,7 +22,10 @@ export default function Nav() {
             key={index}
             className={currentSection === item.name ? "active" : ""}
           >
-            <a href={`#${item.name}`}>
+            <a
+              href={`#${item.name}`}
+              onClick={(e) => handleClick(e, item.name)}
+            >
               <svg
                 className="icon-styling"
                 width={item.dimensions.width}

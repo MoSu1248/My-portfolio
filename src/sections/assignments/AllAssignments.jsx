@@ -1,28 +1,36 @@
-import {
-  animate,
-  motion,
-  scale,
-  useMotionValue,
-  useSpring,
-} from "framer-motion";
-import React, { useRef } from "react";
+import { animate, motion, useMotionValue, useSpring } from "framer-motion";
+import React, { useContext, useEffect, useRef } from "react";
 import AllCards from "./AllCards";
 import ViewMoreBtn from "../projects/ViewMoreBtn";
 import "./AllAssignments.scss";
 import AllprojectsCard from "./AllprojectsCard";
 import LeetCodeCard from "./LeetCodeCard";
+import { AppState } from "../../components/AppStateProvider/AppStateProvider";
 
-export default function AllAssignments({ projects, onClick, viewAll }) {
+export default function AllAssignments({
+  projects,
+  onClick,
+  viewAll,
+  allProjects,
+  leetCode,
+  openLesser,
+}) {
+  const { setLightboxOpen } = useContext(AppState);
+
+  useEffect(() => {
+    setLightboxOpen(true);
+    return () => setLightboxOpen(false);
+  }, []);
   const galleryWrapperRef = useRef(null);
 
   const containerX = useMotionValue(0);
   const containerY = useMotionValue(0);
-  const smoothX = useSpring(containerX, { stiffness: 25, damping: 20 });
-  const smoothY = useSpring(containerY, { stiffness: 25, damping: 20 });
+  const smoothX = useSpring(containerX, { stiffness: 30, damping: 20 });
+  const smoothY = useSpring(containerY, { stiffness: 30, damping: 20 });
 
   const handleMouseMove = (e) => {
     const maxShiftX = 600;
-    const maxShiftY = 1000;
+    const maxShiftY = 600;
 
     const moveX = (e.clientX / window.innerWidth - 0.5) * maxShiftX * -1;
     const moveY = (e.clientY / window.innerHeight - 0.5) * maxShiftY * -1;
@@ -31,15 +39,9 @@ export default function AllAssignments({ projects, onClick, viewAll }) {
     containerY.set(moveY);
   };
 
-  const handleMouseLeave = () => {
-    animate(containerX, 0, { duration: 0.2 });
-    animate(containerY, 0, { duration: 0.2 });
-  };
-
   return (
     <motion.div
       onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
       style={{
         x: smoothX,
         y: smoothY,
@@ -69,8 +71,8 @@ export default function AllAssignments({ projects, onClick, viewAll }) {
               handleClick={onClick}
             />
           ))}
-          <AllprojectsCard />
-          <LeetCodeCard />
+          <AllprojectsCard openLesser={openLesser} />
+          <LeetCodeCard leetCode={leetCode} />
         </motion.div>
       </motion.div>
     </motion.div>

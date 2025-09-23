@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import { EffectCoverflow, Pagination } from "swiper/modules";
-import { easeOut, motion } from "framer-motion";
+import { AnimatePresence, easeOut, motion } from "framer-motion";
 import ViewImage from "./ViewImage";
 import Expand from "../../assets/shared/zoom.svg";
 
@@ -55,6 +55,7 @@ export default function Carousel({ images }) {
                 }}
               >
                 <motion.img
+                  layoutId={src}
                   src={src}
                   alt={`Slide ${index + 1}`}
                   style={{ width: "100%", height: "100%", objectFit: "fill" }}
@@ -74,8 +75,11 @@ export default function Carousel({ images }) {
           </div>
         ))}
       </Swiper>
-
-      {viewImage && <ViewImage viewImage={setViewImage} image={displayImage} />}
+      <AnimatePresence>
+        {viewImage && (
+          <ViewImage viewImage={setViewImage} image={displayImage} />
+        )}
+      </AnimatePresence>
     </div>
   );
 }

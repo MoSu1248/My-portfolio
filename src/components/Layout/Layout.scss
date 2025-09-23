@@ -2,8 +2,7 @@
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: auto 1fr auto;
-  height: 100dvh;
-  min-height: 100vh;
+  height: 100vh;
   width: 100vw;
   padding: 0.5rem;
   background-color: var(--glass-background2);
@@ -11,7 +10,6 @@
 }
 
 .window-frame {
-  height: 100%;
   grid-row: 2 / 3;
   grid-column: 2 / 3;
   background-color: var(--glass-background2);
@@ -19,8 +17,14 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
+  position: relative;
+  overflow-y: scroll; 
+}
+
+.scroll-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%; /* make sure content is taller than container */
   padding: 0.3rem;
   padding-right: 0;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
 }

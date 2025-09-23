@@ -4,7 +4,7 @@ import About from "../../sections/about/About";
 import "./Home.scss";
 import Contact from "../../sections/contact/Contact";
 import Skills from "../../sections/skills/skills";
-import Assignments from "../../sections/assignsments/assignments";
+import Assignments from "../../sections/assignments/assignments";
 
 export default function MainPage() {
   return (

@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./assignmentDetails.scss";
-import { AnimatePresence, delay, easeIn, easeOut, motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { getDownloadURL, getStorage, ref } from "firebase/storage";
 import { useEffect, useState } from "react";
 import SkillIcons from "../../data/SkillIcons";
 import Carousel from "./Carousel";
+import { AppState } from "../../components/AppStateProvider/AppStateProvider";
 
 export default function AssignmentDetails({ project, handleBack, viewAll }) {
   const [imageUrl, setImageUrl] = useState(
     "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/..."
   );
+
+  const { setLightboxOpen } = useContext(AppState);
+
+  useEffect(() => {
+    setLightboxOpen(true);
+    return () => setLightboxOpen(false);
+  }, []);
 
   useEffect(() => {
     if (project.imageThumbnail) {

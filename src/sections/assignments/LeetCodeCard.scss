@@ -21,10 +21,13 @@
   display: flex;
   max-height: 17rem;
   max-width: 32rem;
-  background-color: var(--glass-background);
+  background-color: var(--projects-background);
   border: 1px solid var(--borders-standard);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
   transition: 0.3s ease-out;
+
+   
+
 
   &:hover {
     border: 1px solid #00ff881e;

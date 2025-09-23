@@ -1,13 +1,11 @@
 import React, { useState, useEffect, forwardRef } from "react";
-import { useMotionValue, useSpring, animate } from "framer-motion";
+
 import { collection, getDocs, query } from "firebase/firestore";
 import ViewMoreBtn from "../projects/ViewMoreBtn";
 import { db } from "../../firebase/firebase";
-import InitialAssignments from "./InitialAssignments";
-import AllAssignments from "./AllAssignments";
-
+import DetailsContainer from "./DetailsContainer";
+import AssignmentsContainer from "./AssignmentsContainer";
 import "./assignments.scss";
-import AssignmentDetails from "./AssignmentDetails";
 
 const Assignments = forwardRef((props, ref) => {
   const [projects, setProjects] = useState([]);
@@ -49,30 +47,38 @@ const Assignments = forwardRef((props, ref) => {
     setSelectedProject(params);
   };
 
+  const [leetCodeState, setLeetCodeState] = useState(false);
+
+  const openLeetCode = () => setLeetCodeState(true);
+  const closeLeetCode = () => setLeetCodeState(false);
+
+  const [lesserProjects, setLesserProjects] = useState(false);
+
+  const openLesser = () => setLesserProjects(true);
+  const closeLesser = () => setLesserProjects(false);
 
   return (
     <section className="assignments-section" ref={ref} id="project">
-      {selectedProject && (
-        <AssignmentDetails
-          viewAll={viewAll}
-          project={selectedProject}
-          handleBack={() => handleBack()}
-        />
-      )}
-      {viewAll ? (
-        <AllAssignments
-          projects={projects}
-          onClick={handleClick}
-          viewAll={viewAll}
-        />
-      ) : (
-        <InitialAssignments
-          viewAll={viewAll}
-          handleViewMore={handleViewMore}
-          projects={projects.slice(0, 3)}
-          onClick={handleClick}
-        />
-      )}
+      <DetailsContainer
+        viewAll={viewAll}
+        project={selectedProject}
+        selected={selected}
+        handleBack={() => handleBack()}
+        leetCode={closeLeetCode}
+        leetCodeState={leetCodeState}
+        lesserProjectsClose={closeLesser}
+        lesserProjects={lesserProjects}
+      />
+      <AssignmentsContainer
+        projects={projects}
+        onClick={handleClick}
+        openLeetCode={openLeetCode}
+        openLesser={openLesser}
+        handleViewMore={handleViewMore}
+        handleViewLess={handleViewLess}
+        viewAll={viewAll}
+      />
+
       {viewAll && selected === false ? (
         <ViewMoreBtn
           handleViewLess={handleViewLess}

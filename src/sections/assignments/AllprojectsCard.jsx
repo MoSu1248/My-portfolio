@@ -1,8 +1,8 @@
-import { motion, transform } from "framer-motion";
+import { motion } from "framer-motion";
 import React from "react";
 import "./AllProjectsCard.scss";
 
-export default function AllprojectsCard() {
+export default function AllprojectsCard({ openLesser }) {
   const bricks = Array.from({ length: 9 });
 
   const containerVariants = {
@@ -53,6 +53,7 @@ export default function AllprojectsCard() {
         whileHover="hover"
         animate="rest"
         variants={containerVariants}
+        onClick={() => openLesser(true)}
       >
         {bricks.map((_, i) => (
           <motion.div
