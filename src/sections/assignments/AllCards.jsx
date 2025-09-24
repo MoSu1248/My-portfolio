@@ -27,8 +27,8 @@ export default function AllCards({ project, handleClick, viewAll, index }) {
         delay: index * 0.2,
         duration: 1,
         type: "spring",
-        damping: 15,
-        stiffness: 40,
+        damping: 10,
+        stiffness: 80,
       }}
     >
       <motion.div

@@ -11,14 +11,14 @@
     padding: 1.2rem;
     border-radius: 5px;
     position: relative;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
     background-color: transparent;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border: 1px solid var(--borders-standard);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.25) !important;
 
     .date-container {
       height: 70%;
@@ -75,8 +75,7 @@
 
     &:hover {
       transform: translateY(-2px) scale(1.05) !important;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-      border: 1px solid #fcfcfc73;
+      border: 1px solid transparent;
 
       .click-hint {
         transform: translateY(0);
@@ -84,9 +83,20 @@
       }
     }
 
+    &.card-easy:hover {
+      box-shadow: 0 0 4px rgba(#1cbaba, 0.6) !important;
+    }
+
+    &.card-medium:hover {
+      box-shadow: 0 0 4px rgba(#ffb700, 0.6) !important;
+    }
+
     .leetcode-text-container {
-      width: 75%;
+      width: 80%;
       height: 70%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     h3 {
@@ -143,7 +153,7 @@
     align-items: center;
     flex-direction: column;
 
-    .code-container{
+    .code-container {
       width: 100%;
       padding: 1.2rem;
     }

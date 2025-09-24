@@ -9,12 +9,13 @@
   --borders-standard: rgba(128, 128, 128, 0.322);
   --borders-hover: rgba(255, 255, 255, 0.712);
   --grey: #8888887a;
+  --dark-grey: #363636;
   --glass-background: rgba(255, 255, 255, 0.05);
   --glass-background2: rgba(0, 0, 0, 0.3);
   --projects-background: rgba(255, 255, 255, 0.021);
   --projects-details: rgba(255, 255, 255, 0.05);
 
-  --white: #fffffffd;
+  --white: #f5f5f5;
   --icon-standard: #969595b4;
   --icon-hover: rgba(255, 255, 255, 0.932);
 
@@ -24,6 +25,10 @@
   --purple: #a566f0;
   --yellow: #e3ad0f;
 
+  --leetcode-green: #00ff88;
+  --leetcode-blue: #1cbaba;
+  --leetcode-yellow: #ffb700;
+  --leetcode-red: #f63737;
   /* Typography */
 
   --font-family-body: "body", sans-serif;

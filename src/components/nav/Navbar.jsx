@@ -2,20 +2,26 @@ import React, { useContext, useEffect, useState } from "react";
 import "./Navbar.scss";
 import { navIcons } from "../../data/Navicons";
 import { AppState } from "../AppStateProvider/AppStateProvider";
+import { motion } from "framer-motion";
 
 export default function Nav({ scrollTo }) {
   const { currentSection } = useContext(AppState);
   const icons = navIcons;
 
   const handleClick = (e, sectionId) => {
-    e.preventDefault(); // prevent default anchor jump
+    e.preventDefault();
     const section = document.getElementById(sectionId);
     if (!section) return;
     scrollTo(section.offsetTop);
   };
 
   return (
-    <div className="nav">
+    <motion.div
+      className="nav"
+      initial={{ x: "-100%", opacity: 0 }}
+      animate={{ x: `0`, opacity: 1 }}
+      transition={{ duration: 0.8, delay: 0.3,  }}
+    >
       <ul>
         {icons.map((item, index) => (
           <li
@@ -40,6 +46,6 @@ export default function Nav({ scrollTo }) {
           </li>
         ))}
       </ul>
-    </div>
+    </motion.div>
   );
 }

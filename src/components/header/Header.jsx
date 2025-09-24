@@ -2,19 +2,26 @@ import { useContext } from "react";
 import WindowBtns from "./WindowBtns";
 import Logo from "../Logo/Logo";
 import { AppState } from "../AppStateProvider/AppStateProvider";
-
 import "./Header.scss";
+import { motion } from "framer-motion";
 
 export default function Header() {
   const { currentSection } = useContext(AppState);
 
   return (
-    <section className="header">
+    <motion.section
+      className="header"
+      initial={{ y: "-100%", opacity: 0 }}
+      animate={{ y: `0`, opacity: 1 }}
+      transition={{ duration: 0.8, delay: 0.5 }}
+    >
       <Logo />
       <p>
-        mohammed<span className={`header__${currentSection}`}>&lt;suhail&gt;</span>rahman
+        mohammed
+        <span className={`header__${currentSection}`}>&lt;suhail&gt;</span>
+        rahman
       </p>
       <WindowBtns />
-    </section>
+    </motion.section>
   );
 }

@@ -39,11 +39,11 @@ export default function AllprojectsCard({ openLesser }) {
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{
-        delay: 1.4,
+        delay: 1.6,
         duration: 1,
         type: "spring",
-        damping: 15,
-        stiffness: 40,
+        damping: 10,
+        stiffness: 80,
       }}
       style={{ height: `100%` }}
     >

@@ -11,7 +11,7 @@ export default function AllAssignments({
   projects,
   onClick,
   viewAll,
-  allProjects,
+  loading,
   leetCode,
   openLesser,
 }) {
@@ -53,17 +53,17 @@ export default function AllAssignments({
       <motion.div className="all-container" ref={galleryWrapperRef}>
         <motion.div
           className="grid-container"
-          initial={{ zoom: `30%`, translateX: `800px` }}
-          animate={{ zoom: `100%`, translateX: `0px` }}
+          initial={{ zoom: `20%`, translateX: `800px` }}
+          animate={!loading ? { zoom: `100%`, translateX: `0px` } : {}}
           transition={{
-            delay: 2,
+            delay: 2.8,
             duration: 1,
             type: "spring",
-            damping: 15,
+            damping: 14,
             stiffness: 40,
           }}
         >
-          {projects.slice(0, 9).map((project, index) => (
+          {projects.map((project, index) => (
             <AllCards
               index={index}
               project={project}

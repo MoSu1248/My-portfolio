@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import LeetCodeGallery from "./LeetCodeGallery";
 import "./LeetCodeDetails.scss";
 import { AppState } from "../../components/AppStateProvider/AppStateProvider";
+import VIewAll from "./VIewAll";
 
 export default function LeetCodeDetails({ leetCode, leetCodeState }) {
   const text = "LeetCode";
@@ -31,7 +32,7 @@ export default function LeetCodeDetails({ leetCode, leetCodeState }) {
     hidden: {},
     visible: {
       transition: {
-        delayChildren: 0.5,
+        delayChildren: 0.7,
         staggerChildren: 0.3,
       },
     },
@@ -45,7 +46,7 @@ export default function LeetCodeDetails({ leetCode, leetCodeState }) {
       scale: 1,
       transition: {
         type: "spring",
-        damping: 20,
+        damping: 12,
         stiffness: 200,
       },
     },
@@ -103,6 +104,7 @@ export default function LeetCodeDetails({ leetCode, leetCodeState }) {
                   damping: 20,
                   stiffness: 200,
                   duration: 1.2,
+                  delay: 0.2,
                 }}
               >
                 Problems Solved : <span>78</span>
@@ -126,6 +128,7 @@ export default function LeetCodeDetails({ leetCode, leetCodeState }) {
               </motion.ul>
             </div>
             <LeetCodeGallery />
+            <VIewAll />
           </motion.div>
         </motion.div>
       )}

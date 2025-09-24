@@ -8,13 +8,15 @@ export default function AssignmentsContainer({
   openLeetCode,
   handleViewMore,
   openLesser,
+  loading,
 }) {
   return (
     <>
       {viewAll ? (
         <AllAssignments
+          loading={loading}
           openLesser={openLesser}
-          projects={projects}
+          projects={projects.slice(0, 9)}
           onClick={onClick}
           viewAll={viewAll}
           leetCode={openLeetCode}

@@ -24,8 +24,7 @@ export default function InitialCard({ project, onClick, viewAll }) {
       whileInView={{ y: 0, opacity: 1 }}
       transition={{
         delay: project.order * 0.3,
-        duration: 0.4,
-        ease: `easeOut`,
+        duration: 0.3,
       }}
       viewport={{ once: true, amount: 0.8 }}
     >

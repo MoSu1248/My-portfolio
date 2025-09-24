@@ -13,6 +13,7 @@ const Assignments = forwardRef((props, ref) => {
   const [viewAll, setViewAll] = useState(false);
   const [selected, setSelected] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -23,6 +24,7 @@ const Assignments = forwardRef((props, ref) => {
       }));
       setProjects(initialData.filter((p) => p.order !== undefined));
       setAllProjects(initialData);
+      setLoading(false);
     };
     fetchProjects();
   }, []);
@@ -77,6 +79,7 @@ const Assignments = forwardRef((props, ref) => {
         handleViewMore={handleViewMore}
         handleViewLess={handleViewLess}
         viewAll={viewAll}
+        loading={loading}
       />
 
       {viewAll && selected === false ? (

@@ -4,6 +4,8 @@ import Navbar from "../../components/nav/Navbar";
 import Header from "../../components/header/Header";
 import { Outlet } from "react-router-dom";
 import { AppState } from "../AppStateProvider/AppStateProvider";
+import { motion } from "framer-motion";
+
 import "./Layout.scss";
 
 export default function Layout() {
@@ -61,15 +63,15 @@ export default function Layout() {
   }, []);
 
   return (
-    <div className="layout">
+    <motion.div className="layout">
       <Header />
       <Navbar scrollTo={scrollTo} />
-      <main className="window-frame" ref={containerRef}>
+      <motion.main className="window-frame" ref={containerRef}>
         <div className="scroll-wrapper">
           <Outlet />
         </div>
-      </main>
-      <Footer />
-    </div>
+      </motion.main>
+      <Footer scrollTo={scrollTo} />
+    </motion.div>
   );
 }

@@ -5,7 +5,11 @@ export default function FooterSocial() {
     <div className="footer__social">
       <ul>
         <li>
-          <a href="">
+          <a
+            href="https://github.com/MoSu1248?tab=repositories"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
             <svg
               width="20"
               height="20"
@@ -17,7 +21,11 @@ export default function FooterSocial() {
           </a>
         </li>
         <li>
-          <a href="">
+          <a
+            href="https://leetcode.com/u/Mosu1248/"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
             <svg
               width="20"
               height="20"
@@ -31,7 +39,11 @@ export default function FooterSocial() {
           </a>
         </li>
         <li>
-          <a href="">
+          <a
+            href="https://www.linkedin.com/in/mohammed-suhail-rahman-988825245/"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
             <svg
               width="20"
               height="20"

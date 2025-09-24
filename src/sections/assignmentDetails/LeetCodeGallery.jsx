@@ -1,7 +1,7 @@
 import React, { useEffect, useState, Suspense } from "react";
 import { collection, getDocs, query, limit } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, animate, scale } from "framer-motion";
 import "./LeetCodeGallery.scss";
 
 // Lazy-load SyntaxHighlighter
@@ -36,12 +36,12 @@ export default function LeetCodeGallery() {
             opacity: 1,
             scale: 1,
           }}
-          transition={{ delay: i * 0.1 + 1, ease: "easeOut" }}
+          transition={{ delay: i * 0.15 + 1.2, ease: "easeIn" }}
           key={i}
-          className="leetcode-cards"
+          className={`leetcode-cards  card-${p.folder}`}
           onClick={() => setSelectedProblem(p)}
         >
-          <div className="leetcode-text-container">
+          <div className={`leetcode-text-container `}>
             <h3>{p.name}</h3>
             <p>{p.lang}</p>
           </div>

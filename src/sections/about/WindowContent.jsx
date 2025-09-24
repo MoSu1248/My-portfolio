@@ -1,5 +1,6 @@
 import React from "react";
 import "./WindowContent.scss";
+import { motion } from "framer-motion";
 
 export default function WindowContent({ card }) {
   return (
@@ -11,7 +12,7 @@ export default function WindowContent({ card }) {
           </ul>
         ) : item.url ? (
           <ul key={idx}>
-            <li>
+            <motion.li whileHover={{ scale: 1.1 }}>
               <a
                 href={item.url}
                 target="_blank"
@@ -20,7 +21,7 @@ export default function WindowContent({ card }) {
               >
                 {item.label} <span>↗</span>
               </a>
-            </li>
+            </motion.li>
           </ul>
         ) : null
       )}
