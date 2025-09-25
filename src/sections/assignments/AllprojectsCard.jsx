@@ -46,6 +46,7 @@ export default function AllprojectsCard({ openLesser }) {
         stiffness: 80,
       }}
       style={{ height: `100%` }}
+      className="allProjectsgrid"
     >
       <motion.div
         className="all-projects-card"

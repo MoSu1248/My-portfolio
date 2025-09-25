@@ -11,16 +11,17 @@ export default function WindowContent({ card }) {
             <li>{item}</li>
           </ul>
         ) : item.url ? (
-          <ul key={idx}>
-            <motion.li whileHover={{ scale: 1.1 }}>
-              <a
+          <ul key={idx} className="link-container">
+            <motion.li>
+              <motion.a
+                whileHover={{ scale: 1.1 }}
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="link-styling"
               >
                 {item.label} <span>↗</span>
-              </a>
+              </motion.a>
             </motion.li>
           </ul>
         ) : null

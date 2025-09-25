@@ -40,6 +40,8 @@
   }
 
   .card {
+    will-change: opacity, transform;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -58,7 +60,6 @@
     background: var(--glass-background);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-   
 
     h5 {
       line-height: 1.5rem;
@@ -83,7 +84,6 @@
       color: var(--borders-hover);
 
       .skill-icon {
-       
       }
 
       path {

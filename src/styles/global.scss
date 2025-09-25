@@ -27,3 +27,13 @@ body {
   height: 100%;
   width: 100%;
 }
+
+h1,
+h2,
+h3,
+h6,
+p,
+div {
+  outline: none; /* remove focus outline */
+  user-select: none; /* prevent accidental selection/caret */
+}

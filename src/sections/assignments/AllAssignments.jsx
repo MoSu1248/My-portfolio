@@ -65,6 +65,7 @@ export default function AllAssignments({
         >
           {projects.map((project, index) => (
             <AllCards
+              key={index}
               index={index}
               project={project}
               viewAll={viewAll}

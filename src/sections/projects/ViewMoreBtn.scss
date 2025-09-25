@@ -1,29 +1,77 @@
 @use "../../styles/index.scss" as *;
 
 .btn-styling {
-  @include button-styling(var(--white), var(--white));
   margin-top: 0.8rem;
-
+  color: var(--white);
+  border: 1px solid var(--borders-standard);
+  padding: 0.5rem 8rem;
+  font-family: "body";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 4px;
+  overflow: hidden;
+  letter-spacing: 0.5px;
+  background-color: var(--projects-details);
+  transition: 0.2s ease;
+  text-decoration: none;
+  user-select: none;
+  outline: none;
   &:hover {
-    box-shadow: 0 0 3px var(--white);
+    transform: scale(1.05) !important;
+    border: 1px solid transparent;
+    box-shadow: 0 0 3px var(--red);
+
+    svg {
+      margin-left: 1.5rem;
+    }
+  }
+
+  svg {
+    fill: var(--red);
+    transition: 0.2s ease;
+    margin-left: 0.5rem;
+  }
+}
+
+@keyframes shake-snap {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-4px);
+  }
+  40% {
+    transform: translateX(4px);
+  }
+  60% {
+    transform: translateX(-4px);
+  }
+  80% {
+    transform: translateX(4px);
   }
 }
 
 .btn-less {
   @include button-styling(var(--white), var(--white));
-  background-color: var(--glass-background);
   position: absolute;
   top: 0.5rem;
   right: 1rem;
-  font-weight: 700;
+  box-shadow: 0 0 3px var(--grey);
+
+  svg {
+    margin-right: 0.5rem;
+    stroke: var(--red);
+  }
 
   &:hover {
     background-color: var(--white);
     color: var(--dark-grey);
 
     svg {
-      fill: var(--dark-grey);
+      margin-right: 1.5rem;
     }
   }
-
 }

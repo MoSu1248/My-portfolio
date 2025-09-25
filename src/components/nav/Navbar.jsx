@@ -20,7 +20,7 @@ export default function Nav({ scrollTo }) {
       className="nav"
       initial={{ x: "-100%", opacity: 0 }}
       animate={{ x: `0`, opacity: 1 }}
-      transition={{ duration: 0.8, delay: 0.3,  }}
+      transition={{ duration: 0.6, delay: 2.2, ease: "easeOut" }}
     >
       <ul>
         {icons.map((item, index) => (

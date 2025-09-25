@@ -11,7 +11,8 @@
   cursor: pointer;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
   border: 1px solid var(--borders-standard);
-
+  user-select: none; 
+  outline: none; 
 
   .all-card-image-container {
     height: 100%;
@@ -135,4 +136,9 @@
   color: #6a5af9; /* accent color */
   font-size: 1.2rem;
   line-height: 1;
+}
+
+.order:nth-last-child(6) {
+  grid-column: 2 / 3 !important;
+  grid-row: 3 /3 !important;
 }

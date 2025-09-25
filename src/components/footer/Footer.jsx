@@ -12,7 +12,7 @@ export default function Footer({ scrollTo }) {
       className="footer"
       initial={{ y: "100%", opacity: 0 }}
       animate={{ y: `0`, opacity: 1 }}
-      transition={{ duration: 0.8, delay: 0.5 }}
+      transition={{ duration: 0.8, delay: 2.6, ease: "easeOut" }}
     >
       <ThemeToggle />
       <SectionTracker />

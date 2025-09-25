@@ -1,5 +1,9 @@
 .about__window-content {
   padding: 1rem 1rem;
+  cursor: grab;
+  &:active {
+    cursor: grabbing;
+  }
   ul {
     list-style: none;
     color: var(--white);
@@ -10,7 +14,9 @@
     span {
       margin-right: 1rem;
     }
+  }
 
+  .link-container {
     .link-styling {
       font-weight: 400;
       font-size: 0.85rem;
@@ -19,6 +25,7 @@
       text-decoration: none;
       display: flex;
       transform: 0.2s ease;
+      width: fit-content;
 
       &:hover {
         color: var(--purple);

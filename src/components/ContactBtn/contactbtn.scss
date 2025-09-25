@@ -40,23 +40,4 @@
   @include contact-btn-colors(var(--yellow));
 }
 
-@keyframes shake-and-wait {
-  0%,
-  1.25%,
-  3.75%,
-  6.25%,
-  8.75%,
-  10% {
-    transform: translateX(-3px);
-  }
-  2.5%,
-  5%,
-  7.5% {
-    transform: translateX(3px);
-  }
 
-  11%,
-  100% {
-    transform: translateX(0);
-  }
-}

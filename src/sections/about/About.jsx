@@ -41,23 +41,6 @@ const About = forwardRef(() => {
     el.style.zIndex = maxZ + 1;
   };
 
-  // const container = {
-  //   hidden: {},
-  //   show: {
-  //     transition: {
-  //       staggerChildren: 0.5,
-  //       delayChildren: 1,
-  //     },
-  //   },
-  // };
-
-  // const child = {
-  //   hidden: { opacity: 0 },
-  //   show: {
-  //     opacity: 1,
-  //     transition: { duration: 0.4, ease: "easeOut" },
-  //   },
-  // };
 
   return (
     <motion.section ref={ref} id="about" className="about">

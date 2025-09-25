@@ -5,7 +5,7 @@ import Header from "../../components/header/Header";
 import { Outlet } from "react-router-dom";
 import { AppState } from "../AppStateProvider/AppStateProvider";
 import { motion } from "framer-motion";
-
+import ParticleLayer from "../Particles/ParticleLayer";
 import "./Layout.scss";
 
 export default function Layout() {
@@ -62,8 +62,19 @@ export default function Layout() {
     return () => container.removeEventListener("wheel", onWheel);
   }, []);
 
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      const windowFrame = document.querySelector(".window-frame");
+      if (windowFrame) {
+        windowFrame.classList.add("show-scrollbar");
+      }
+    }, 5000);
+    return () => clearTimeout(timerId);
+  }, []);
+
   return (
     <motion.div className="layout">
+      <ParticleLayer />
       <Header />
       <Navbar scrollTo={scrollTo} />
       <motion.main className="window-frame" ref={containerRef}>
@@ -71,6 +82,7 @@ export default function Layout() {
           <Outlet />
         </div>
       </motion.main>
+      <div className="right-border" />
       <Footer scrollTo={scrollTo} />
     </motion.div>
   );

@@ -53,9 +53,10 @@
 
   svg {
     fill: $shadow;
+    color: $shadow;
     transition: 0.2s ease;
     margin-left: 0.5rem;
-    animation: shake-and-wait 10s infinite; 
+    animation: shake-and-wait 12s infinite;
   }
 
   &:hover {
@@ -66,5 +67,26 @@
     svg {
       margin-left: 20px;
     }
+  }
+}
+
+@keyframes shake-and-wait {
+  0%,
+  1.25%,
+  3.75%,
+  6.25%,
+  8.75%,
+  10% {
+    transform: translateX(-3px);
+  }
+  2.5%,
+  5%,
+  7.5% {
+    transform: translateX(3px);
+  }
+
+  11%,
+  100% {
+    transform: translateX(0);
   }
 }

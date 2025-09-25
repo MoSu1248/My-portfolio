@@ -20,7 +20,7 @@ export default function AllCards({ project, handleClick, viewAll, index }) {
 
   return (
     <motion.div
-      className={`order-${project.order}`}
+      className={`order-${project.order} order`}
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{
