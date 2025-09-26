@@ -8,6 +8,9 @@ export default function AppStateProvider({ children }) {
   const [currentSection, setCurrentSection] = useState("");
   const [theme, setTheme] = useState({ color: "white" });
   const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentSubsection, setCurrentSubsection] = useState(null);
+
+  console.log(currentSubsection);
 
   useEffect(() => {
     const sections = ["hero", "about", "project", "skills", "contact"];
@@ -55,7 +58,14 @@ export default function AppStateProvider({ children }) {
 
   return (
     <AppState.Provider
-      value={{ currentSection, theme, lightboxOpen, setLightboxOpen }}
+      value={{
+        currentSection,
+        theme,
+        lightboxOpen,
+        setLightboxOpen,
+        setCurrentSubsection,
+        currentSubsection,
+      }}
     >
       <LightWrapper />
       {children}

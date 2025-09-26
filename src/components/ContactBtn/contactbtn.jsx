@@ -17,7 +17,7 @@ export default function WorkTogetherBtn({ scrollTo }) {
 
   return (
     <motion.button
-      className={`footer__btn ${currentSection}_btn`}
+      className={`footer__btn ${currentSection}_btn magnetic`}
       // whileHover={{ scale: 1.05, type: "spring" }}
       whileTap={{ scale: 0.85 }}
       onClick={(e) => handleClick(e, "contact")}

@@ -49,6 +49,10 @@ export default function AllCards({ project, handleClick, viewAll, index }) {
             <motion.h2 layoutId={`heading-${project.id}`}>
               {project.title}
             </motion.h2>
+            {/* <h6>{project.description}</h6> */}
+            {project.highlights?.slice(0, 1).map((item, index) => (
+              <h6 key={index}>{item}</h6>
+            ))}
             <div className="technology">
               <ul>
                 {project.techStack?.slice(0, 4).map((item, idx) => (

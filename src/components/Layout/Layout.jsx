@@ -68,7 +68,7 @@ export default function Layout() {
       if (windowFrame) {
         windowFrame.classList.add("show-scrollbar");
       }
-    }, 5000);
+    }, 4800);
     return () => clearTimeout(timerId);
   }, []);
 

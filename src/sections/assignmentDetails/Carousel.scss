@@ -11,6 +11,7 @@
 }
 
 .image-hover {
+
   .view-morebtn {
     cursor: pointer;
     margin-top: 10px;
@@ -41,34 +42,15 @@
   }
 }
 
-// .swiper {
-//   width: 50%;
-// }
-
-// .swiper-slide {
-//   background-position: center;
-//   background-size: cover;
-//   width: 300px;
-//   height: 300px;
-// }
-
-// .swiper-slide img {
-//   display: block;
-//   width: 100%;
-//   padding: 5rem;
-// }
-
-/* Default bullet color */
 .swiper-pagination-bullet {
   size: 2rem !important;
-  background: rgb(255, 255, 255) !important; /* normal bullets */
-  opacity: 0.7; /* optional for subtle look */
+  background: rgb(255, 255, 255) !important; 
+  opacity: 0.7; 
   transition: 0.3s ease;
 }
 
-/* Active bullet color */
 .swiper-pagination-bullet-active {
-  background: rgb(255, 255, 255) !important; /* active bullet color */
+  background: rgb(255, 255, 255) !important; 
   opacity: 1;
   transform: scale(1.4) !important;
 }

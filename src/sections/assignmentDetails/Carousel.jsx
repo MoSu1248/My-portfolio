@@ -17,7 +17,7 @@ export default function Carousel({ images }) {
   return (
     <div
       style={{
-        width: "60%",
+        width: "100%",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",

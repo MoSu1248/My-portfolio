@@ -9,7 +9,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
   border-radius: 4px;
   overflow: hidden;
   letter-spacing: 0.5px;
@@ -55,12 +54,12 @@
 }
 
 .btn-less {
-  @include button-styling(var(--white), var(--white));
+  @include button-styling(white, var(--white));
   position: absolute;
   top: 0.5rem;
   right: 1rem;
-  box-shadow: 0 0 3px var(--grey);
-
+  box-shadow: 0 10px 5px var(--glass-background2);
+  background-color: var(--projects-background);
   svg {
     margin-right: 0.5rem;
     stroke: var(--red);

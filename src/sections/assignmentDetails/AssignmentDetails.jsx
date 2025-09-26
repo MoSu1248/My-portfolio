@@ -1,17 +1,18 @@
 import React, { useContext } from "react";
 import "./assignmentDetails.scss";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, easeOut, motion } from "framer-motion";
 import { getDownloadURL, getStorage, ref } from "firebase/storage";
 import { useEffect, useState } from "react";
 import SkillIcons from "../../data/SkillIcons";
 import Carousel from "./Carousel";
 import { AppState } from "../../components/AppStateProvider/AppStateProvider";
+import Skeleton from "@mui/material/Skeleton";
 
 export default function AssignmentDetails({ project, handleBack, viewAll }) {
   const [imageUrl, setImageUrl] = useState(
     "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/..."
   );
-
+  const [loading, setLoading] = useState(true);
   const { setLightboxOpen } = useContext(AppState);
 
   useEffect(() => {
@@ -26,6 +27,9 @@ export default function AssignmentDetails({ project, handleBack, viewAll }) {
       getDownloadURL(imageRef)
         .then((url) => setImageUrl(url))
         .catch((err) => console.error("Failed to get image URL:", err));
+      const timeOut = setTimeout(() => {
+        // setLoading(false);
+      }, 3000);
     }
   }, [project.imageThumbnail]);
 
@@ -103,32 +107,38 @@ export default function AssignmentDetails({ project, handleBack, viewAll }) {
             <p>{project.title}</p>
           </div>
           <div className="text-container">
-            <Carousel images={project.projectImages} />
+            <motion.div
+              className="carousel_container"
+              initial={{ opacity: 0, visibility: "hidden", x: "50px" }}
+              animate={{ opacity: 1, visibility: "visible", x: "0px" }}
+              transition={{ delay: 2.4, ease: "easeOut" }}
+            >
+              <Carousel images={project.projectImages} />
+            </motion.div>
 
             <div className="project__description">
               <motion.h2
                 initial={{ x: 40, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.5, ease: "easeOut", duration: 0.5 }}
+                transition={{ delay: 0.5, ease: "easeOut", duration: 0.3 }}
               >
                 {project.title}
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7 }}
+                transition={{ delay: 0.8 }}
               >
                 {project.description}
               </motion.p>
               <div className="highlights">
-                {/* <h3>Technology</h3> */}
                 <ul>
                   {project.highlights?.map((item, index) => {
                     return (
                       <motion.li
                         initial={{ opacity: 0, y: 15 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.8 + index * 0.1 }}
+                        transition={{ delay: 1 + index * 0.12 }}
                         key={index}
                         className="flex items-center gap-2"
                       >
@@ -139,12 +149,11 @@ export default function AssignmentDetails({ project, handleBack, viewAll }) {
                 </ul>
               </div>
               <div className="project__description-links">
-                {/* <h3>Links</h3> */}
                 <ul>
                   <motion.li
-                    initial={{ scale: 0.9 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 1, duration: 0.5 }}
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ delay: 1.6, duration: 0.5 }}
                   >
                     <a className="link" href={project.liveUrl}>
                       <p className="link-text">Live Site</p>
@@ -154,9 +163,9 @@ export default function AssignmentDetails({ project, handleBack, viewAll }) {
                     </a>
                   </motion.li>
                   <motion.li
-                    initial={{ scale: 0.9 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 1, duration: 0.5 }}
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ delay: 1.6, duration: 0.5 }}
                   >
                     <a href={project.repo} className="link">
                       <span className="corner top-right"></span>
@@ -170,10 +179,9 @@ export default function AssignmentDetails({ project, handleBack, viewAll }) {
             </div>
           </div>
           <div className="project__description-technology">
-            {/* <h3>Technology</h3> */}
             <ul>
               {project.techStack?.map((item, index) => {
-                const Icon = SkillIcons[item]; // grab the component
+                const Icon = SkillIcons[item];
                 return (
                   <motion.li
                     key={index}
@@ -186,9 +194,9 @@ export default function AssignmentDetails({ project, handleBack, viewAll }) {
                     animate={{
                       y: 0,
                       opacity: 1,
-                      boxShadow: "0 8px 5px rgba(0, 0, 0, 0.459)",
+                      boxShadow: "0 5px 10px rgba(0, 0, 0, 0.54)",
                     }}
-                    transition={{ delay: 1.2, ease: "easeOut" }}
+                    transition={{ delay: 1.6, ease: "easeOut" }}
                   >
                     {Icon ? <Icon className="skill-icon-styling" /> : null}
                     {item}

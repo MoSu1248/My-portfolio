@@ -15,7 +15,7 @@ const ParticleLayer = () => {
         width: "100%",
         height: "100%",
         pointerEvents: "none",
-        zIndex: 0,
+        zIndex: `-200`,
       }}
     >
       {particles.map((p, i) => (

@@ -27,10 +27,11 @@ export default function InitialCard({ project, onClick, viewAll }) {
         duration: 0.3,
       }}
       viewport={{ once: true, amount: 0.8 }}
+      className="hoverable "
     >
       <motion.div
         layoutId={viewAll ? `all-${project.id}` : `card-${project.id}`}
-        className={`assignment-card order-${project.order}`}
+        className={` hoverable assignment-card order-${project.order}  `}
         onClick={() => onClick(project)}
       >
         <div className="card-number">

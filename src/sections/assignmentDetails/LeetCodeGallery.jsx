@@ -31,12 +31,13 @@ export default function LeetCodeGallery() {
     <div className="leetcode-gallery">
       {problems.map((p, i) => (
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, y: "20px" }}
           animate={{
             opacity: 1,
-            scale: 1,
+
+            y: 0,
           }}
-          transition={{ delay: i * 0.15 + 1.2, ease: "easeIn" }}
+          transition={{ delay: i * 0.18 + 1.2, ease: "easeOut" }}
           key={i}
           className={`leetcode-cards  card-${p.folder}`}
           onClick={() => setSelectedProblem(p)}

@@ -5,6 +5,7 @@ import Home from "./pages/Home/Home";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import AppStateProvider from "./components/AppStateProvider/AppStateProvider";
 import Layout from "./components/Layout/Layout";
+import Cursor from "./components/Cursor/Cursor";
 function App() {
   const [projects, setProjects] = useState([]);
 
@@ -23,6 +24,7 @@ function App() {
   return (
     <BrowserRouter>
       <AppStateProvider>
+        <Cursor />
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />

@@ -19,24 +19,22 @@ export default function LeetCodeCard({ leetCode }) {
     return () => clearInterval(interval);
   }, [isHovering, index, text]);
 
-  // useEffect(() => {
-  //   if (!isHovering) {
-  //     setDisplayed("");
-  //     setIndex(0);
-  //   }
-  // }, [isHovering]);
-
   useEffect(() => {
-    let newArray;
-
+    let interval;
     if (!isHovering) {
-      for (let i = 0; i < displayed.length; i++) {
-        newArray = displayed.slice(0, -1);
-      }
-      setDisplayed(newArray);
+      interval = setInterval(() => {
+        setDisplayed((prev) => {
+          if (prev.length === 0) {
+            setIndex(0);
 
-      setIndex(0);
+            clearInterval(interval);
+            return prev;
+          }
+          return prev.slice(0, -1);
+        });
+      }, 50);
     }
+    return () => clearInterval(interval);
   }, [isHovering]);
 
   return (

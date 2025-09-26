@@ -1,22 +1,35 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import "./LightWrapper.scss";
 import { AppState } from "../AppStateProvider/AppStateProvider";
-
-const sectionColors = {
-  hero: "#5178b3",
-  about: "#a566f0",
-  project: "#d95c66",
-  skills: "#399149",
-  contact: "#e3ad0f",
-};
-
 const LightWrapper = ({ count = 2 }) => {
-  const { currentSection } = useContext(AppState);
+  const { currentSection, currentSubsection } = useContext(AppState);
+  const [projectColor, setProjectColor] = useState("#d95c66");
+
+  useEffect(() => {
+    if (currentSection === "project") {
+      setProjectColor(currentSubsection === "all" ? "#c45550" : "#d95c66");
+    }
+  }, [currentSection, currentSubsection]);
+
+  const sectionColors = {
+    hero: "#5178b3",
+    about: "#a566f0",
+    project: projectColor,
+    skills: "#399149",
+    contact: "#ffb347",
+  };
+
   const color = sectionColors[currentSection] || "#5178b3";
 
-  // Create lights array
   const lights = Array.from({ length: count }, (_, i) => ({ color, i }));
+
+  const [animationStage, setAnimationStage] = useState("swoop");
+
+  useEffect(() => {
+    const timer = setTimeout(() => setAnimationStage("continuous"), 5000);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className="fixed top-0 left-0 w-screen h-screen pointer-events-none z-0">
@@ -29,17 +42,31 @@ const LightWrapper = ({ count = 2 }) => {
             x: i === 0 ? -window.innerWidth : window.innerWidth,
             y: i === 0 ? -100 : 140,
           }}
-          animate={{
-            scale: 1,
-            opacity: 0.5,
-            x: 0,
-            y: 0,
-          }}
-          transition={{
-            duration: 2,
-            ease: "easeOut",
-            delay: i * 0.3,
-          }}
+          animate={
+            animationStage === "swoop"
+              ? {
+                  scale: 1,
+                  opacity: 0.5,
+                  x: 0,
+                  y: 0,
+                }
+              : {
+                  scale: [1, 1.02, 1],
+                  opacity: 0.5,
+                  x: i === 0 ? [0, -80, 0] : [0, 70, 0],
+                  y: i === 0 ? [0, 20, 0] : [0, -25, 0],
+                }
+          }
+          transition={
+            animationStage === "swoop"
+              ? { duration: 2, ease: "easeOut", delay: i * 0.3 }
+              : {
+                  repeat: Infinity,
+                  duration: 6 + i,
+                  ease: "easeInOut",
+                  delay: i * 0.2,
+                }
+          }
           className={`light-${i}`}
           style={{
             position: "absolute",
@@ -49,21 +76,7 @@ const LightWrapper = ({ count = 2 }) => {
             filter: "blur(100px)",
             backgroundColor: color,
           }}
-        >
-          {/* Infinite float using Framer Motion */}
-          <motion.div
-            animate={{
-              x: i === 0 ? [0, 80, 0] : 0,
-              y: i === 0 ? 0 : [0, 80, 0],
-            }}
-            transition={{
-              repeat: Infinity,
-              duration: 6,
-              ease: "easeInOut",
-            }}
-            style={{ width: "100%", height: "100%" }}
-          />
-        </motion.div>
+        />
       ))}
     </div>
   );

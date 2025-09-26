@@ -5,14 +5,12 @@ import { motion } from "framer-motion";
 export default function WindowContent({ card }) {
   return (
     <div className="about__window-content">
-      {card.content.map((item, idx) =>
-        typeof item === "string" ? (
-          <ul key={idx}>
+      {card.content.map((item, idx) => (
+        <ul key={idx}>
+          {typeof item === "string" ? (
             <li>{item}</li>
-          </ul>
-        ) : item.url ? (
-          <ul key={idx} className="link-container">
-            <motion.li>
+          ) : item.url ? (
+            <li>
               <motion.a
                 whileHover={{ scale: 1.1 }}
                 href={item.url}
@@ -22,10 +20,10 @@ export default function WindowContent({ card }) {
               >
                 {item.label} <span>↗</span>
               </motion.a>
-            </motion.li>
-          </ul>
-        ) : null
-      )}
+            </li>
+          ) : null}
+        </ul>
+      ))}
     </div>
   );
 }

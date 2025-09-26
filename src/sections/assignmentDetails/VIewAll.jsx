@@ -9,9 +9,13 @@ export default function VIewAll() {
       target="_blank"
       rel="noreferrer noopener"
       className={`viewAll-styling`}
-      initial={{ y: `50px`, opacity: 0 }}
-      whileInView={{ y: `0px`, opacity: 1 }}
-      transition={{ delay: 2.8, duration: 0.3 }}
+      initial={{ scale: 0.7, opacity: 0 }}
+      whileInView={{ scale: 1, opacity: 1 }}
+      transition={{
+        delay: 3.1,
+        duration: 0.1,
+        ease: `easeOut`,
+      }}
       whileTap={{ scale: 0.85 }}
     >
       View All

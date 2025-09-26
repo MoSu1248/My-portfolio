@@ -6,6 +6,7 @@
   @include button-styling(var(--white), var(--white));
   padding: 0.3rem 1rem;
   margin-right: 1.5rem;
+  cursor: none;
 
   svg {
     transition: 0.2s ease;
@@ -39,5 +40,3 @@
 .contact_btn {
   @include contact-btn-colors(var(--yellow));
 }
-
-

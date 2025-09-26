@@ -1,4 +1,4 @@
-import React, { useState, useEffect, forwardRef } from "react";
+import React, { useState, useEffect, forwardRef, useContext } from "react";
 
 import { collection, getDocs, query } from "firebase/firestore";
 import ViewMoreBtn from "../projects/ViewMoreBtn";
@@ -6,6 +6,7 @@ import { db } from "../../firebase/firebase";
 import DetailsContainer from "./DetailsContainer";
 import AssignmentsContainer from "./AssignmentsContainer";
 import "./assignments.scss";
+import { AppState } from "../../components/AppStateProvider/AppStateProvider";
 
 const Assignments = forwardRef((props, ref) => {
   const [projects, setProjects] = useState([]);
@@ -14,6 +15,8 @@ const Assignments = forwardRef((props, ref) => {
   const [selected, setSelected] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const { setCurrentSubsection } = useContext(AppState);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -32,11 +35,13 @@ const Assignments = forwardRef((props, ref) => {
   const handleViewMore = () => {
     setProjects(allProjects);
     setViewAll(true);
+    setCurrentSubsection("all");
   };
 
   const handleViewLess = () => {
     setProjects(allProjects.filter((p) => p.order !== undefined).slice(0, 3));
     setViewAll(false);
+    setCurrentSubsection(null);
   };
 
   const handleBack = () => {
