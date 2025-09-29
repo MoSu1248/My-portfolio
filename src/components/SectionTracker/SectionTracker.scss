@@ -4,7 +4,6 @@
   align-items: center;
   gap: 0.5rem;
   margin-left: 1rem;
-
   .arrow {
     font-size: 0.8rem;
     color: #7c7c7c;
@@ -12,6 +11,7 @@
   }
 
   .section-name {
+    color: var(--white);
     font-size: 0.8rem;
   }
 }

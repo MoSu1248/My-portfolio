@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./ViewMoreBtn.scss";
 import { easeOut, motion } from "framer-motion";
 import Arrow from "../../assets/shared/arrow_right_icon.svg?react";
+import { AppState } from "../../components/AppStateProvider/AppStateProvider";
 
 export default function ViewMoreBtn({
   viewAll,
@@ -9,10 +10,18 @@ export default function ViewMoreBtn({
   handleViewMore,
   exit,
 }) {
+  const { setHover } = useContext(AppState);
+
   return (
     <>
       {!viewAll && (
         <motion.button
+          onMouseLeave={() => {
+            setHover(false);
+          }}
+          onMouseEnter={() => {
+            setHover(true);
+          }}
           initial={{ scale: 0.7, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           transition={{
@@ -39,6 +48,12 @@ export default function ViewMoreBtn({
 
       {viewAll && (
         <motion.button
+          onMouseLeave={() => {
+            setHover(false);
+          }}
+          onMouseEnter={() => {
+            setHover(true);
+          }}
           initial={{ x: "100%", opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: "100%", opacity: 0 }}

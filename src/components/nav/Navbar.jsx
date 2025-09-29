@@ -5,7 +5,7 @@ import { AppState } from "../AppStateProvider/AppStateProvider";
 import { motion } from "framer-motion";
 
 export default function Nav({ scrollTo }) {
-  const { currentSection } = useContext(AppState);
+  const { currentSection, setHover } = useContext(AppState);
   const icons = navIcons;
 
   const handleClick = (e, sectionId) => {
@@ -25,6 +25,12 @@ export default function Nav({ scrollTo }) {
       <ul>
         {icons.map((item, index) => (
           <li
+            onMouseLeave={() => {
+              setHover(false);
+            }}
+            onMouseEnter={() => {
+              setHover(true);
+            }}
             key={index}
             className={currentSection === item.name ? "active" : ""}
           >

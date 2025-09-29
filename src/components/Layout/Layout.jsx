@@ -74,7 +74,6 @@ export default function Layout() {
 
   return (
     <motion.div className="layout">
-      <ParticleLayer />
       <Header />
       <Navbar scrollTo={scrollTo} />
       <motion.main className="window-frame" ref={containerRef}>

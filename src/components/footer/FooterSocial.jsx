@@ -1,71 +1,61 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./FooterSocial.scss";
+import LinkedInIcon from "../../assets/social/LinkedIn.svg?react";
+import LeetCodeIcon from "../../assets/social/leetcode_icon.svg?react";
+import GitHubIcon from "../../assets/social/github_icon.svg?react";
+import EmailIcon from "../../assets/social/mail_icon.svg?react";
+import { AppState } from "../AppStateProvider/AppStateProvider";
+import { motion } from "framer-motion";
+
 export default function FooterSocial() {
+  const { setHover } = useContext(AppState);
+
+  const socials = [
+    {
+      href: "https://github.com/MoSu1248?tab=repositories",
+      label: "GitHub",
+      icon: <GitHubIcon />,
+    },
+    {
+      href: "https://leetcode.com/u/Mosu1248/",
+      label: "LeetCode",
+      icon: <LeetCodeIcon />,
+    },
+    {
+      href: "https://www.linkedin.com/in/mohammed-suhail-rahman-988825245/",
+      label: "LinkedIn",
+      icon: <LinkedInIcon />,
+    },
+    {
+      href: "mailto:your@email.com",
+      label: "Email",
+      icon: <EmailIcon />,
+    },
+  ];
+
   return (
     <div className="footer__social">
       <ul>
-        <li>
-          <a
-            href="https://github.com/MoSu1248?tab=repositories"
-            target="_blank"
-            rel="noreferrer noopener"
+        {socials.map(({ href, label, icon }) => (
+          <li
+            key={label}
+            onMouseLeave={() => {
+              setHover(false);
+            }}
+            onMouseEnter={() => {
+              setHover(true);
+            }}
           >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 7 7"
-              xmlns="http://www.w3.org/2000/svg"
+            <a
+              href={href}
+              target="_blank"
+              rel="noreferrer noopener"
+              aria-label={label}
             >
-              <path d="M3.5 0C3.04037 0 2.58525 0.0927778 2.16061 0.273036C1.73597 0.453294 1.35013 0.717503 1.02513 1.05058C0.368749 1.72325 0 2.63559 0 3.58689C0 5.1723 1.0045 6.51739 2.394 6.99444C2.569 7.02314 2.625 6.91195 2.625 6.8151V6.20891C1.6555 6.42413 1.449 5.72827 1.449 5.72827C1.288 5.31219 1.0605 5.201 1.0605 5.201C0.742 4.97861 1.085 4.98578 1.085 4.98578C1.435 5.01089 1.6205 5.35523 1.6205 5.35523C1.925 5.90044 2.4395 5.73903 2.639 5.65295C2.6705 5.4198 2.7615 5.26197 2.8595 5.1723C2.0825 5.08263 1.267 4.77416 1.267 3.40755C1.267 3.0094 1.4 2.69017 1.6275 2.4355C1.5925 2.34583 1.47 1.97279 1.6625 1.48856C1.6625 1.48856 1.9565 1.39172 2.625 1.85442C2.9015 1.77551 3.2025 1.73606 3.5 1.73606C3.7975 1.73606 4.0985 1.77551 4.375 1.85442C5.0435 1.39172 5.3375 1.48856 5.3375 1.48856C5.53 1.97279 5.4075 2.34583 5.3725 2.4355C5.6 2.69017 5.733 3.0094 5.733 3.40755C5.733 4.77774 4.914 5.07904 4.1335 5.16871C4.2595 5.27991 4.375 5.49871 4.375 5.83229V6.8151C4.375 6.91195 4.431 7.02673 4.6095 6.99444C5.999 6.5138 7 5.1723 7 3.58689C7 3.11586 6.90947 2.64943 6.73358 2.21425C6.55769 1.77907 6.29988 1.38365 5.97487 1.05058C5.64987 0.717503 5.26403 0.453294 4.83939 0.273036C4.41475 0.0927778 3.95963 0 3.5 0Z" />
-            </svg>
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://leetcode.com/u/Mosu1248/"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 10 10"
-              xmlns="http://www.w3.org/2000/svg"
-              className="leetcode"
-            >
-              <path d="M5.6176 1L1.29517 4.74995C1.20182 4.83001 1.12756 4.92596 1.07685 5.03209C1.02614 5.13822 1 5.25234 1 5.36765C1 5.48295 1.02614 5.59707 1.07685 5.7032C1.12756 5.80933 1.20182 5.90529 1.29517 5.98535L3.89913 8.24407C4.29289 8.58531 4.9304 8.58531 5.32322 8.24407L6.62496 7.11492" />
-              <path d="M2.09277 4.05745L3.89843 2.49081C4.0895 2.32671 4.34479 2.23499 4.61048 2.23499C4.87616 2.23499 5.13146 2.32671 5.32252 2.49081L6.62427 3.62038M4.28094 5.1666H8.49977" />
-            </svg>
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.linkedin.com/in/mohammed-suhail-rahman-988825245/"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 8 8"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M6.66667 0C6.88768 0 7.09964 0.0877973 7.25592 0.244078C7.4122 0.400358 7.5 0.61232 7.5 0.833333V6.66667C7.5 6.88768 7.4122 7.09964 7.25592 7.25592C7.09964 7.4122 6.88768 7.5 6.66667 7.5H0.833333C0.61232 7.5 0.400358 7.4122 0.244078 7.25592C0.0877973 7.09964 0 6.88768 0 6.66667V0.833333C0 0.61232 0.0877973 0.400358 0.244078 0.244078C0.400358 0.0877973 0.61232 0 0.833333 0H6.66667ZM6.45833 6.45833V4.25C6.45833 3.88975 6.31522 3.54425 6.06049 3.28951C5.80575 3.03478 5.46025 2.89167 5.1 2.89167C4.74583 2.89167 4.33333 3.10833 4.13333 3.43333V2.97083H2.97083V6.45833H4.13333V4.40417C4.13333 4.08333 4.39167 3.82083 4.7125 3.82083C4.86721 3.82083 5.01558 3.88229 5.12498 3.99169C5.23438 4.10108 5.29583 4.24946 5.29583 4.40417V6.45833H6.45833ZM1.61667 2.31667C1.80232 2.31667 1.98037 2.24292 2.11164 2.11164C2.24292 1.98037 2.31667 1.80232 2.31667 1.61667C2.31667 1.22917 2.00417 0.9125 1.61667 0.9125C1.42991 0.9125 1.2508 0.986689 1.11875 1.11875C0.986689 1.2508 0.9125 1.42991 0.9125 1.61667C0.9125 2.00417 1.22917 2.31667 1.61667 2.31667ZM2.19583 6.45833V2.97083H1.04167V6.45833H2.19583Z" />
-            </svg>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 9 7"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M8.1 0H0.9C0.405 0 0.0045 0.39375 0.0045 0.875L0 6.125C0 6.60625 0.405 7 0.9 7H8.1C8.595 7 9 6.60625 9 6.125V0.875C9 0.39375 8.595 0 8.1 0ZM8.1 1.75L4.5 3.9375L0.9 1.75V0.875L4.5 3.0625L8.1 0.875V1.75Z" />
-            </svg>
-          </a>
-        </li>
+              {icon}
+            </a>
+          </li>
+        ))}
       </ul>
     </div>
   );

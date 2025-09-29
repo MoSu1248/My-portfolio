@@ -1,12 +1,12 @@
 import React, { useState, useEffect, forwardRef, useContext } from "react";
-
 import { collection, getDocs, query } from "firebase/firestore";
 import ViewMoreBtn from "../projects/ViewMoreBtn";
 import { db } from "../../firebase/firebase";
-import DetailsContainer from "./DetailsContainer";
-import AssignmentsContainer from "./AssignmentsContainer";
+import DetailsContainer from "../assignmentDetails/DetailsContainer";
+import AssignmentsContainer from "./AssignmentsContainer/AssignmentsContainer";
 import "./assignments.scss";
 import { AppState } from "../../components/AppStateProvider/AppStateProvider";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Assignments = forwardRef((props, ref) => {
   const [projects, setProjects] = useState([]);
@@ -15,6 +15,7 @@ const Assignments = forwardRef((props, ref) => {
   const [selected, setSelected] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [viewLessClicked, setViewLessClicked] = useState(false);
 
   const { setCurrentSubsection } = useContext(AppState);
 
@@ -41,6 +42,8 @@ const Assignments = forwardRef((props, ref) => {
   const handleViewLess = () => {
     setProjects(allProjects.filter((p) => p.order !== undefined).slice(0, 3));
     setViewAll(false);
+    setViewLessClicked(true); // trigger child to recenter
+
     setCurrentSubsection(null);
   };
 
@@ -66,16 +69,19 @@ const Assignments = forwardRef((props, ref) => {
 
   return (
     <section className="assignments-section" ref={ref} id="project">
-      <DetailsContainer
-        viewAll={viewAll}
-        project={selectedProject}
-        selected={selected}
-        handleBack={() => handleBack()}
-        leetCode={closeLeetCode}
-        leetCodeState={leetCodeState}
-        lesserProjectsClose={closeLesser}
-        lesserProjects={lesserProjects}
-      />
+      <motion.div key="details">
+        <DetailsContainer
+          viewAll={viewAll}
+          project={selectedProject}
+          selected={selected}
+          handleBack={handleBack}
+          leetCode={closeLeetCode}
+          leetCodeState={leetCodeState}
+          lesserProjectsClose={closeLesser}
+          lesserProjects={lesserProjects}
+        />
+      </motion.div>
+
       <AssignmentsContainer
         projects={projects}
         onClick={handleClick}

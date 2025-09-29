@@ -1,0 +1,192 @@
+@use "../../../styles/index.scss" as *;
+
+.leetcode-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 1rem;
+  padding: 1.5rem;
+  height: 60%;
+
+  .leetcode-cards {
+    padding: 1.2rem;
+    border-radius: 5px;
+    position: relative;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--borders-standard);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.25) !important;
+
+    .date-container {
+      height: 70%;
+      width: 25%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: end;
+      .date {
+        font-size: 0.8rem;
+      }
+    }
+
+    .circle {
+      position: absolute;
+      height: 12px;
+      width: 12px;
+      top: 15px;
+      right: 15px;
+      border-radius: 50%;
+    }
+
+    /* EASY */
+    .circle-easy {
+      background-color: #1cbaba;
+      box-shadow: 0 0 6px #1cbaba, 0 0 12px #1cbaba;
+      animation: glow-easy 1.5s infinite alternate;
+    }
+
+    @keyframes glow-easy {
+      from {
+        box-shadow: 0 0 2px #1cbaba, 0 0 6px #1cbaba;
+      }
+      to {
+        box-shadow: 0 0 6px #1cbaba, 0 0 12px #1cbaba;
+      }
+    }
+
+    /* MEDIUM */
+    .circle-medium {
+      background-color: #ffb700;
+      box-shadow: 0 0 6px #ffb700, 0 0 12px #ffb700;
+      animation: glow-medium 1.5s infinite alternate;
+    }
+
+    @keyframes glow-medium {
+      from {
+        box-shadow: 0 0 2px #ffb700, 0 0 6px #ffb700;
+      }
+      to {
+        box-shadow: 0 0 6px #ffb700, 0 0 12px #ffb700;
+      }
+    }
+
+    &:hover {
+      transform: translateY(-2px) scale(1.05) !important;
+      border: 1px solid transparent;
+
+      .click-hint {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    &.card-easy:hover {
+      box-shadow: 0 0 4px rgba(#1cbaba, 0.6) !important;
+    }
+
+    &.card-medium:hover {
+      box-shadow: 0 0 4px rgba(#ffb700, 0.6) !important;
+    }
+
+    .leetcode-text-container {
+      width: 80%;
+      height: 70%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    h3 {
+      width: 90%;
+      margin: 0 0 8px;
+      @include h3-styling;
+      text-transform: none;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    p {
+      margin: 0;
+      font-size: 0.8rem;
+      color: var(--grey);
+    }
+
+    .click-hint {
+      margin-top: 8px;
+      font-size: 0.75rem;
+      color: #888;
+      opacity: 0;
+      transition: 0.3s ease;
+      transform: translateY(10px);
+    }
+  }
+
+  .modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .modal-content {
+    background: var(--glass-background2);
+    border-radius: 16px;
+    max-width: 90%;
+    max-height: 90%;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+    border: 1px solid var(--borders-standard);
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .code-container {
+      width: 100%;
+      padding: 1.2rem;
+    }
+
+    pre {
+      width: 100%;
+      height: 100%;
+      padding: 16px;
+      border-radius: 8px;
+      background: #0b0b0b;
+      color: #ddd;
+      overflow-x: auto;
+      max-height: 70vh;
+    }
+  }
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--borders-standard);
+    width: 100%;
+    padding: 0.5rem 1rem;
+    h3 {
+      color: var(--text-primary);
+      @include h3-styling;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 2.2rem;
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+}

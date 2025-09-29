@@ -60,6 +60,7 @@
   right: 1rem;
   box-shadow: 0 10px 5px var(--glass-background2);
   background-color: var(--projects-background);
+  z-index: 100;
   svg {
     margin-right: 0.5rem;
     stroke: var(--red);

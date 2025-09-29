@@ -6,6 +6,8 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import AppStateProvider from "./components/AppStateProvider/AppStateProvider";
 import Layout from "./components/Layout/Layout";
 import Cursor from "./components/Cursor/Cursor";
+import ParticleLayer from "./components/Particles/ParticleLayer";
+
 function App() {
   const [projects, setProjects] = useState([]);
 
@@ -23,6 +25,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <ParticleLayer />
       <AppStateProvider>
         <Cursor />
         <Routes>

@@ -1,12 +1,20 @@
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useContext } from "react";
 import SkillIcons from "../../data/SkillIcons";
+import { AppState } from "../../components/AppStateProvider/AppStateProvider";
 
 export default function SkillCard({ indexNo, skillInfo }) {
   const Icon = SkillIcons[skillInfo.name];
+  const { setHover } = useContext(AppState);
 
   return (
     <motion.div
+      onMouseLeave={() => {
+        setHover(false);
+      }}
+      onMouseEnter={() => {
+        setHover(true);
+      }}
       className="card"
       key={indexNo}
       data="skill"

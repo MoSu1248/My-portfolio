@@ -8,7 +8,7 @@ const Particle = ({ x, y, size, baseOpacity, duration }) => {
         width: size,
         height: size,
         borderRadius: "50%",
-        backgroundColor: `white`,
+        backgroundColor: `var(--white)`,
         top: `${y}vh`,
         left: `${x}vw`,
       }}

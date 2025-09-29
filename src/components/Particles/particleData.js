@@ -1,5 +1,4 @@
-// particleData.js
-export const particles = Array.from({ length: 20 }).map(() => ({
+export const particles = Array.from({ length: 25 }).map(() => ({
   x: Math.random() * 100,
   y: Math.random() * 100,
   size: 1 + Math.random() * 3,

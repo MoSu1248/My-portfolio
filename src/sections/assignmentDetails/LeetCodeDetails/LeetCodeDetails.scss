@@ -1,0 +1,123 @@
+@use "../../../styles/index.scss" as *;
+
+.leetCode {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  z-index: 100;
+  padding: 1.2rem;
+  backdrop-filter: blur(10px);
+}
+
+.leetCode__container {
+  display: flex;
+  gap: 2rem;
+  backdrop-filter: blur(10px);
+  border-radius: 5px;
+  height: 100%;
+  border: 1px solid var(--borders-standard);
+  background-color: var(--glass-background);
+  flex-direction: column;
+  width: 60%;
+  margin: auto;
+  margin-right: 0;
+
+  .window-container {
+    display: flex;
+    align-items: center;
+    height: 5%;
+    border-bottom: 1px solid var(--borders-standard);
+    position: relative;
+    p {
+      color: var(--leetcode-green);
+      font-size: 1rem;
+      margin: auto;
+      letter-spacing: 1px;
+
+      .blink {
+        display: inline-block;
+        animation: blink 0.8s step-start infinite;
+      }
+    }
+  }
+}
+
+.summaries__container {
+  width: 80%;
+  display: flex;
+  gap: 2rem;
+  margin: 0 auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+
+  h3 {
+    @include h3-styling;
+    letter-spacing: 2px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    span {
+      color: var(--leetcode-green);
+    }
+  }
+
+  ul {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 85%;
+    list-style: none;
+
+    li {
+      border: none;
+      padding: 0.55rem 3.2rem;
+      display: flex;
+      gap: 0.8rem;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      border-radius: 2.5px;
+      background-color: var(--projects-background);
+
+      &.easy {
+        box-shadow: 0 0 3px rgba(#1cbaba, 0.6);
+      }
+      &.medium {
+        box-shadow: 0 0 3px rgba(#ffb700, 0.6);
+      }
+      &.hard {
+        box-shadow: 0 0 3px rgba(#f63737, 0.6);
+      }
+
+      .circle {
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+      }
+
+      .easy {
+        background-color: #1cbaba;
+        box-shadow: 0 0 6px #1cbaba, 0 0 12px #1cbaba;
+        animation: glow-easy 1.5s infinite alternate;
+      }
+
+      .medium {
+        background-color: #ffb700;
+        box-shadow: 0 0 6px #ffb700, 0 0 12px #ffb700;
+        animation: glow-medium 1.5s infinite alternate;
+      }
+
+      .hard {
+        background-color: #f63737;
+        box-shadow: 0 0 6px #f63737, 0 0 12px #f63737;
+        animation: glow-hard 1.5s infinite alternate;
+      }
+    }
+  }
+}

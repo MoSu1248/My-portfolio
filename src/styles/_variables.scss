@@ -6,6 +6,7 @@
 :root {
   /* Colors */
   --background: #121212;
+  --popup-background: rgba(0, 0, 0, 0.9);
   --borders-standard: rgba(128, 128, 128, 0.322);
   --borders-hover: rgba(255, 255, 255, 0.712);
   --grey: #8888887a;
@@ -41,6 +42,54 @@
 
   --font-weight-regular: 400;
   --font-weight-medium: 500;
+}
+
+[data-theme="dim"] {
+  /* BACKGROUNDS (Dim but layered for depth) */
+  --background: #383838; /* Slightly warmer neutral gray for depth */
+  --popup-background: #292929; /* Slightly richer than before */
+  --projects-background: rgba(
+    255,
+    95,
+    95,
+    0.06
+  ); /* Tiny red tint for vibrancy */
+  --projects-details: rgba(
+    255,
+    255,
+    255,
+    0.18
+  ); /* Slightly more contrast for details */
+
+  /* BORDERS/LINES */
+  --borders-standard: rgba(200, 200, 200, 0.35); /* lighter, subtle contrast */
+  --borders-hover: #ffffff; /* Pure white hover accent remains */
+
+  /* NEUTRAL UTILITIES */
+  --dark-grey: #6f6f6f; /* Slightly deeper mid-gray for structure */
+  --grey: #b3b3b3; /* lighter gray for subtle details */
+
+  /* GLASS/OVERLAYS */
+  --glass-background: rgba(243, 196, 210, 0.08); /* soft warm tint for light panels */
+  --glass-background2: rgba(0, 0, 0, 0.28); /* maintains soft dark overlay */
+
+  /* TEXT / ICONS */
+  --white: #f5f5f5;
+  --icon-standard: #d5d5d5; /* slight brightness for visibility */
+  --icon-hover: #ffffff;
+
+  /* ACCENT COLORS (Preserved, maybe slightly richer) */
+  --red: #dd6a73;
+  --blue: #537fbc;
+  --green: #3ba459;
+  --purple: #ac6ef4;
+  --yellow: #ffb857;
+
+  /* LEETCODE ACCENTS */
+  --leetcode-green: #00ff88;
+  --leetcode-blue: #1cbaba;
+  --leetcode-yellow: #ffb700;
+  --leetcode-red: #f63737;
 }
 
 /* SCSS VARIABLES  */

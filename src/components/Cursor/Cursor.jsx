@@ -2,11 +2,9 @@ import { useEffect, useState, useContext } from "react";
 import { AppState } from "../AppStateProvider/AppStateProvider";
 
 export default function Cursor() {
-  const { currentSection } = useContext(AppState);
+  const { currentSection, hover, setHover, hoverType } = useContext(AppState);
   const [pos, setPos] = useState({ x: 0, y: 0 });
-  const [hover, setHover] = useState(false);
 
-  // 🎨 match section spotlight colors
   const sectionColors = {
     hero: "#5178b3",
     about: "#a566f0",
@@ -22,27 +20,6 @@ export default function Cursor() {
     };
     document.addEventListener("mousemove", moveCursor);
     return () => document.removeEventListener("mousemove", moveCursor);
-  }, []);
-
-  useEffect(() => {
-    const interactiveEls = document.querySelectorAll(
-      "button, a,.assignment-card "
-    );
-
-    const onEnter = () => setHover(true);
-    const onLeave = () => setHover(false);
-
-    interactiveEls.forEach((el) => {
-      el.addEventListener("mouseenter", onEnter);
-      el.addEventListener("mouseleave", onLeave);
-    });
-
-    return () => {
-      interactiveEls.forEach((el) => {
-        el.removeEventListener("mouseenter", onEnter);
-        el.removeEventListener("mouseleave", onLeave);
-      });
-    };
   }, []);
 
   useEffect(() => {
@@ -75,11 +52,11 @@ export default function Cursor() {
         borderRadius: "50%",
         pointerEvents: "none",
         transform: `translate(-50%, -50%) scale(${hover ? 1.5 : 1})`,
-        border: hover ? `2px solid ${cursorColor}` : `2px solid var(--white)`,
-        backgroundColor: hover ? `${cursorColor}56` : `transparent`,
+        border: hover ? `2px solid ${cursorColor}36` : `2px solid var(--white)`,
+        backgroundColor: hover ? `${cursorColor}20` : `transparent`,
         boxShadow: hover ? `0 0 5px ${cursorColor}` : `0 0 20px ${cursorColor}`,
         transition:
-          "transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease-in",
+          "transform 0.3s cubic-bezier(0.19, 1, 0.22, 1),  background-color 0.2s ease, border-color 0.2s ease",
         zIndex: 9999,
       }}
     />

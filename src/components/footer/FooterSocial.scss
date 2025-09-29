@@ -1,32 +1,25 @@
 .footer__social {
-  margin-left: auto;
-  margin-right: 2rem;
-  width: 8%;
-  
   ul {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     list-style: none;
+    gap: 2rem;
 
     li {
       transition: 0.3s ease;
-      fill: var(--icon-standard);
+      &:hover {
+        transform: scale(1.2);
+      }
     }
 
-    li:hover {
-      transform: scale(1.2);
-      fill: var(--icon-hover);
-    }
-
-    .leetcode {
-      fill: none;
-      stroke: var(--icon-standard);
-    }
-
-    .leetcode:hover {
-      stroke: var(--icon-hover);
+    a {
+      transition: 0.3s ease;
+      color: var(--icon-standard);
+      &:hover {
+        color: var(--icon-hover);
+      }
     }
   }
 }

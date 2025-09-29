@@ -9,18 +9,16 @@ export default function AppStateProvider({ children }) {
   const [theme, setTheme] = useState({ color: "white" });
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentSubsection, setCurrentSubsection] = useState(null);
-
-  console.log(currentSubsection);
+  const [hover, setHover] = useState(false);
+  const [hovertype, setHovertype] = useState(`cursor`);
 
   useEffect(() => {
     const sections = ["hero", "about", "project", "skills", "contact"];
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setCurrentSection(entry.target.id);
-
             switch (entry.target.id) {
               case "about":
                 setTheme({ color: "var(--purple)" });
@@ -65,6 +63,10 @@ export default function AppStateProvider({ children }) {
         setLightboxOpen,
         setCurrentSubsection,
         currentSubsection,
+        setHover,
+        hover,
+        setHovertype,
+        hovertype,
       }}
     >
       <LightWrapper />
