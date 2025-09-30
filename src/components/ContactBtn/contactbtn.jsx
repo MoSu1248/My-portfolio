@@ -15,10 +15,8 @@ export default function WorkTogetherBtn({ scrollTo }) {
     scrollTo(section.offsetTop);
   };
 
-
   return (
     <button
-      
       onMouseLeave={() => {
         setHover(false);
       }}
@@ -26,9 +24,9 @@ export default function WorkTogetherBtn({ scrollTo }) {
         setHover(true);
       }}
       className={`footer__btn ${currentSection}_btn magnetic`}
-      // whileHover={{ scale: 1.05, type: "spring" }} // Keep the simple scale in whileHover
-      whileTap={{ scale: 0.85 }} // Provides excellent tactile feedback
-      onClick={(e) => handleClick(e, "contact")} // Navigates to the 'contact' section
+      // whileHover={{ scale: 1.05, type: "spring" }}
+      whileTap={{ scale: 0.85 }}
+      onClick={(e) => handleClick(e, "contact")}
     >
       let's-work-together
       <svg

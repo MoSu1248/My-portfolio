@@ -73,7 +73,7 @@ export default function AllprojectsCard({ openLesser }) {
           />
         ))}
         <div className="overlay">
-          <h3>All Projects</h3>
+          <h3>[ Project Archive ]</h3>
         </div>
       </motion.div>
     </motion.div>

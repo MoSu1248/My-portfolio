@@ -10,7 +10,6 @@ export default function ViewImage({ viewImage, image }) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      onClick={() => viewImage(false)}
     >
       <motion.img
         layoutId={image}

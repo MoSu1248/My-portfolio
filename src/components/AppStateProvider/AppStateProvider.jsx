@@ -10,7 +10,13 @@ export default function AppStateProvider({ children }) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentSubsection, setCurrentSubsection] = useState(null);
   const [hover, setHover] = useState(false);
-  const [hovertype, setHovertype] = useState(`cursor`);
+  const [hoverType, setHoverType] = useState("");
+  const [toastMessage, setToastMessage] = useState("");
+
+  const showToast = (msg, duration = 3000) => {
+    setToastMessage(msg);
+    setTimeout(() => setToastMessage(""), duration);
+  };
 
   useEffect(() => {
     const sections = ["hero", "about", "project", "skills", "contact"];
@@ -65,13 +71,15 @@ export default function AppStateProvider({ children }) {
         currentSubsection,
         setHover,
         hover,
-        setHovertype,
-        hovertype,
+        setHoverType, 
+        hoverType,
+        showToast,
       }}
     >
       <LightWrapper />
       {children}
       <ScrollBarUpdater />
+      {toastMessage && <div className={`toast toast-${currentSection}`}>{toastMessage}</div>}
     </AppState.Provider>
   );
 }

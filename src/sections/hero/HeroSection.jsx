@@ -3,6 +3,7 @@ import "./HeroSection.scss";
 import { motion } from "framer-motion";
 import WordWrapper from "./WordWrapper";
 import useSpotlightWords from "./useSpotlightWords";
+import FloatingIcons from "./FloatingIcons";
 
 const HeroSection = forwardRef((props, ref) => {
   const sentence = "Hi, i'm Suhail, a creative developer";
@@ -10,6 +11,7 @@ const HeroSection = forwardRef((props, ref) => {
 
   return (
     <section ref={ref} id="hero" className="hero">
+     <FloatingIcons />
       <motion.p
         className="test"
         initial={{ opacity: 0 }}

@@ -24,6 +24,7 @@ export default function InitialCard({ project, onClick, viewAll }) {
       style={{ width: `100%`, height: `23%` }}
       initial={{ y: 30, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
+      exit={{ scale: 0.2, opacity: 0 }}
       transition={{
         delay: project.order * 0.3,
         duration: 0.3,
@@ -45,7 +46,9 @@ export default function InitialCard({ project, onClick, viewAll }) {
           <p>{project.order}</p>
         </div>
         <div className="project-content">
-          <h2>{project.title}</h2>
+          <motion.h2 layoutId={`heading-${project.id}`}>
+            {project.title}
+          </motion.h2>
           <div className="technology">
             <ul>
               {project.techStack?.slice(0, 4).map((item, idx) => (

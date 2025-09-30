@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./WindowContent.scss";
 import { motion } from "framer-motion";
+import { AppState } from "../../components/AppStateProvider/AppStateProvider";
 
 export default function WindowContent({ card }) {
+  const { setHover } = useContext(AppState);
+
   return (
     <div className="about__window-content">
       {card.content.map((item, idx) => (
@@ -12,6 +15,12 @@ export default function WindowContent({ card }) {
           ) : item.url ? (
             <li>
               <motion.a
+                onMouseLeave={() => {
+                  setHover(false);
+                }}
+                onMouseEnter={() => {
+                  setHover(true);
+                }}
                 whileHover={{ scale: 1.1 }}
                 href={item.url}
                 target="_blank"

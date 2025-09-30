@@ -122,8 +122,8 @@ export default function AssignmentDetails({ project, handleBack, viewAll }) {
           <div className="text-container">
             <motion.div
               className="carousel_container"
-              initial={{ opacity: 0, visibility: "hidden", x: "50px" }}
-              animate={{ opacity: 1, visibility: "visible", x: "0px" }}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 2.4, ease: "easeOut" }}
             >
               <Carousel images={project.projectImages} />

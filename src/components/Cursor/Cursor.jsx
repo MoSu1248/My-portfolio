@@ -4,6 +4,7 @@ import { AppState } from "../AppStateProvider/AppStateProvider";
 export default function Cursor() {
   const { currentSection, hover, setHover, hoverType } = useContext(AppState);
   const [pos, setPos] = useState({ x: 0, y: 0 });
+  const [clicked, setClicked] = useState(false);
 
   const sectionColors = {
     hero: "#5178b3",
@@ -15,30 +16,41 @@ export default function Cursor() {
   const cursorColor = sectionColors[currentSection] || "var(--white)";
 
   useEffect(() => {
-    const moveCursor = (e) => {
-      setPos({ x: e.pageX, y: e.pageY });
+    const moveCursor = (e) => setPos({ x: e.clientX, y: e.clientY });
+    document.addEventListener("pointermove", moveCursor);
+    return () => document.removeEventListener("pointermove", moveCursor);
+  }, []);
+
+  useEffect(() => {
+    const handleMouseDown = () => setClicked(true);
+    const handleMouseUp = () => setClicked(false);
+
+    window.addEventListener("mousedown", handleMouseDown);
+    window.addEventListener("mouseup", handleMouseUp);
+
+    return () => {
+      window.removeEventListener("mousedown", handleMouseDown);
+      window.removeEventListener("mouseup", handleMouseUp);
     };
-    document.addEventListener("mousemove", moveCursor);
-    return () => document.removeEventListener("mousemove", moveCursor);
   }, []);
 
   useEffect(() => {
     const resetHover = () => setHover(false);
     window.addEventListener("mouseleave", resetHover);
     return () => window.removeEventListener("mouseleave", resetHover);
-  }, []);
+  }, [setHover]);
 
   useEffect(() => {
-    const handleLeaveWindow = () => setHover(false);
-    window.addEventListener("mouseleave", handleLeaveWindow);
-    return () => window.removeEventListener("mouseleave", handleLeaveWindow);
-  }, []);
+    if (hoverType === "grab") {
+      document.body.style.cursor = clicked ? "grabbing" : "grab";
+    } else {
+      document.body.style.cursor = "none";
+    }
+  }, [hoverType, clicked]);
 
-  useEffect(() => {
-    const resetHover = () => setHover(false);
-    window.addEventListener("mousedown", resetHover);
-    return () => window.removeEventListener("mousedown", resetHover);
-  }, []);
+  const useSystemCursor = hoverType === "grab";
+
+  if (useSystemCursor) return null;
 
   return (
     <div
@@ -51,12 +63,26 @@ export default function Cursor() {
         height: "25px",
         borderRadius: "50%",
         pointerEvents: "none",
-        transform: `translate(-50%, -50%) scale(${hover ? 1.5 : 1})`,
-        border: hover ? `2px solid ${cursorColor}36` : `2px solid var(--white)`,
-        backgroundColor: hover ? `${cursorColor}20` : `transparent`,
-        boxShadow: hover ? `0 0 5px ${cursorColor}` : `0 0 20px ${cursorColor}`,
+        transform: `translate(-50%, -50%) scale(${
+          clicked ? 0.8 : hover ? 1.5 : 1
+        })`,
+        border: clicked
+          ? `2px solid ${cursorColor}`
+          : hover
+          ? `2px solid ${cursorColor}36`
+          : `2px solid var(--white)`,
+        backgroundColor: clicked
+          ? `${cursorColor}40`
+          : hover
+          ? `${cursorColor}20`
+          : "transparent",
+        boxShadow: clicked
+          ? `0 0 15px ${cursorColor}, 0 0 30px ${cursorColor}80`
+          : hover
+          ? `0 0 5px ${cursorColor}`
+          : `0 0 20px ${cursorColor}`,
         transition:
-          "transform 0.3s cubic-bezier(0.19, 1, 0.22, 1),  background-color 0.2s ease, border-color 0.2s ease",
+          "transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease",
         zIndex: 9999,
       }}
     />

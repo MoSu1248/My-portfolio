@@ -1,0 +1,175 @@
+@use "../../styles/index.scss" as *;
+
+/* FORM STYLING */
+.panel-title {
+  position: absolute;
+  top: -30px;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  color: var(--white);
+  @include h3-styling;
+  text-transform: none;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  border-radius: 5px;
+  z-index: 10;
+}
+
+.form-panel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 35%;
+  padding: 30px;
+  background: var(--glass-background);
+  border: 1px solid var(--borders-standard);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  border-radius: 0;
+  height: 85%;
+  margin: auto 0;
+
+  &::before {
+    top: -40px;
+    left: -30px;
+    border-top: 3px solid var(--yellow);
+    border-left: 3px solid var(--yellow);
+  }
+
+  &::after {
+    bottom: -40px;
+    right: -30px;
+    border-bottom: 3px solid var(--yellow);
+    border-right: 3px solid var(--yellow);
+  }
+
+  .top-right {
+    top: -40px;
+    right: -30px;
+    border-top: 3px solid var(--yellow);
+    border-right: 3px solid var(--yellow);
+    border-left: none;
+    border-bottom: none;
+  }
+
+  .bottom-left {
+    bottom: -40px;
+    left: -30px;
+    border-bottom: 3px solid var(--yellow);
+    border-left: 3px solid var(--yellow);
+    border-top: none;
+    border-right: none;
+  }
+
+  &::before,
+  &::after,
+  .top-right,
+  .bottom-left {
+    position: absolute;
+    content: "";
+    width: 20%;
+    height: 20%;
+    transition: all 0.2s ease-out;
+    animation: float-corners 6s ease-in-out infinite;
+  }
+
+  &:hover {
+    &::before {
+      top: -5px;
+      left: -5px;
+    }
+    &::after {
+      bottom: -5px;
+      right: -5px;
+    }
+    .top-right {
+      top: -5px;
+      right: -5px;
+    }
+    .bottom-left {
+      bottom: -5px;
+      left: -5px;
+    }
+
+    &::before,
+    &::after,
+    .top-right,
+    .bottom-left {
+      animation: none;
+    }
+  }
+
+  @keyframes float-corners {
+    0%,
+    100% {
+      transform: translate(0px, 0px);
+    }
+    25% {
+      transform: translate(2px, -2px);
+    }
+    50% {
+      transform: translate(-2px, 2px);
+    }
+    75% {
+      transform: translate(1px, -1px);
+    }
+  }
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  height: 100%;
+}
+
+.form-input,
+.textarea {
+  font-family: "body";
+  width: 100%;
+  padding: 15px;
+  font-size: var(--p-font-size);
+  border-radius: 4px;
+  border: 1px solid var(--borders-standard);
+  background-color: var(--glass-background2);
+  color: var(--white);
+  transition: border-color var(--transition-speed) var(--transition-ease),
+    box-shadow var(--transition-speed) var(--transition-ease);
+}
+
+.form-input::placeholder,
+.textarea::placeholder {
+  color: var(--grey);
+}
+
+.form-input:focus,
+.textarea:focus {
+  outline: none;
+  border-color: var(--borders-hover);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2), 0 0 2px var(--borders-hover);
+}
+
+.textarea {
+  min-height: 200px;
+  resize: none;
+}
+
+/* --- BUTTON --- */
+.submit-button {
+  @include button-styling;
+  padding: 0.75rem 2rem;
+  transition: all 0.3s ease;
+  margin-top: auto;
+
+  &:hover {
+    border: 1px solid var(--yellow);
+    color: var(--yellow);
+    box-shadow: 0 0 20px rgba(255, 179, 71, 0.3);
+    transform: scale(1.05);
+
+    svg {
+      fill: var(--yellow);
+    }
+  }
+}

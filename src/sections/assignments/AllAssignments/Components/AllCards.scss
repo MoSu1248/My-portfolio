@@ -27,9 +27,6 @@
     opacity: 0.1;
   }
 
-  &:hover .all-card-image {
-  }
-
   .content-overlay {
     position: absolute;
     display: flex;
@@ -44,7 +41,7 @@
     transform: translateY(100%);
     opacity: 0;
     transition: transform 0.5s ease, opacity 0.5s ease;
-
+    backdrop-filter: blur(1px);
     .project-content {
       transition: 0.3s ease;
       width: 100%;
@@ -55,11 +52,13 @@
 
       h2 {
         @include h2-styling;
-        font-size: 2.5rem;
+        font-size: 2rem;
       }
 
       h6 {
-        color: var(--icon-standard);
+        font-size: 0.8rem;
+        line-height: 1.2rem;
+        color: var(--white);
         text-transform: none;
       }
 

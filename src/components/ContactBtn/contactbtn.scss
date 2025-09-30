@@ -5,7 +5,6 @@
 .footer__btn {
   @include button-styling(var(--white), var(--white));
   padding: 0.3rem 1rem;
-  margin-right: 1.5rem;
   cursor: none;
 
   svg {

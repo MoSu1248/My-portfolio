@@ -1,25 +1,46 @@
-import React from "react";
+import React, {
+  useEffect,
+  useState,
+  Suspense,
+  Context,
+  useContext,
+} from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { AppState } from "../../../components/AppStateProvider/AppStateProvider";
+import { collection, getDocs, query, limit } from "firebase/firestore";
+import { db } from "../../../firebase/firebase";
+import SkillIcons from "../../../data/SkillIcons";
+
+import "./AllProjectsDetails.scss";
 
 export default function AllProjectsDetails({
   lesserProjects,
   lesserProjectsClose,
 }) {
-  console.log(lesserProjects);
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    const fetchProblems = async () => {
+      const q = query(collection(db, "smallerProjects"));
+      const snapshot = await getDocs(q);
+      const data = snapshot.docs.map((doc) => doc.data());
+      setProjects(data);
+    };
+    fetchProblems();
+  }, []);
 
   return (
     <>
       {lesserProjects && (
         <motion.div
-          className="leetCode"
+          className="all-projects"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
           <motion.div
-            className="leetCode__container"
+            className="all-projects__container"
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
@@ -44,7 +65,62 @@ export default function AllProjectsDetails({
                   />
                 </svg>
               </button>
-              <p>ALL PROJECTS</p>
+              <p>[ Project Archive ]</p>
+            </div>
+
+            <div className="projects-header">
+              <h1>Project Archive</h1>
+              <p>
+                Explore some of the websites and web applications I’ve created
+                through studying, coursework, and personal projects. For a
+                complete overview, visit my GitHub repository below.
+              </p>
+            </div>
+            <div className="all-projects-grid">
+              {projects.map((item, index) => {
+                return (
+                  <div className="all-projects_card" key={index}>
+                    <img
+                      src="https://t3.ftcdn.net/jpg/03/15/00/88/360_F_315008869_ZDL4DE9jCbL8KdntMm8kc1KBzbTWxkCM.jpg"
+                      alt=""
+                    />
+                    <div className="all-projects_card-text-container">
+                      <div className="all-projects_card-header">
+                        <h2>{item.title}</h2>
+                        <ul>
+                          {item.techStack?.map((item, index) => {
+                            const Icon = SkillIcons[item];
+                            return (
+                              <motion.li
+                                key={index}
+                                className="flex items-center gap-2"
+                              >
+                                {Icon ? (
+                                  <Icon className="test-styling" />
+                                ) : null}
+                              </motion.li>
+                            );
+                          })}
+                        </ul>
+                      </div>
+                      <p className="project-type">{item.category}</p>
+                      <h3 className="project-description">
+                        this is a little text that im using for styling purposes
+                      </h3>
+                      <div className="all-projects-links">
+                        <ul>
+                          <li className="live-link">
+                            Live Site<span className="link-icon">↗</span>
+                          </li>
+                          <li className="code-link">
+                            Code<span className="link-icon">↗</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </motion.div>
         </motion.div>
