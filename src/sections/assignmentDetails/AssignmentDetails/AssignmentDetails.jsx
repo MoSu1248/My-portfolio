@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
 import "./assignmentDetails.scss";
-import { AnimatePresence, easeOut, motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { getDownloadURL, getStorage, ref } from "firebase/storage";
 import { useEffect, useState } from "react";
-import SkillIcons from "../../../data/SkillIcons";
 import Carousel from "./Components/Carousel";
 import { AppState } from "../../../components/AppStateProvider/AppStateProvider";
 import CloseBtn from "../../../components/CloseBtn/CloseBtn";
@@ -18,22 +17,11 @@ export default function AssignmentDetails({ project, handleBack, viewAll }) {
   );
 
   const { setLightboxOpen } = useContext(AppState);
-  const { setHover } = useContext(AppState);
-
-  const [hovering, setHovering] = useState(false);
-
-  useEffect(() => {
-    if (hovering) {
-      setHover(true);
-    } else {
-      setHover(false);
-    }
-  }, [hovering, setHover]);
 
   useEffect(() => {
     setLightboxOpen(true);
     return () => setLightboxOpen(false);
-  }, []);
+  });
 
   useEffect(() => {
     if (project.imageThumbnail) {
@@ -45,6 +33,7 @@ export default function AssignmentDetails({ project, handleBack, viewAll }) {
       const timeOut = setTimeout(() => {}, 3000);
     }
   }, [project.imageThumbnail]);
+
 
   return (
     <AnimatePresence key={project.title}>
@@ -126,7 +115,11 @@ export default function AssignmentDetails({ project, handleBack, viewAll }) {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 2.4, ease: "easeOut" }}
             >
-              <Carousel images={project.projectImages} />
+              <Carousel
+                comparisonImages={project.comparisonImages}
+                images={project.projectImages}
+                compare={project.compare}
+              />
             </motion.div>
 
             <div className="project__description">

@@ -1,0 +1,74 @@
+@use "../../../styles/index.scss" as *;
+
+.projects-header {
+  padding: 2rem 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  h2 {
+    @include h2-styling;
+    color: var(--white);
+    width: 50%;
+    font-size: 1rem;
+  }
+  h1 {
+    @include h1-styling;
+    width: 100%;
+    font-size: 4rem;
+    letter-spacing: -3px;
+    text-transform: uppercase;
+    color: var(--red);
+  }
+}
+.projects-header-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.archive-link {
+  transition: 0.3s ease;
+  border: 1px solid var(--borders-standard);
+  padding: 0.5rem 1rem;
+  font-family: "body";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  overflow: hidden;
+  letter-spacing: 0.5px;
+  background-color: var(--projects-details);
+  transition: 0.2s ease;
+  text-decoration: none;
+  color: var(--white);
+  width: 10%;
+
+  &:hover {
+    transform: scale(1.05) !important;
+    border: 1px solid transparent;
+    box-shadow: 0 0 3px var(--red);
+  }
+
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  &:hover {
+    color: var(--icon-hover);
+  }
+}
+
+.linktest {
+  width: 25%;
+}
+
+.projectArchive-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10%;
+}
+
+.archiveBtn-styling {
+  @include button-styling(var(--white), #d95c66);
+}

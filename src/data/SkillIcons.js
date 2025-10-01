@@ -23,6 +23,7 @@ import Version from "../assets/skills/Version.svg?react";
 import Vite from "../assets/skills/Vite.svg?react";
 import Bootstrap from "../assets/skills/Bootstrap.svg?react";
 import Graphql from "../assets/skills/Graphql.svg?react";
+import Swiper from "../assets/skills/Swiper_icon.svg?react";
 
 const SkillIcons = {
   React: ReactIcon,
@@ -50,6 +51,7 @@ const SkillIcons = {
   Version,
   Vite,
   Graphql,
+  Swiper,
 };
 
 export default SkillIcons;

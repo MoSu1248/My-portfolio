@@ -37,13 +37,15 @@ const Assignments = forwardRef((props, ref) => {
     setProjects(allProjects);
     setViewAll(true);
     setCurrentSubsection("all");
+    document.querySelector(".nav-container").classList.add("disabled");
   };
 
   const handleViewLess = () => {
+    document.querySelector(".nav-container").classList.remove("disabled");
+
     setProjects(allProjects.filter((p) => p.order !== undefined).slice(0, 3));
     setViewAll(false);
-    setViewLessClicked(true); // trigger child to recenter
-
+    setViewLessClicked(true);
     setCurrentSubsection(null);
   };
 
@@ -68,7 +70,15 @@ const Assignments = forwardRef((props, ref) => {
   const closeLesser = () => setLesserProjects(false);
 
   return (
-    <section className="assignments-section" ref={ref} id="project">
+    <section
+      className={
+        !viewAll
+          ? `assignments-section`
+          : `assignments-section assignments-section-ViewAll`
+      }
+      ref={ref}
+      id="projects"
+    >
       <motion.div key="details">
         <DetailsContainer
           viewAll={viewAll}

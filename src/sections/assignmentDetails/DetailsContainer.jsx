@@ -1,7 +1,7 @@
 import React from "react";
 import AssignmentDetails from "./AssignmentDetails/AssignmentDetails";
 import LeetCodeDetails from "./LeetCodeDetails/LeetCodeDetails";
-import AllProjectDetails from "./AllProjectsDetails/AllProjectsDetails";
+import ProjectArchive from "./ProjectArchive/ProjectArchiveDetails";
 import { AnimatePresence } from "framer-motion";
 export default function DetailsContainer({
   leetCodeState,
@@ -27,7 +27,7 @@ export default function DetailsContainer({
       </AnimatePresence>
       <AnimatePresence exitBeforeEnter>
         {lesserProjects && (
-          <AllProjectDetails
+          <ProjectArchive
             viewAll={viewAll}
             selected={selected}
             lesserProjects={lesserProjects}

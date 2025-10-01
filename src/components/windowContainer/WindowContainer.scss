@@ -1,0 +1,21 @@
+.window-container {
+  display: flex;
+  align-items: center;
+  height: 5%;
+  min-height: 3rem;
+  border-bottom: 1px solid var(--borders-standard);
+  position: relative;
+  p {
+    color: var(--white);
+    font-size: 1rem;
+    margin: auto;
+    letter-spacing: 1px;
+  }
+  .back__btn {
+    position: absolute;
+    margin: auto 0 auto 1rem;
+    background-color: transparent;
+    border: none;
+    transform: rotate(180deg);
+  }
+}

@@ -6,13 +6,15 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import { EffectCoverflow, Pagination } from "swiper/modules";
 import { AnimatePresence, easeOut, motion } from "framer-motion";
-import ViewImage from "./ViewImage";
+import ViewImage from "./LightBox";
 import Expand from "../../../../assets/shared/zoom.svg";
+import ComparisonLightbox from "./ComaprisonLightbox";
 
-export default function Carousel({ images }) {
+export default function Carousel({ images, compare, comparisonImages }) {
   const [viewImage, setViewImage] = useState(false);
   const [displayImage, setDisplayImage] = useState();
   const [index, setIndex] = useState();
+
 
   return (
     <div
@@ -75,9 +77,15 @@ export default function Carousel({ images }) {
         ))}
       </Swiper>
       <AnimatePresence>
-        {viewImage && (
+        {viewImage && compare !== `compare` ? (
           <ViewImage viewImage={setViewImage} image={displayImage} />
-        )}
+        ) : viewImage && compare === `compare` ? (
+          <ComparisonLightbox
+            viewImage={setViewImage}
+            image={displayImage}
+            comparisonImages={comparisonImages}
+          />
+        ) : null}
       </AnimatePresence>
     </div>
   );

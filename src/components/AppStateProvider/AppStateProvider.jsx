@@ -17,9 +17,10 @@ export default function AppStateProvider({ children }) {
     setToastMessage(msg);
     setTimeout(() => setToastMessage(""), duration);
   };
+  console.log(currentSection);
 
   useEffect(() => {
-    const sections = ["hero", "about", "project", "skills", "contact"];
+    const sections = ["hero", "about", "projects", "skills", "contact"];
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -29,7 +30,7 @@ export default function AppStateProvider({ children }) {
               case "about":
                 setTheme({ color: "var(--purple)" });
                 break;
-              case "project":
+              case "projects":
                 setTheme({ color: "var(--red)" });
                 break;
               case "skills":

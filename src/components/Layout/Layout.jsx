@@ -5,14 +5,13 @@ import Header from "../../components/header/Header";
 import { Outlet } from "react-router-dom";
 import { AppState } from "../AppStateProvider/AppStateProvider";
 import { motion } from "framer-motion";
-import ParticleLayer from "../Particles/ParticleLayer";
 import "./Layout.scss";
 
 export default function Layout() {
   const containerRef = useRef(null);
   const targetRef = useRef(0);
   const currentRef = useRef(0);
-  const { lightboxOpen } = useContext(AppState);
+  const { lightboxOpen, currentSubsection } = useContext(AppState);
 
   const lerp = 0.04;
   const wheelMultiplier = 1.5;
@@ -24,12 +23,45 @@ export default function Layout() {
 
   const scrollTo = (y) => {
     if (!containerRef.current) return;
+
     const max =
       containerRef.current.scrollHeight - containerRef.current.clientHeight;
-    targetRef.current = Math.max(0, Math.min(y, max));
+    const target = Math.max(0, Math.min(y, max));
+
+    const start = containerRef.current.scrollTop;
+    const change = target - start;
+    const duration = 500; // ms
+    const easeInOutQuad = (t) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t);
+
+    const animate = (timeStart) => (currentTime) => {
+      const progress = Math.min((currentTime - timeStart) / duration, 1);
+      containerRef.current.scrollTop = start + change * easeInOutQuad(progress);
+
+      if (progress < 1) requestAnimationFrame(animate(timeStart));
+      else currentRef.current = targetRef.current = target;
+    };
+
+    requestAnimationFrame(animate(performance.now()));
   };
 
   useEffect(() => {
+    if (!currentSubsection) return;
+
+    if (currentSubsection === "all") {
+      const section = document.getElementById("projects");
+      if (section) {
+        scrollTo(section.offsetTop);
+      }
+    }
+  }, [currentSubsection]);
+
+  // Determine if device is mobile
+  const isMobile = window.innerWidth <= 1028;
+
+  // Smooth scroll effect for desktop only
+  useEffect(() => {
+    if (isMobile) return; // skip custom scroll on mobile
+
     const container = containerRef.current;
     if (!container) return;
 
@@ -62,6 +94,7 @@ export default function Layout() {
     return () => container.removeEventListener("wheel", onWheel);
   }, []);
 
+  // Optional: show scrollbar after delay
   useEffect(() => {
     const timerId = setTimeout(() => {
       const windowFrame = document.querySelector(".window-frame");

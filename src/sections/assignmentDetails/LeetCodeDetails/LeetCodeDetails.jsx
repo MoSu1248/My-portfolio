@@ -6,18 +6,18 @@ import { AppState } from "../../../components/AppStateProvider/AppStateProvider"
 import VIewAll from "./VIewAll";
 import LeetCodeDifficulties from "./LeetCodeDifficulties";
 import CloseBtn from "../../../components/CloseBtn/CloseBtn";
+import WindowContainer from "../../../components/windowContainer/WindowContainer";
 
 export default function LeetCodeDetails({ leetCode, leetCodeState }) {
   const text = "LeetCode";
   const [displayed, setDisplayed] = useState("");
   const [index, setIndex] = useState(0);
-
   const { setLightboxOpen } = useContext(AppState);
 
   useEffect(() => {
     setLightboxOpen(true);
     return () => setLightboxOpen(false);
-  }, []);
+  });
 
   useEffect(() => {
     let interval;
@@ -47,13 +47,11 @@ export default function LeetCodeDetails({ leetCode, leetCodeState }) {
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 20, stiffness: 200 }}
           >
-            <div className="window-container">
-              <CloseBtn action={leetCode} />
-              <p>
-                {displayed}
-                <span className="blink">_</span>
-              </p>
-            </div>
+            <WindowContainer
+              onClick={leetCode}
+              title={[displayed]}
+              leetCodeState={leetCodeState}
+            />
             <LeetCodeDifficulties leetCodeState={leetCodeState} />
             <LeetCodeGallery />
             <VIewAll />

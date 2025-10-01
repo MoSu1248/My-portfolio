@@ -15,7 +15,7 @@ const LightWrapper = ({ count = 2 }) => {
   const sectionColors = {
     hero: "#5178b3",
     about: "#a566f0",
-    project: projectColor,
+    projects: projectColor,
     skills: "#399149",
     contact: "#ffb347",
   };

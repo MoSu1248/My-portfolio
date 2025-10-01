@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useRef } from "react";
 import AllCards from "./Components/AllCards";
 import ViewMoreBtn from "../../projects/ViewMoreBtn";
 import "./AllAssignments.scss";
-import AllprojectsCard from "./Components/AllprojectsCard";
+import ProjectArchiveCard from "./Components/ProjectArchiveCard";
 import LeetCodeCard from "./Components/LeetCodeCard";
 import { AppState } from "../../../components/AppStateProvider/AppStateProvider";
 
@@ -20,9 +20,9 @@ export default function AllAssignments({
   useEffect(() => {
     setLightboxOpen(true);
     return () => setLightboxOpen(false);
-  }, []);
-  const galleryWrapperRef = useRef(null);
+  });
 
+  const galleryWrapperRef = useRef(null);
   const containerX = useMotionValue(0);
   const containerY = useMotionValue(0);
   const smoothX = useSpring(containerX, { stiffness: 30, damping: 20 });
@@ -41,7 +41,6 @@ export default function AllAssignments({
 
   useEffect(() => {
     if (!viewAll) {
-      // recenter motion values
       containerX.set(0);
       containerY.set(0);
     }
@@ -83,7 +82,7 @@ export default function AllAssignments({
               handleClick={onClick}
             />
           ))}
-          <AllprojectsCard openLesser={openLesser} />
+          <ProjectArchiveCard openLesser={openLesser} />
           <LeetCodeCard leetCode={leetCode} />
         </motion.div>
       </motion.div>

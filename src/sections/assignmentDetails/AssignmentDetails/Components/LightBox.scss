@@ -1,3 +1,5 @@
+@use "../../../../styles/index.scss" as *;
+
 .view-image__container {
   position: fixed;
   top: 0;
@@ -36,4 +38,8 @@
   margin-top: 0;
   height: 100%;
   width: 100%;
+}
+
+.lightbox-headers {
+  @include h3-styling;
 }

@@ -6,6 +6,7 @@ import ThemeToggle from "../ThemeToggle.jsx/ThemeToggle";
 import SectionTracker from "../SectionTracker/SectionTracker";
 import { AnimatePresence, motion } from "framer-motion";
 import { AppState } from "../AppStateProvider/AppStateProvider";
+
 export default function Footer({ scrollTo }) {
   const { currentSection, setHover } = useContext(AppState);
 

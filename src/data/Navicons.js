@@ -23,7 +23,7 @@ export const navIcons = [
       " M6 5.5C7.10457 5.5 8 4.60457 8 3.5C8 2.39543 7.10457 1.5 6 1.5C4.89543 1.5 4 2.39543 4 3.5C4 4.60457 4.89543 5.5 6 5.5Z",
   },
   {
-    name: "project",
+    name: "projects",
     dimensions: {
       width: "22",
       height: "22",

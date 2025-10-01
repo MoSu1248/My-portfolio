@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import React, { useContext } from "react";
-import "./AllProjectsCard.scss";
+import "./ProjectArchiveCard.scss";
 import { AppState } from "../../../../components/AppStateProvider/AppStateProvider";
 
-export default function AllprojectsCard({ openLesser }) {
+export default function ProjectArchiveCard({ openLesser }) {
   const bricks = Array.from({ length: 9 });
 
   const containerVariants = {

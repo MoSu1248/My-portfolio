@@ -8,6 +8,7 @@ import React, {
 import { collection, getDocs, query, limit } from "firebase/firestore";
 import { db } from "../../../firebase/firebase";
 import { motion, AnimatePresence, animate, scale } from "framer-motion";
+
 import "./LeetCodeGallery.scss";
 
 const SyntaxHighlighter = React.lazy(() =>

@@ -16,13 +16,13 @@ export default function Nav({ scrollTo }) {
   };
 
   return (
-    <motion.div
+    <motion.nav
       className="nav"
       initial={{ x: "-100%", opacity: 0 }}
       animate={{ x: `0`, opacity: 1 }}
       transition={{ duration: 0.6, delay: 2.2, ease: "easeOut" }}
     >
-      <ul>
+      <ul className="nav-container">
         {icons.map((item, index) => (
           <li
             onMouseLeave={() => {
@@ -52,6 +52,6 @@ export default function Nav({ scrollTo }) {
           </li>
         ))}
       </ul>
-    </motion.div>
+    </motion.nav>
   );
 }

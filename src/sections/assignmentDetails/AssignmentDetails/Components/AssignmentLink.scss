@@ -4,16 +4,72 @@
   position: relative;
   display: inline-block;
   padding: 0.7rem 3rem;
-  color: var(--white);
+  color: var(--grey);
   text-decoration: none;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: 0.3s ease;
   letter-spacing: 1px;
+
+  &::before,
+  &::after,
+  .top-right,
+  .bottom-left {
+    position: absolute;
+    content: "";
+    width: 5%;
+    height: 20%;
+    transition: 0.5s ease;
+    animation: float-corners 6s ease-in-out infinite;
+  }
+
+  &::before {
+    top: 0px;
+    left: 0px;
+    border-top: 2px solid var(--grey);
+    border-left: 2px solid var(--grey);
+  }
+
+  &::after {
+    bottom: 0px;
+    right: 0px;
+    border-bottom: 2px solid var(--grey);
+    border-right: 2px solid var(--grey);
+  }
+
+  .top-right {
+    top: 0px;
+    right: 0px;
+    border-top: 2px solid var(--grey);
+    border-right: 2px solid var(--grey);
+    border-left: none;
+    border-bottom: none;
+  }
+
+  .bottom-left {
+    bottom: 0px;
+    left: 0px;
+    border-bottom: 2px solid var(--grey);
+    border-left: 2px solid var(--grey);
+    border-top: none;
+    border-right: none;
+  }
+
+  &:hover {
+    color: var(--white);
+    &::before,
+    &::after,
+    .top-right,
+    .bottom-left {
+      width: 100%;
+      height: 100%;
+      animation: none;
+    }
+  }
+
   .link-text {
     transition: 0.3s ease;
-
     padding: 0;
     height: fit-content;
     width: fit-content;
@@ -37,46 +93,4 @@
       opacity: 1;
     }
   }
-}
-
-.link::before,
-.link::after,
-.link .corner {
-  content: "";
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.178);
-}
-
-/* Top-left */
-.link::before {
-  top: 0;
-  left: 0;
-  border-right: none;
-  border-bottom: none;
-}
-
-/* Bottom-right */
-.link::after {
-  bottom: 0;
-  right: 0;
-  border-left: none;
-  border-top: none;
-}
-
-/* Top-right */
-.link .top-right {
-  top: 0;
-  right: 0;
-  border-left: none;
-  border-bottom: none;
-}
-
-/* Bottom-left */
-.link .bottom-left {
-  bottom: 0;
-  left: 0;
-  border-right: none;
-  border-top: none;
 }

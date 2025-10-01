@@ -1,9 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Close from "../../../../assets/shared/close_icon.svg";
-import "./ViewImage.scss";
+import "./LightBox.scss";
 
-export default function ViewImage({ viewImage, image }) {
+export default function LightBox({ viewImage, image }) {
   return (
     <motion.div
       className="view-image__container fixed inset-0 bg-black/80 flex items-center justify-center z-50"

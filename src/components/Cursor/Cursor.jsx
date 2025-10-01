@@ -5,52 +5,61 @@ export default function Cursor() {
   const { currentSection, hover, setHover, hoverType } = useContext(AppState);
   const [pos, setPos] = useState({ x: 0, y: 0 });
   const [clicked, setClicked] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const sectionColors = {
     hero: "#5178b3",
     about: "#a566f0",
-    project: "#d95c66",
+    projects: "#d95c66",
     skills: "#399149",
     contact: "#ffb347",
   };
   const cursorColor = sectionColors[currentSection] || "var(--white)";
+  const mobileBreakpoint = 1024;
+  const isMobile = windowWidth <= mobileBreakpoint;
 
   useEffect(() => {
-    const moveCursor = (e) => setPos({ x: e.clientX, y: e.clientY });
-    document.addEventListener("pointermove", moveCursor);
-    return () => document.removeEventListener("pointermove", moveCursor);
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
+    if (isMobile) return;
+    const moveCursor = (e) => setPos({ x: e.clientX, y: e.clientY });
+    window.addEventListener("pointermove", moveCursor);
+    return () => window.removeEventListener("pointermove", moveCursor);
+  }, [isMobile]);
+
+  useEffect(() => {
+    if (isMobile) return;
     const handleMouseDown = () => setClicked(true);
     const handleMouseUp = () => setClicked(false);
-
     window.addEventListener("mousedown", handleMouseDown);
     window.addEventListener("mouseup", handleMouseUp);
-
     return () => {
       window.removeEventListener("mousedown", handleMouseDown);
       window.removeEventListener("mouseup", handleMouseUp);
     };
-  }, []);
+  }, [isMobile]);
 
   useEffect(() => {
+    if (isMobile) return;
     const resetHover = () => setHover(false);
     window.addEventListener("mouseleave", resetHover);
     return () => window.removeEventListener("mouseleave", resetHover);
-  }, [setHover]);
+  }, [setHover, isMobile]);
 
   useEffect(() => {
+    if (isMobile) return;
     if (hoverType === "grab") {
       document.body.style.cursor = clicked ? "grabbing" : "grab";
     } else {
       document.body.style.cursor = "none";
     }
-  }, [hoverType, clicked]);
+  }, [hoverType, clicked, isMobile]);
 
-  const useSystemCursor = hoverType === "grab";
-
-  if (useSystemCursor) return null;
+  if (isMobile) return null;
 
   return (
     <div
@@ -63,9 +72,7 @@ export default function Cursor() {
         height: "25px",
         borderRadius: "50%",
         pointerEvents: "none",
-        transform: `translate(-50%, -50%) scale(${
-          clicked ? 0.8 : hover ? 1.5 : 1
-        })`,
+        transform: `translate(-50%, -50%) scale(${clicked ? 0.8 : hover ? 1.5 : 1})`,
         border: clicked
           ? `2px solid ${cursorColor}`
           : hover

@@ -27,7 +27,7 @@ export default function VIewAll() {
       }}
       whileTap={{ scale: 0.85 }}
     >
-      View All
+      View All Solutions
       <svg
         width="20"
         height="18"

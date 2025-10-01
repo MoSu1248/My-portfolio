@@ -5,4 +5,9 @@
   color: white;
   overflow: hidden;
   position: relative;
+  transition: background-color 0.5s ease-out;
+}
+
+.assignments-section-ViewAll {
+  background-color: var(--glass-background2);
 }
