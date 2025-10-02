@@ -1,3 +1,5 @@
+@use "../../styles/index.scss" as *;
+
 /*FOOTER STYLING*/
 
 .footer {
@@ -15,6 +17,10 @@
   -webkit-backdrop-filter: blur(10px);
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
+
+  @include for-desktop-up {
+    height: 2.2rem;
+  }
 
   .footer-right {
     margin-left: auto;

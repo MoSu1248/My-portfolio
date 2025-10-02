@@ -1,7 +1,21 @@
+@use "../../styles/index.scss" as *;
+
 .logo {
   border-right: 2px solid rgba(128, 128, 128, 0.322);
   width: 2.9rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  left: 0;
+
+  @include for-desktop-up {
+    border: none;
+    width: 2.4rem;
+    height: 100%;
+    svg {
+      margin: auto;
+      height: 1.8rem;
+    }
+  }
 }

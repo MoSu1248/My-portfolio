@@ -11,7 +11,7 @@ const HeroSection = forwardRef((props, ref) => {
 
   return (
     <section ref={ref} id="hero" className="hero">
-     <FloatingIcons />
+     {/* <FloatingIcons /> */}
       <motion.p
         className="test"
         initial={{ opacity: 0 }}

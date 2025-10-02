@@ -1,0 +1,27 @@
+@use "../../styles/index.scss" as *;
+
+.portrait-container {
+  background: var(--glass-background);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 5px;
+  height: calc(17rem - 35px);
+  border: 1px solid var(--borders-standard);
+  width: 16rem;
+  position: absolute;
+  top: 13%;
+  left: 68%;
+}
+.portrait-content {
+  height: 90%;
+  background-color: var(--yellow);
+  position: relative;
+}
+.portrait-styling {
+  position: absolute;
+  height: 120%;
+  width: 100%;
+  top: -30px;
+  object-fit: cover;
+  pointer-events: none;
+}

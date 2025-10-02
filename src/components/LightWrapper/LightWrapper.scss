@@ -1,3 +1,28 @@
+@use "../../styles/index.scss" as *;
+
+.lights-styling {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(100px);
+  will-change: transform, opacity;
+
+  @include for-desktop-up {
+    width: 500px;
+    height: 500px;
+  }
+
+  @include for-tablet-up {
+    width: 400px;
+    height: 400px;
+  }
+  @include for-mobile-up {
+    width: 300px;
+    height: 300px;
+  }
+}
+
 .light-0 {
   right: -40px;
   top: -100px;

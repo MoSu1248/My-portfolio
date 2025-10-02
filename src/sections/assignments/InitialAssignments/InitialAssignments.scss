@@ -9,6 +9,23 @@
   align-items: center;
   gap: 0.5rem;
 
+  @include for-tablet-up {
+    gap: 1rem;
+  }
+
+  .initial-card-container {
+    height: 23%;
+    width: 100%;
+
+    @include for-tablet-up {
+      height: 20%;
+    }
+
+    @include for-mobile-up {
+      height: 18%;
+    }
+  }
+
   .assignment-card {
     z-index: 0;
     margin: 0.2rem auto;
@@ -23,6 +40,14 @@
     border-radius: 5px;
     padding: 3rem;
     transition: 0.3s ease;
+
+    @include for-desktop-up {
+      width: 80%;
+    }
+
+    @include for-mobile-up {
+      width: 90%;
+    }
 
     &:hover {
       .card-number {
@@ -58,6 +83,10 @@
       p {
         color: var(--icon-standard);
         font-size: 0.75rem;
+      }
+
+      @include for-tablet-up {
+        margin-right: 10px;
       }
     }
 

@@ -60,6 +60,9 @@ export default function Cursor() {
   }, [hoverType, clicked, isMobile]);
 
   if (isMobile) return null;
+  const useSystemCursor = hoverType === "grab";
+
+  if (useSystemCursor) return null;
 
   return (
     <div
@@ -72,7 +75,9 @@ export default function Cursor() {
         height: "25px",
         borderRadius: "50%",
         pointerEvents: "none",
-        transform: `translate(-50%, -50%) scale(${clicked ? 0.8 : hover ? 1.5 : 1})`,
+        transform: `translate(-50%, -50%) scale(${
+          clicked ? 0.8 : hover ? 1.5 : 1
+        })`,
         border: clicked
           ? `2px solid ${cursorColor}`
           : hover

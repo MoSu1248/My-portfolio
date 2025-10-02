@@ -25,7 +25,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <ParticleLayer />
+      {/* <ParticleLayer /> */}
       <AppStateProvider>
         <Cursor />
         <Routes>

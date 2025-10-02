@@ -2,11 +2,19 @@
 
 .skills-section {
   color: white;
-  height: 100%;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   padding: 2rem 4rem;
   justify-content: space-evenly;
+
+  @include for-desktop-up {
+    height: fit-content;
+  }
+
+  @include for-tablet-up {
+    padding: 2rem 2rem;
+  }
 
   .skills-section__container {
     display: flex;
@@ -24,6 +32,18 @@
   width: 85%;
   justify-content: space-evenly;
 
+  @include for-desktop-up {
+    width: 100%;
+  }
+
+  @include for-tablet-up {
+    align-items: center;
+    justify-content: center;
+    grid-area: 0.5rem;
+  }
+  @include for-mobile-up {
+  }
+
   .catagory-container {
     display: flex;
     flex-direction: column;
@@ -40,8 +60,7 @@
   }
 
   .card {
-    will-change: opacity, transform;
-
+    will-change: transform, opacity;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -59,6 +78,11 @@
     background: var(--glass-background);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+
+    @include for-tablet-up {
+      width: 6rem;
+      height: 7rem;
+    }
 
     h5 {
       line-height: 1.5rem;

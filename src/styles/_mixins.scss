@@ -1,10 +1,14 @@
+@use "./variables" as vars;
 /* Mixin Styling */
 
 @mixin h1-styling($color: var(--white)) {
   font-size: var(--h1-font-size);
   color: $color;
-
   font-family: "headings";
+
+  @include for-desktop-up {
+    font-size: var(--h1-font-size-sm-screen);
+  }
 }
 
 @mixin h2-styling($color: var(--white)) {
@@ -12,6 +16,9 @@
   font-weight: var(--font-weight-regular);
   color: $color;
   font-family: "headings";
+  @include for-desktop-up {
+    font-size: var(--h2-font-size-sm-screen);
+  }
 }
 
 @mixin h3-styling($color: var(--white)) {
@@ -19,6 +26,9 @@
   color: $color;
   text-transform: uppercase;
   font-family: "headings";
+  @include for-desktop-up {
+    font-size: var(--h3-font-size-sm-screen);
+  }
 }
 
 @mixin contact-btn-colors($color: var(--white)) {
@@ -87,5 +97,23 @@
   11%,
   100% {
     transform: translateX(0);
+  }
+}
+
+@mixin for-desktop-up {
+  @media (max-width: vars.$bp-desktop) {
+    @content; // This allows you to inject whatever styles you want inside
+  }
+}
+
+@mixin for-tablet-up {
+  @media (max-width: vars.$bp-tablet) {
+    @content; // This allows you to inject whatever styles you want inside
+  }
+}
+
+@mixin for-mobile-up {
+  @media (max-width: vars.$bp-mobile) {
+    @content; // This allows you to inject whatever styles you want inside
   }
 }

@@ -1,3 +1,5 @@
+@use "../../styles/index.scss" as *;
+
 .nav {
   grid-row: 2 / 3;
   grid-column: 1 / 2;
@@ -8,6 +10,18 @@
   backdrop-filter: blur(10px);
   z-index: 10;
 
+  @include for-desktop-up {
+    width: 2.5rem;
+  }
+
+  @include for-tablet-up {
+    width: 0px;
+    border: none;
+    border-left: 2px solid var(--borders-standard);
+  }
+  @include for-mobile-up {
+  }
+
   ul {
     margin: auto;
     display: flex;
@@ -17,6 +31,12 @@
     height: 100%;
     gap: 1.5rem;
     list-style: none;
+
+    @include for-tablet-up {
+    display: none;
+    }
+    @include for-mobile-up {
+    }
 
     li {
       cursor: none;

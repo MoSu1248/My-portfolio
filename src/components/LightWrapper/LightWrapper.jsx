@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import "./LightWrapper.scss";
 import { AppState } from "../AppStateProvider/AppStateProvider";
+
 const LightWrapper = ({ count = 2 }) => {
   const { currentSection, currentSubsection } = useContext(AppState);
   const [projectColor, setProjectColor] = useState("#d95c66");
@@ -32,7 +33,18 @@ const LightWrapper = ({ count = 2 }) => {
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 w-screen h-screen pointer-events-none z-0">
+    <div
+      style={{
+        position: "fixed",
+        overflow: `hidden`,
+        height: `100%`,
+        width: `100%`,
+        top: 0,
+        left: 0,
+        pointerEvents: "none",
+        zIndex: 0,
+      }}
+    >
       {lights.map(({ color, i }) => (
         <motion.div
           key={i}
@@ -67,13 +79,8 @@ const LightWrapper = ({ count = 2 }) => {
                   delay: i * 0.2,
                 }
           }
-          className={`light-${i}`}
+          className={`lights-styling light-${i}`}
           style={{
-            position: "absolute",
-            width: "600px",
-            height: "600px",
-            borderRadius: "50%",
-            filter: "blur(100px)",
             backgroundColor: color,
           }}
         />

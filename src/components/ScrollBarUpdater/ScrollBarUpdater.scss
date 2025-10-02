@@ -1,12 +1,28 @@
+@use "../../styles/index.scss" as *;
+
 /* Scrollbar styling using a variable */
 ::-webkit-scrollbar {
   width: 5px;
   height: fit-content;
+  @include for-tablet-up {
+    overflow: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+    display: none; /* Chrome, Safari, Edge */
+    width: 0;
+  }
 }
 
 ::-webkit-scrollbar-track {
   background-color: transparent;
   padding: 1rem;
+  @include for-tablet-up {
+    overflow: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+    display: none; /* Chrome, Safari, Edge */
+    width: 0;
+  }
 }
 
 ::-webkit-scrollbar-thumb {
@@ -14,8 +30,23 @@
     --scrollbar-thumb,
     var(--blue)
   ); /* fallback to your default */
+
+  @include for-tablet-up {
+    overflow: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+    display: none; /* Chrome, Safari, Edge */
+    width: 0;
+  }
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: var(--scrollbar-thumb, var(--blue));
+  @include for-tablet-up {
+    overflow: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+    display: none; /* Chrome, Safari, Edge */
+    width: 0;
+  }
 }

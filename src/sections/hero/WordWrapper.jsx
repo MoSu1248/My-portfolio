@@ -6,7 +6,7 @@ const WordWrapper = ({ text }) => {
     <p className="word-container">
       {text.split(" ").map((word, i) => (
         <span key={i} className="word">
-          {word}&nbsp;
+          {word}
         </span>
       ))}
     </p>

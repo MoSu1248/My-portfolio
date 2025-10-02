@@ -5,6 +5,7 @@ import AboutContainerBtns from "./AboutContainerBtns";
 import WindowContent from "./WindowContent";
 import WindowHeader from "./WindowHeader";
 import { motion } from "framer-motion";
+import AboutMePortrait from "./AboutMePortrait";
 
 import "./About.scss";
 
@@ -41,7 +42,6 @@ const About = forwardRef(() => {
     el.style.zIndex = maxZ + 1;
   };
 
-
   return (
     <motion.section ref={ref} id="about" className="about">
       {cards.length > 0 ? (
@@ -55,7 +55,7 @@ const About = forwardRef(() => {
               transition: {
                 duration: 0.4,
                 ease: "easeOut",
-                delay: index * 0.1,
+                delay: index * 0.15,
               },
             }}
             whileHover={{
@@ -66,11 +66,11 @@ const About = forwardRef(() => {
               zIndex,
             }}
             onMouseDown={(e) => handleClick(e)}
-            className={`about__window ${card.id} drag-elements`}
             key={card.id}
             drag
             dragConstraints={ref}
             dragElastic={0}
+            className={`about__window ${card.id} drag-elements`}
           >
             <WindowHeader card={card.title} drag="x" />
             <WindowContent card={card} />
@@ -79,6 +79,7 @@ const About = forwardRef(() => {
       ) : (
         <p>Loading...</p>
       )}
+      <AboutMePortrait onClick={handleClick} ref={ref} zIndex={zIndex} />
     </motion.section>
   );
 });

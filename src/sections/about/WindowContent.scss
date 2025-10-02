@@ -1,3 +1,5 @@
+@use "../../styles/index.scss" as *;
+
 .about__window-content {
   padding: 1rem 1rem;
 
@@ -10,6 +12,16 @@
     margin: 0.5rem 0;
     span {
       margin-right: 1rem;
+    }
+
+    @include for-desktop-up {
+      font-size: 0.8rem;
+    }
+
+    @include for-tablet-up {
+      font-size: 0.75rem;
+    }
+    @include for-mobile-up {
     }
   }
 
@@ -26,6 +38,16 @@
 
     &:hover {
       color: var(--purple);
+    }
+
+    @include for-desktop-up {
+      font-size: 0.8rem;
+    }
+
+    @include for-tablet-up {
+      font-size: 0.75rem;
+    }
+    @include for-mobile-up {
     }
   }
 }

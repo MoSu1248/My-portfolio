@@ -6,6 +6,10 @@
   @include h1-styling;
   margin-bottom: 50px;
   width: 100%;
+
+  @include for-desktop-up {
+    width: 80%;
+  }
 }
 
 .info-panel {
@@ -17,6 +21,12 @@
   padding: 0;
   position: relative;
   gap: 2rem;
+
+  @include for-tablet-up {
+    width: 80%;
+    align-items: center;
+  }
+ 
   h3 {
     @include h3-styling;
     font-size: 1rem;
@@ -120,6 +130,11 @@
   gap: 3rem;
   flex-direction: column;
   justify-content: space-evenly;
+
+  @include for-desktop-up {
+    padding: 1rem 0;
+  }
+
   .text-container-line {
     position: absolute;
     content: "";
@@ -128,6 +143,10 @@
     height: 60%;
     width: 3px;
     background-color: var(--yellow);
+
+    @include for-desktop-up {
+      display: none;
+    }
   }
   .contact-upper-container {
     display: flex;
@@ -141,4 +160,3 @@
     gap: 1.5rem;
   }
 }
-

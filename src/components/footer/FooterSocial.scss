@@ -1,3 +1,5 @@
+@use "../../styles/index.scss" as *;
+
 .footer__social {
   ul {
     width: 100%;
@@ -15,8 +17,16 @@
     }
 
     a {
+      padding: 0.5rem;
       transition: 0.3s ease;
       color: var(--icon-standard);
+
+      @include for-tablet-up {
+        svg {
+          height: 1rem;
+        }
+      }
+
       &:hover {
         color: var(--icon-hover);
       }

@@ -1,3 +1,5 @@
+@use "../../styles/index.scss" as *;
+
 /*HEADER STYLING*/
 
 .header {
@@ -12,10 +14,22 @@
   border-top-right-radius: 5px;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  position: relative;
+
+  @include for-desktop-up {
+    height: 2.2rem;
+  }
   p {
     height: fit-content;
     margin: auto;
-    margin-left: 41.5%;
+
+    @include for-tablet-up {
+      font-size: 0.9rem;
+    }
+
+    @include for-mobile-up {
+      font-size: 0.8rem;
+    }
 
     span {
       margin: 0.1rem;

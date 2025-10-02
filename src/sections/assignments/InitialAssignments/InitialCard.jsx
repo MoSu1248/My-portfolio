@@ -21,7 +21,7 @@ export default function InitialCard({ project, onClick, viewAll }) {
 
   return (
     <motion.div
-      style={{ width: `100%`, height: `23%` }}
+      className="initial-card-container"
       initial={{ y: 30, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
       exit={{ scale: 0.2, opacity: 0 }}

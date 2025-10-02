@@ -10,14 +10,12 @@
   margin: 0;
 }
 
-html,
 body {
   transition: background-color 0.5s ease, color 0.5s ease-out !important;
-  scroll-behavior: smooth;
   margin: 0;
   padding: 0;
-  height: 100%;
-  width: 100%;
+  width: 100vw;
+  overflow-x: hidden;
   overflow: hidden;
   font-family: "body", sans-serif;
   background: var(--background);
@@ -30,11 +28,6 @@ input,
 textarea,
 select {
   cursor: none;
-}
-
-#root {
-  height: 100%;
-  width: 100%;
 }
 
 h1,

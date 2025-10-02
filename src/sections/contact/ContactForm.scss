@@ -7,13 +7,16 @@
   left: 30%;
   transform: translate(-50%, -50%);
   color: var(--white);
-  @include h3-styling;
+  @include h2-styling;
   text-transform: none;
   letter-spacing: 1px;
   margin-bottom: 20px;
   font-size: 2rem;
   border-radius: 5px;
   z-index: 10;
+  @include for-desktop-up {
+    left: 25%;
+  }
 }
 
 .form-panel {
@@ -29,11 +32,23 @@
   height: 85%;
   margin: auto 0;
 
+  @include for-desktop-up {
+    width: 60%;
+  }
+  @include for-tablet-up {
+    width: 60%;
+  }
+
   &::before {
     top: -40px;
     left: -30px;
     border-top: 3px solid var(--yellow);
     border-left: 3px solid var(--yellow);
+
+    @include for-desktop-up {
+      top: -25px;
+      left: -15px;
+    }
   }
 
   &::after {
@@ -41,6 +56,11 @@
     right: -30px;
     border-bottom: 3px solid var(--yellow);
     border-right: 3px solid var(--yellow);
+
+    @include for-desktop-up {
+      bottom: -25px;
+      right: -15px;
+    }
   }
 
   .top-right {
@@ -50,6 +70,11 @@
     border-right: 3px solid var(--yellow);
     border-left: none;
     border-bottom: none;
+
+    @include for-desktop-up {
+      top: -25px;
+      right: -15px;
+    }
   }
 
   .bottom-left {
@@ -59,6 +84,11 @@
     border-left: 3px solid var(--yellow);
     border-top: none;
     border-right: none;
+
+    @include for-desktop-up {
+      bottom: -25px;
+      left: -15px;
+    }
   }
 
   &::before,
@@ -71,6 +101,11 @@
     height: 20%;
     transition: all 0.2s ease-out;
     animation: float-corners 6s ease-in-out infinite;
+
+    @include for-desktop-up {
+      width: 10%;
+      height: 10%;
+    }
   }
 
   &:hover {
