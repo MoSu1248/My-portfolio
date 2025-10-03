@@ -13,10 +13,14 @@
   overflow: hidden;
   letter-spacing: 0.5px;
   background-color: var(--projects-details);
-  transition: 0.2s ease;
   text-decoration: none;
   user-select: none;
   outline: none;
+  @include for-small-up {
+    padding: 0.2rem;
+    font-size: 0.6rem;
+    width: 45%;
+  }
   &:hover {
     transform: scale(1.05) !important;
     border: 1px solid transparent;
@@ -29,7 +33,7 @@
 
   svg {
     fill: var(--red);
-    transition: 0.2s ease;
+    transition: margin-left 0.2s ease;
     margin-left: 0.5rem;
   }
 }
@@ -60,6 +64,10 @@
   right: 1rem;
   box-shadow: 0 10px 5px var(--glass-background2);
   background-color: var(--projects-background);
+
+  @include for-small-up {
+    font-size: 0.5rem;
+  }
   svg {
     margin-right: 0.5rem;
     stroke: var(--red);

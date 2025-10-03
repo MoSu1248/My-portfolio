@@ -5,7 +5,6 @@ import "./LeetCodeDetails.scss";
 import { AppState } from "../../../components/AppStateProvider/AppStateProvider";
 import VIewAll from "./VIewAll";
 import LeetCodeDifficulties from "./LeetCodeDifficulties";
-import CloseBtn from "../../../components/CloseBtn/CloseBtn";
 import WindowContainer from "../../../components/windowContainer/WindowContainer";
 
 export default function LeetCodeDetails({ leetCode, leetCodeState }) {

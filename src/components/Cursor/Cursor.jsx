@@ -33,7 +33,10 @@ export default function Cursor() {
 
   useEffect(() => {
     if (isMobile) return;
-    const handleMouseDown = () => setClicked(true);
+    const handleMouseDown = () => {
+      setClicked(true);
+      setHover(false);
+    };
     const handleMouseUp = () => setClicked(false);
     window.addEventListener("mousedown", handleMouseDown);
     window.addEventListener("mouseup", handleMouseUp);

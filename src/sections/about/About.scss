@@ -17,10 +17,12 @@
 }
 
 .about-me {
-  top: 10%;
-  left: 30%;
-  width: 40rem;
-  z-index: 10;
+  & {
+    top: 10%;
+    left: 30%;
+    width: 40rem;
+    z-index: 10;
+  }
 
   @include for-desktop-up {
     top: 10%;
@@ -39,12 +41,13 @@
 }
 
 .me-online {
-  top: 40%;
-  left: 58%;
-  display: flex;
-  flex-direction: column;
-  width: 20rem;
-
+  & {
+    top: 40%;
+    left: 58%;
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+  }
   @include for-desktop-up {
     top: 45%;
     left: 65%;
@@ -59,9 +62,11 @@
 }
 
 .working-on {
-  top: 58%;
-  left: 30%;
-  width: 30rem;
+  & {
+    top: 58%;
+    left: 30%;
+    width: 30rem;
+  }
   @include for-desktop-up {
     top: 62%;
     left: 15%;
@@ -76,9 +81,11 @@
 }
 
 .where-i-work {
-  top: 42%;
-  left: 18%;
-  width: 25rem;
+  & {
+    top: 42%;
+    left: 18%;
+    width: 25rem;
+  }
   @include for-desktop-up {
     top: 45%;
     left: 5%;

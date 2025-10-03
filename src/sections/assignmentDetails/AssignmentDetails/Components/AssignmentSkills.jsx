@@ -1,6 +1,7 @@
 import React from "react";
 import SkillIcons from "../../../../data/SkillIcons";
 import { motion } from "framer-motion";
+import './AssignmentSkills.scss'
 
 export default function AssignmentSkills({ project }) {
   return (

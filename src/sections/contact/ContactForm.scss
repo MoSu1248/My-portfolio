@@ -17,6 +17,12 @@
   @include for-desktop-up {
     left: 25%;
   }
+
+  @include for-mobile-up {
+    font-size: 1.6rem;
+    top: -25px;
+    left: 25%;
+  }
 }
 
 .form-panel {
@@ -36,7 +42,12 @@
     width: 60%;
   }
   @include for-tablet-up {
+    padding: 20px;
     width: 60%;
+  }
+  @include for-mobile-up {
+    padding: 1rem;
+    width: 100%;
   }
 
   &::before {
@@ -99,12 +110,17 @@
     content: "";
     width: 20%;
     height: 20%;
-    transition: all 0.2s ease-out;
+    transition: 0.2s ease-out;
     animation: float-corners 6s ease-in-out infinite;
 
     @include for-desktop-up {
       width: 10%;
       height: 10%;
+    }
+
+    @include for-mobile-up {
+      width: 7%;
+      height: 7%;
     }
   }
 
@@ -171,6 +187,12 @@
   color: var(--white);
   transition: border-color var(--transition-speed) var(--transition-ease),
     box-shadow var(--transition-speed) var(--transition-ease);
+
+  @include for-mobile-up {
+    padding: 15px;
+
+    font-size: 0.65rem;
+  }
 }
 
 .form-input::placeholder,
@@ -194,8 +216,13 @@
 .submit-button {
   @include button-styling;
   padding: 0.75rem 2rem;
-  transition: all 0.3s ease;
-  margin-top: auto;
+  transition: transform 0.3s ease;
+  margin: auto 0;
+
+  @include for-mobile-up {
+    padding: 10px;
+    font-size: 0.65rem;
+  }
 
   &:hover {
     border: 1px solid var(--yellow);

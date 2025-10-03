@@ -49,6 +49,11 @@
       width: 90%;
     }
 
+    @include for-small-up {
+      padding: 1.5rem;
+      width: 90%;
+    }
+
     &:hover {
       .card-number {
         width: 0%;
@@ -83,6 +88,10 @@
       p {
         color: var(--icon-standard);
         font-size: 0.75rem;
+
+        @include for-small-up {
+          font-size: 0.5rem;
+        }
       }
 
       @include for-tablet-up {
@@ -100,7 +109,13 @@
       gap: 1rem;
       h2 {
         @include h2-styling;
-        font-size: 3rem;
+        & {
+          font-size: 3rem;
+        }
+
+        @include for-small-up {
+          font-size: 1.5rem;
+        }
       }
 
       .technology {
@@ -115,6 +130,12 @@
             padding: 0.3rem 1.2rem;
             border: 1px solid var(--borders-standard);
             border-radius: 2rem;
+
+            @include for-small-up {
+              padding: 0.3rem 0.5rem;
+
+              font-size: 0.5rem;
+            }
           }
         }
       }
@@ -130,6 +151,9 @@
         font-size: 0.75rem;
 
         color: var(--icon-standard);
+        @include for-small-up {
+          font-size: 0.5rem;
+        }
       }
 
       span {
@@ -152,7 +176,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.4s ease-out;
+  transition: 0.4s ease-out;
   color: white;
   transform: rotate(-5deg);
   filter: drop-shadow(0px 12px 5px rgba(0, 0, 0, 0.5));

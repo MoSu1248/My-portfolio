@@ -30,9 +30,9 @@ export default function ViewMoreBtn({
             ease: `easeOut`,
           }}
           viewport={{ once: true, amount: 0.8 }}
-          className="btn-styling hoverable"
-          onClick={() => handleViewMore()}
           whileTap={{ scale: 0.85 }}
+          onClick={() => handleViewMore()}
+          className="btn-styling hoverable"
         >
           View More
           <svg

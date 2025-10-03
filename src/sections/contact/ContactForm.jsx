@@ -91,7 +91,15 @@ export default function ContactForm({ containerVariants, itemVariants }) {
           }}
           type="submit"
           className="submit-button"
-          variants={itemVariants}
+          initial={{ scale: 0.7, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          transition={{
+            delay: 1,
+            duration: 0.1,
+            ease: `easeOut`,
+          }}
+          viewport={{ once: true }}
+          whileTap={{ scale: 0.85 }}
         >
           Send Message
           <svg

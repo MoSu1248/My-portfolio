@@ -31,5 +31,9 @@
         color: var(--icon-hover);
       }
     }
+
+    @include for-small-up {
+      gap: 0.2rem;
+    }
   }
 }

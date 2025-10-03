@@ -1,0 +1,49 @@
+.project__description-technology {
+  width: 100%;
+  display: flex;
+  gap: 2rem;
+  height: 20%;
+  justify-content: center;
+
+  ul {
+    font-size: 0.8rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    list-style: none;
+    width: 70%;
+    justify-content: center;
+    margin-top: 1rem;
+
+    li {
+      letter-spacing: 1px;
+      color: rgba(255, 255, 255, 0.315);
+      padding: 6px 14px;
+      height: 2rem;
+      display: flex;
+      gap: 10px;
+      width: fit-content;
+      border-radius: 2px;
+      background-color: var(--glass-background);
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255, 255, 255, 0.178);
+      transition: transform 0.3s ease;
+      font-weight: var(--font-weight-medium);
+      font-size: 0.75rem;
+      padding: 0.3rem 1.2rem;
+    }
+
+    li:hover {
+      border: 1px solid var(--white);
+      color: var(--white);
+      transform: translateY(-2px) scale(1.05) !important;
+    }
+
+    .skill-icon-styling path {
+      transition: 0.3s ease;
+      width: 18px;
+      height: 18px;
+    }
+  }
+}

@@ -16,6 +16,9 @@
     margin: auto 0 auto 1rem;
     background-color: transparent;
     border: none;
-    transform: rotate(180deg);
+    svg {
+      color: var(--white);
+      fill: var(--white);
+    }
   }
 }

@@ -57,8 +57,11 @@
   overflow: hidden;
   letter-spacing: 0.5px;
   background-color: var(--projects-details);
-  transition: 0.2s ease;
   text-decoration: none;
+
+  @include for-small-up {
+    font-size: 0.8rem;
+  }
 
   svg {
     fill: $shadow;
@@ -108,12 +111,24 @@
 
 @mixin for-tablet-up {
   @media (max-width: vars.$bp-tablet) {
-    @content; // This allows you to inject whatever styles you want inside
+    & {
+      @content; // This allows you to inject whatever styles you want inside
+    }
   }
 }
 
 @mixin for-mobile-up {
   @media (max-width: vars.$bp-mobile) {
-    @content; // This allows you to inject whatever styles you want inside
+    & {
+      @content; // This allows you to inject whatever styles you want inside
+    }
+  }
+}
+
+@mixin for-small-up {
+  @media (max-width: vars.$bp-small) {
+    & {
+      @content; // This allows you to inject whatever styles you want inside
+    }
   }
 }

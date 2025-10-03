@@ -22,7 +22,7 @@
   --blue: #5178b3;
   --green: #399149;
   --purple: #a566f0;
-    --yellow: #ffb347;
+  --yellow: #ffb347;
 
   --leetcode-green: #00ff88;
   --leetcode-blue: #1cbaba;
@@ -113,6 +113,7 @@
 /* SCSS VARIABLES  */
 
 /* Breakpoints */
+$bp-small: 29.688em; // 375px
 $bp-mobile: 40.625em; // 600px
 $bp-tablet: 56.25em; // 900px
 $bp-desktop: 75em; // 1200px

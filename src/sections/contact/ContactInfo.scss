@@ -10,6 +10,10 @@
   @include for-desktop-up {
     width: 80%;
   }
+  @include for-tablet-up {
+    width: 100%;
+    align-items: center;
+  }
 }
 
 .info-panel {
@@ -26,11 +30,14 @@
     width: 80%;
     align-items: center;
   }
- 
+
   h3 {
     @include h3-styling;
     font-size: 1rem;
     color: var(--grey);
+    @include for-mobile-up {
+      font-size: 0.8rem;
+    }
   }
 
   .contact-heading {
@@ -43,6 +50,10 @@
 
     span {
       color: var(--yellow);
+    }
+
+    @include for-tablet-up {
+      text-align: center
     }
   }
 
@@ -61,6 +72,10 @@
     margin: 0;
     color: var(--white);
     width: 80%;
+
+    @include for-mobile-up {
+      font-size: 0.7rem;
+    }
 
     strong {
       color: var(--yellow);
@@ -85,12 +100,18 @@
       align-items: center;
       justify-content: center;
       border: 1px solid rgba(255, 255, 255, 0.178);
-      transition: all 0.3s ease;
       font-weight: var(--font-weight-medium);
       font-size: 0.8rem;
       padding: 0.3rem 1.2rem;
       text-decoration: none;
       box-shadow: rgba(0, 0, 0, 0.54) 0px 5px 10px;
+      transition: transform 0.3s ease;
+
+      @include for-mobile-up {
+        font-size: 0.2rem;
+        padding: 8px 10px;
+        height: 1.9rem;
+      }
 
       &:hover {
         box-shadow: rgba(0, 0, 0, 0.84) 0px 5px 10px;
@@ -106,7 +127,7 @@
     max-width: 90%;
 
     .contact-heading {
-      font-size: 2.2rem;
+      font-size: 2rem;
     }
 
     .panel-title {
@@ -114,10 +135,10 @@
     }
 
     .direct-links-group {
-      gap: 10px;
+      gap: 15px;
 
       .contact-link {
-        font-size: 0.95rem;
+        font-size: 0.6rem;
       }
     }
   }
@@ -133,6 +154,11 @@
 
   @include for-desktop-up {
     padding: 1rem 0;
+  }
+
+  @include for-mobile-up {
+    width: 100%;
+    align-items: center;
   }
 
   .text-container-line {
@@ -158,5 +184,8 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    @include for-mobile-up {
+      width: 100%;
+    }
   }
 }

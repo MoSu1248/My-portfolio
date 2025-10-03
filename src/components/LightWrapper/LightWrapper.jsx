@@ -8,7 +8,7 @@ const LightWrapper = ({ count = 2 }) => {
   const [projectColor, setProjectColor] = useState("#d95c66");
 
   useEffect(() => {
-    if (currentSection === "project") {
+    if (currentSection === "projects") {
       setProjectColor(currentSubsection === "all" ? "#c45550" : "#d95c66");
     }
   }, [currentSection, currentSubsection]);
@@ -58,13 +58,13 @@ const LightWrapper = ({ count = 2 }) => {
             animationStage === "swoop"
               ? {
                   scale: 1,
-                  opacity: 0.5,
+                  opacity: 0.6,
                   x: 0,
                   y: 0,
                 }
               : {
                   scale: [1, 1.02, 1],
-                  opacity: 0.5,
+                  opacity: 0.6,
                   x: i === 0 ? [0, -80, 0] : [0, 70, 0],
                   y: i === 0 ? [0, 20, 0] : [0, -25, 0],
                 }

@@ -30,7 +30,7 @@ export default function Layout() {
 
     const start = containerRef.current.scrollTop;
     const change = target - start;
-    const duration = 500; // ms
+    const duration = 800; // ms
     const easeInOutQuad = (t) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t);
 
     const animate = (timeStart) => (currentTime) => {
