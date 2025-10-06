@@ -8,8 +8,7 @@
   cursor: none;
 
   @include for-tablet-up {
-    font-size: 0.7rem;
-    padding: 0.1rem 1rem;
+    display: none;
   }
 
   svg {

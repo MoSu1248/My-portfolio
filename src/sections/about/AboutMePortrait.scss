@@ -11,6 +11,14 @@
   position: absolute;
   top: 13%;
   left: 68%;
+  @include for-mobile-up {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: calc(10rem - 35px);
+    width: 8rem;
+    margin-bottom: 1rem;
+  }
 }
 .portrait-content {
   height: 90%;

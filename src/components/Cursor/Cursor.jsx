@@ -15,7 +15,7 @@ export default function Cursor() {
     contact: "#ffb347",
   };
   const cursorColor = sectionColors[currentSection] || "var(--white)";
-  const mobileBreakpoint = 1024;
+  const mobileBreakpoint = 1200;
   const isMobile = windowWidth <= mobileBreakpoint;
 
   useEffect(() => {

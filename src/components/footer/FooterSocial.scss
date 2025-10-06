@@ -9,6 +9,10 @@
     list-style: none;
     gap: 2rem;
 
+    @include for-mobile-up {
+      display: none;
+    }
+
     li {
       transition: 0.3s ease;
       &:hover {

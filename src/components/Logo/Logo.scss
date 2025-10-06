@@ -18,4 +18,11 @@
       height: 1.8rem;
     }
   }
+
+  @include for-mobile-up {
+    svg {
+      margin: auto;
+      height: 1.2rem;
+    }
+  }
 }

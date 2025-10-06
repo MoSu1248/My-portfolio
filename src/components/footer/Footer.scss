@@ -19,7 +19,18 @@
   border-bottom-left-radius: 5px;
 
   @include for-desktop-up {
-    height: 2.2rem;
+    height: 2rem;
+  }
+
+  @include for-tablet-up {
+    border-width: 1px;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  @include for-mobile-up {
+    border-width: 1px;
+    background-color: transparent;
   }
 
   .footer-right {

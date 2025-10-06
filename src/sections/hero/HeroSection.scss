@@ -22,10 +22,22 @@
   // margin-left: 30px;
   line-height: 70vh;
   // letter-spacing: 2rem;
+  z-index: -1;
 
   @include for-desktop-up {
     margin: auto;
     letter-spacing: 0;
+  }
+
+  @include for-mobile-up {
+    width: 100%;
+    line-height: 0;
+    left: 0;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    letter-spacing: 1rem;
+    font-size: 10vh;
+    opacity: 1;
   }
 }
 
@@ -112,4 +124,9 @@ h6 {
   letter-spacing: 2px;
   font-weight: 400;
   font-size: 0.7rem;
+
+  @include for-mobile-up {
+    font-size: 0.6rem;
+    margin-bottom: 1rem;
+  }
 }

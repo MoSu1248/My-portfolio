@@ -23,6 +23,10 @@ export default function Header() {
         <span className={`header__${currentSection}`}>&lt;suhail&gt;</span>
         rahman
       </p>
+      <p className="mobile-header">
+        <span className={`header__${currentSection}`}>M&lt;</span>S
+        <span className={`header__${currentSection}`}>&gt;R</span>
+      </p>
       <WindowBtns />
     </motion.section>
   );

@@ -5,6 +5,15 @@
   color: white;
   position: relative;
   overflow-x: hidden;
+
+  @include for-mobile-up {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
+    gap: 1rem;
+  }
 }
 
 .about__window {
@@ -14,6 +23,12 @@
   border-radius: 5px;
   position: absolute;
   border: 1px solid var(--borders-standard);
+
+  @include for-mobile-up {
+    position: relative;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
 }
 
 .about-me {
@@ -37,6 +52,9 @@
     z-index: 10;
   }
   @include for-mobile-up {
+    top: 0%;
+    left: 0%;
+    width: 80%;
   }
 }
 
@@ -58,6 +76,11 @@
     left: 60%;
   }
   @include for-mobile-up {
+    top: 0%;
+    left: 0%;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
   }
 }
 
@@ -77,6 +100,9 @@
     left: 20%;
   }
   @include for-mobile-up {
+    top: 0%;
+    left: 0%;
+    width: 80%;
   }
 }
 
@@ -96,5 +122,8 @@
     left: 2%;
   }
   @include for-mobile-up {
+    top: 0%;
+    left: 0%;
+    width: 80%;
   }
 }

@@ -7,14 +7,17 @@ export default function ThemeToggle() {
   const { currentSection } = useContext(AppState);
 
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem("theme") || "dim";
+    const stored = localStorage.getItem("theme");
+    return stored === "dim" || stored === "dark" ? stored : "dark";
   });
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
+    if (theme === "dark") {
+      document.documentElement.removeAttribute("data-theme");
+    } else {
+      document.documentElement.setAttribute("data-theme", "dim");
+    }
     localStorage.setItem("theme", theme);
-    console.log('etst');
-    
   }, [theme]);
 
   const toggleTheme = () => {

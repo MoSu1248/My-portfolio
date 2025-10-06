@@ -55,12 +55,10 @@ export default function Layout() {
     }
   }, [currentSubsection]);
 
-  // Determine if device is mobile
-  const isMobile = window.innerWidth <= 1028;
+  const isMobile = window.innerWidth <= 900;
 
-  // Smooth scroll effect for desktop only
   useEffect(() => {
-    if (isMobile) return; // skip custom scroll on mobile
+    if (isMobile) return; 
 
     const container = containerRef.current;
     if (!container) return;

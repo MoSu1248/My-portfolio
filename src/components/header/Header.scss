@@ -15,9 +15,28 @@
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   position: relative;
+  align-items: center;
 
   @include for-desktop-up {
     height: 2.2rem;
+  }
+
+  @include for-tablet-up {
+    border-width: 1px;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  @include for-mobile-up {
+    border-width: 1px;
+    background-color: var(--glass-background);
+    height: 2rem;
+  }
+  .mobile-header {
+    display: none;
+    @include for-mobile-up {
+      display: block;
+    }
   }
   p {
     height: fit-content;
@@ -28,7 +47,7 @@
     }
 
     @include for-mobile-up {
-      font-size: 0.8rem;
+      display: none;
     }
 
     span {

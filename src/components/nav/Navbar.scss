@@ -17,7 +17,8 @@
   @include for-tablet-up {
     width: 0px;
     border: none;
-    border-left: 2px solid var(--borders-standard);
+    border-left: 1px solid var(--borders-standard);
+    backdrop-filter: none;
   }
   @include for-mobile-up {
   }
@@ -33,7 +34,7 @@
     list-style: none;
 
     @include for-tablet-up {
-    display: none;
+      display: none;
     }
     @include for-mobile-up {
     }
