@@ -11,8 +11,7 @@
     width: 80%;
   }
   @include for-tablet-up {
-    width: 100%;
-    align-items: center;
+    display: none;
   }
 }
 
@@ -29,6 +28,7 @@
   @include for-tablet-up {
     width: 80%;
     align-items: center;
+    text-align: center;
   }
 
   h3 {
@@ -36,7 +36,7 @@
     font-size: 1rem;
     color: var(--grey);
     @include for-mobile-up {
-      font-size: 0.8rem;
+      font-size: 0.9rem;
     }
   }
 
@@ -48,12 +48,16 @@
     line-height: 1.2;
     color: var(--white);
 
+    @include for-mobile-up {
+      font-size: 0.9rem;
+    }
+
     span {
       color: var(--yellow);
     }
 
     @include for-tablet-up {
-      text-align: center
+      text-align: center;
     }
   }
 
@@ -73,8 +77,13 @@
     color: var(--white);
     width: 80%;
 
+    @include for-tablet-up {
+      text-align: center;
+      width: 100%;
+    }
+
     @include for-mobile-up {
-      font-size: 0.7rem;
+      font-size: 0.9rem;
     }
 
     strong {
@@ -86,6 +95,12 @@
     display: flex;
     gap: 1.5rem;
     margin-top: 10px;
+
+    @include for-tablet-up {
+      text-align: center;
+      width: 100%;
+      justify-content: center;
+    }
 
     .contact-link {
       letter-spacing: 1px;
@@ -108,9 +123,8 @@
       transition: transform 0.3s ease;
 
       @include for-mobile-up {
-        font-size: 0.2rem;
-        padding: 8px 10px;
-        height: 1.9rem;
+        font-size: 0.8rem;
+        padding: 12px 16px;
       }
 
       &:hover {
@@ -136,10 +150,6 @@
 
     .direct-links-group {
       gap: 15px;
-
-      .contact-link {
-        font-size: 0.6rem;
-      }
     }
   }
 }

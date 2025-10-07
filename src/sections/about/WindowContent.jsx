@@ -3,11 +3,11 @@ import "./WindowContent.scss";
 import { motion } from "framer-motion";
 import { AppState } from "../../components/AppStateProvider/AppStateProvider";
 
-export default function WindowContent({ card }) {
+export default function WindowContent({ card, open, id }) {
   const { setHover } = useContext(AppState);
 
   return (
-    <div className="about__window-content">
+    <div className={`about__window-content ${open === id ? "open" : "close"}`}>
       {card.content.map((item, idx) => (
         <ul key={idx}>
           {typeof item === "string" ? (

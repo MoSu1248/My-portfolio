@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import AboutContainerBtns from "./AboutContainerBtns";
+import MobileHeaderBtns from "./mobile/MobileHeaderBtns";
 import "./WindowHeader.scss";
 import { AppState } from "../../components/AppStateProvider/AppStateProvider";
 
-export default function WindowHeader({ card }) {
+export default function WindowHeader({ card, isMobile, open, id }) {
   const { setHoverType } = useContext(AppState);
 
   return (
@@ -17,7 +18,11 @@ export default function WindowHeader({ card }) {
       }}
     >
       <h6>{card}</h6>
-      <AboutContainerBtns />
+      {!isMobile ? (
+        <AboutContainerBtns />
+      ) : (
+        <MobileHeaderBtns open={open} id={id} />
+      )}
     </div>
   );
 }

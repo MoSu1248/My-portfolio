@@ -1,0 +1,38 @@
+import React from "react";
+import "../AboutContainerBtns.scss";
+
+export default function MobileHeaderBtns({ open, id }) {
+
+  return (
+    <ul className="about__btn-list">
+      {open === id ? (
+        <li>
+          <svg
+            width="10"
+            height="10"
+            viewBox="0 0 6 6"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5.45595 6L3.00193 3.5437L0.54791 6L0 5.45244L2.45788 3L0 0.547558L0.54791 0L3.00193 2.4563L5.45595 0.00385613L6 0.547558L3.54598 3L6 5.45244L5.45595 6Z"
+              fill="currentColor"
+            />
+          </svg>
+        </li>
+      ) : (
+        <li>
+          <svg
+            width="10"
+            height="10"
+            viewBox="0 0 6 1"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M0 1V0H6V1H0Z" fill="currentColor" />
+          </svg>
+        </li>
+      )}
+    </ul>
+  );
+}

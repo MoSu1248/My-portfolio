@@ -17,7 +17,6 @@ export default function AppStateProvider({ children }) {
     setToastMessage(msg);
     setTimeout(() => setToastMessage(""), duration);
   };
-  console.log(currentSection);
 
   useEffect(() => {
     const sections = ["hero", "about", "projects", "skills", "contact"];
@@ -45,7 +44,11 @@ export default function AppStateProvider({ children }) {
           }
         });
       },
-      { threshold: 0.2 }
+      {
+        threshold: 0.1,
+
+        rootMargin: "0px 0px -40% 0px",
+      }
     );
 
     sections.forEach((id) => {
@@ -72,7 +75,7 @@ export default function AppStateProvider({ children }) {
         currentSubsection,
         setHover,
         hover,
-        setHoverType, 
+        setHoverType,
         hoverType,
         showToast,
       }}
@@ -80,7 +83,9 @@ export default function AppStateProvider({ children }) {
       <LightWrapper />
       {children}
       <ScrollBarUpdater />
-      {toastMessage && <div className={`toast toast-${currentSection}`}>{toastMessage}</div>}
+      {toastMessage && (
+        <div className={`toast toast-${currentSection}`}>{toastMessage}</div>
+      )}
     </AppState.Provider>
   );
 }

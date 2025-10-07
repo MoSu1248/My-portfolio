@@ -10,7 +10,6 @@
   align-items: center;
 
   @include for-mobile-up {
-    padding: 10px;
     font-size: 0.65rem;
   }
 }

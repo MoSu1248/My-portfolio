@@ -63,6 +63,7 @@ export default function Cursor() {
   }, [hoverType, clicked, isMobile]);
 
   if (isMobile) return null;
+  
   const useSystemCursor = hoverType === "grab";
 
   if (useSystemCursor) return null;

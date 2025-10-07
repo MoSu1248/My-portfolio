@@ -5,10 +5,21 @@ import WindowHeader from "./WindowHeader";
 export default function AboutDesktop({
   card,
   index,
-  handleClick,
+
   zIndex,
   ref,
 }) {
+  const handleClick = (e) => {
+    const el = e.currentTarget;
+
+    let maxZ = 0;
+    document.querySelectorAll(".drag-elements").forEach((card) => {
+      const z = parseInt(window.getComputedStyle(card).zIndex) || 0;
+      if (z > maxZ) maxZ = z;
+    });
+
+    el.style.zIndex = maxZ + 1;
+  };
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.8 }}

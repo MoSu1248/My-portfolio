@@ -26,12 +26,12 @@ export default function ContactInfo({
   ];
 
   function handleOpen(e) {
-    e.preventDefault(); // stop default link
-    showToast("Link opened in new tab"); // trigger toast first
+    e.preventDefault();
+    showToast("Link opened in new tab");
 
     setTimeout(() => {
       window.open(e.currentTarget.href, "_blank", "noopener,noreferrer");
-    }, 300); // 300ms delay
+    }, 300);
   }
 
   return (

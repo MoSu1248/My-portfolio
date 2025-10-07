@@ -2,6 +2,11 @@
 
 .about__window-content {
   padding: 1rem 1rem;
+  transition: max-height 0.5s ease, padding 0.5s ease, opacity 0.5s ease;
+
+  /* ADD these two base properties */
+  max-height: 2000px; /* Needs a large starting value */
+  overflow: hidden; /* Hides content during collapse */
 
   ul {
     list-style: none;
@@ -15,16 +20,17 @@
     }
 
     @include for-desktop-up {
-      font-size: 0.8rem;
+      font-size: 0.7rem;
     }
 
     @include for-tablet-up {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
     }
     @include for-mobile-up {
-      display: none;
-      font-size: 0.6rem;
+      line-height: 1rem;
+      font-size: 0.8rem;
       padding: 0 0.5rem;
+      margin: 0;
     }
   }
 
@@ -38,19 +44,40 @@
     transform: 0.2s ease;
     width: fit-content;
     width: fit-content;
+    transition: 0.5s ease;
 
     &:hover {
       color: var(--purple);
     }
 
     @include for-desktop-up {
-      font-size: 0.8rem;
+      font-size: 0.7rem;
     }
 
     @include for-tablet-up {
-      font-size: 0.75rem;
+      font-size: 1rem;
     }
     @include for-mobile-up {
+      font-size: 0.8rem;
+      line-height: 1rem;
     }
+  }
+}
+
+.about__window-content.open {
+  @include for-mobile-up {
+    max-height: 2000px;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.about__window-content.close {
+  @include for-mobile-up {
+    transition: 0.5s ease;
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    padding: 0 1rem;
   }
 }

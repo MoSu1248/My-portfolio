@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import AboutMePortrait from "./AboutMePortrait";
 import AboutDesktop from "./AboutDesktop";
 import AboutMobile from "./AboutMobile";
+import MobilePortrait from "./mobile/MobilePortrait";
 import "./About.scss";
 
 const About = forwardRef(() => {
@@ -19,7 +20,7 @@ const About = forwardRef(() => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const mobileBreakpoint = 900;
+  const mobileBreakpoint = 650;
   const isMobile = windowWidth <= mobileBreakpoint;
 
   useEffect(() => {
@@ -49,10 +50,26 @@ const About = forwardRef(() => {
 
     el.style.zIndex = maxZ + 1;
   };
+  const [openId, setOpenId] = useState(6);
+
+  const toggleAccordion = (id) => {
+    const newId = openId === id ? null : id;
+    setOpenId(newId);
+  };
 
   return (
     <motion.section ref={ref} id="about" className="about">
-      <AboutMePortrait onClick={handleClick} ref={ref} zIndex={zIndex} />
+      {isMobile ? (
+        <MobilePortrait
+          ref={ref}
+          zIndex={zIndex}
+          open={openId}
+          toggleAccordion={toggleAccordion}
+          isMobile={isMobile}
+        />
+      ) : (
+        <AboutMePortrait ref={ref} zIndex={zIndex} />
+      )}
       {cards.length > 0
         ? cards.map((card, index) =>
             isMobile ? (
@@ -60,15 +77,13 @@ const About = forwardRef(() => {
                 card={card}
                 index={index}
                 ref={ref}
-                onClick={handleClick}
+                key={index}
+                openId={openId}
+                toggleAccordion={toggleAccordion}
+                isMobile={isMobile}
               />
             ) : (
-              <AboutDesktop
-                card={card}
-                index={index}
-                ref={ref}
-                onClick={handleClick}
-              />
+              <AboutDesktop card={card} index={index} ref={ref} key={index} />
             )
           )
         : null}
