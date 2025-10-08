@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { AppState } from "../AppStateProvider/AppStateProvider";
 
 export default function Cursor() {
-  const { currentSection, hover, setHover, hoverType } = useContext(AppState);
+  const { currentSection, hover, setHover, hoverType , isMobile } = useContext(AppState);
   const [pos, setPos] = useState({ x: 0, y: 0 });
   const [clicked, setClicked] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -15,14 +15,7 @@ export default function Cursor() {
     contact: "#ffb347",
   };
   const cursorColor = sectionColors[currentSection] || "var(--white)";
-  const mobileBreakpoint = 1200;
-  const isMobile = windowWidth <= mobileBreakpoint;
 
-  useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   useEffect(() => {
     if (isMobile) return;
@@ -33,6 +26,7 @@ export default function Cursor() {
 
   useEffect(() => {
     if (isMobile) return;
+    
     const handleMouseDown = () => {
       setClicked(true);
       setHover(false);

@@ -7,6 +7,8 @@
   border-radius: 50%;
   filter: blur(100px);
   will-change: transform, opacity;
+  transition: width 0.3s ease, height 0.3s ease, top 0.3s ease, left 0.3s ease,
+    right 0.3s ease, bottom 0.3s ease, background-color 0.5s ease;
 
   @include for-desktop-up {
     width: 500px;
@@ -14,38 +16,31 @@
   }
 
   @include for-tablet-up {
-    width: 500px;
-    height: 500px;
+    width: 450px;
+    height: 450px;
   }
   @include for-mobile-up {
     width: 400px;
     height: 400px;
-  }
-
-  @include for-small-up {
-    width: 300px;
-    height: 300px;
   }
 }
 
 .light-0 {
   right: -40px;
   top: -100px;
-  transition: background-color 0.5s ease;
 
-  @include for-mobile-up {
+  @include for-tablet-up {
     right: -150px;
-    top: 0px;
+    top: -40px;
   }
 }
 
 .light-1 {
   left: -10px;
   bottom: 50px;
-  transition: background-color 0.5s ease;
 
-  @include for-mobile-up {
+  @include for-tablet-up {
     left: -150px;
-    bottom: 20px;
+    bottom: -40px;
   }
 }

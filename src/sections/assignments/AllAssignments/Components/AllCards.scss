@@ -12,6 +12,14 @@
   border: 1px solid var(--borders-standard);
   user-select: none;
   outline: none;
+  
+
+  @include for-tablet-up {
+    width: 100%;
+  }
+  @include for-mobile-up {
+    width: 100%;
+  }
 
   .all-card-image-container {
     height: 100%;
@@ -117,29 +125,6 @@
   }
 }
 
-// .custom-bullets {
-//   list-style: none; /* remove default bullets */
-//   padding-left: 1rem;
-// }
-
-// .custom-bullets li {
-//   position: relative;
-//   padding-left: 1.5rem; /* space for the bullet */
-//   margin-bottom: 0.6rem;
-//   font-size: 0.95rem;
-//   line-height: 1.4;
-//   color: #333;
-// }
-
-// .custom-bullets li::before {
-//   content: "•"; /* simple dot */
-//   position: absolute;
-//   left: 0;
-//   top: 0;
-//   color: #6a5af9; /* accent color */
-//   font-size: 1.2rem;
-//   line-height: 1;
-// }
 
 .order:nth-last-child(3) {
   grid-column: 2 / 3 !important;

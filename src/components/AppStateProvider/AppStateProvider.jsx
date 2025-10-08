@@ -8,15 +8,27 @@ export default function AppStateProvider({ children }) {
   const [currentSection, setCurrentSection] = useState("");
   const [theme, setTheme] = useState({ color: "white" });
   const [lightboxOpen, setLightboxOpen] = useState(false);
+
   const [currentSubsection, setCurrentSubsection] = useState(null);
+
   const [hover, setHover] = useState(false);
   const [hoverType, setHoverType] = useState("");
   const [toastMessage, setToastMessage] = useState("");
+
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const mobileBreakpoint = 1200;
+  const isMobile = windowWidth <= mobileBreakpoint;
 
   const showToast = (msg, duration = 3000) => {
     setToastMessage(msg);
     setTimeout(() => setToastMessage(""), duration);
   };
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const sections = ["hero", "about", "projects", "skills", "contact"];
@@ -78,6 +90,7 @@ export default function AppStateProvider({ children }) {
         setHoverType,
         hoverType,
         showToast,
+        isMobile,
       }}
     >
       <LightWrapper />

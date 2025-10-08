@@ -1,0 +1,38 @@
+@use "../../../../styles/index.scss" as *;
+
+.all-container-mobile {
+  width: 100%;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.mobile-grid-container {
+  height: calc(100vh - 76px);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  padding: 8rem 0rem;
+  width: 100%;
+  @include for-mobile-up {
+    padding: 4rem 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0rem;
+    justify-content: center;
+    height: calc(100vh - 76px);
+  }
+
+  @include for-small-up {
+    padding: 10rem 1rem;
+    display: flex;
+
+    justify-content: center;
+    gap: 0.2rem;
+    height: calc(100vh - 76px);
+    overflow: scroll;
+  }
+}
+
+body.no-scroll {
+  overflow: hidden;
+}

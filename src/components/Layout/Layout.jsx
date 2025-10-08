@@ -11,7 +11,7 @@ export default function Layout() {
   const containerRef = useRef(null);
   const targetRef = useRef(0);
   const currentRef = useRef(0);
-  const { lightboxOpen, currentSubsection } = useContext(AppState);
+  const { lightboxOpen, currentSubsection, isMobile } = useContext(AppState);
 
   const lerp = 0.04;
   const wheelMultiplier = 1.5;
@@ -55,8 +55,6 @@ export default function Layout() {
     }
   }, [currentSubsection]);
 
-  const isMobile = window.innerWidth <= 900;
-
   useEffect(() => {
     if (isMobile) return; 
 
@@ -81,18 +79,20 @@ export default function Layout() {
 
     container.addEventListener("wheel", onWheel, { passive: false });
 
+    let rafId;
     const animate = () => {
       currentRef.current += (targetRef.current - currentRef.current) * lerp;
       container.scrollTo(0, currentRef.current);
-      requestAnimationFrame(animate);
+      rafId = requestAnimationFrame(animate);
     };
-
     animate();
 
-    return () => container.removeEventListener("wheel", onWheel);
-  }, []);
+    return () => {
+      container.removeEventListener("wheel", onWheel);
+      cancelAnimationFrame(rafId);
+    };
+  }, [isMobile]); 
 
-  // Optional: show scrollbar after delay
   useEffect(() => {
     const timerId = setTimeout(() => {
       const windowFrame = document.querySelector(".window-frame");

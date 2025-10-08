@@ -44,6 +44,7 @@
 
     @include for-desktop-up {
       width: 80%;
+      padding: 2rem;
     }
 
     @include for-mobile-up {
@@ -153,6 +154,9 @@
         & {
           font-size: 3rem;
         }
+        @include for-desktop-up {
+          font-size: 1.8rem;
+        }
 
         @include for-mobile-up {
           font-size: 1.5rem;
@@ -172,6 +176,10 @@
             border: 1px solid var(--borders-standard);
             border-radius: 2rem;
             letter-spacing: 1px;
+
+            @include for-desktop-up {
+              font-size: 0.6rem;
+            }
 
             @include for-mobile-up {
               padding: 0.3rem 0.5rem;

@@ -17,7 +17,7 @@
   user-select: none;
   outline: none;
   @include for-small-up {
-    padding: 0.2rem;
+    padding: 0.5rem;
     font-size: 0.7rem;
     width: 55%;
   }
@@ -65,9 +65,18 @@
   box-shadow: 0 10px 5px var(--glass-background2);
   background-color: var(--projects-background);
 
-  @include for-small-up {
-    font-size: 0.5rem;
+  @include for-tablet-up {
+    top: 0rem;
+    padding: 0.5rem 5rem;
+    font-size: 0.8rem;
   }
+
+  @include for-small-up {
+    padding: 0.5rem;
+    font-size: 0.7rem;
+    width: 55%;
+  }
+  
   svg {
     margin-right: 0.5rem;
     stroke: var(--red);

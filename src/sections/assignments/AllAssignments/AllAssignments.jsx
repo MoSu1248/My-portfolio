@@ -6,7 +6,7 @@ import "./AllAssignments.scss";
 import ProjectArchiveCard from "./Components/ProjectArchiveCard";
 import LeetCodeCard from "./Components/LeetCodeCard";
 import { AppState } from "../../../components/AppStateProvider/AppStateProvider";
-
+import MobileAllAssignments from "./Mobile/MobileAllAssignments";
 export default function AllAssignments({
   projects,
   onClick,
@@ -15,7 +15,7 @@ export default function AllAssignments({
   leetCode,
   openLesser,
 }) {
-  const { setLightboxOpen } = useContext(AppState);
+  const { setLightboxOpen, isMobile } = useContext(AppState);
 
   useEffect(() => {
     setLightboxOpen(true);
@@ -46,7 +46,16 @@ export default function AllAssignments({
     }
   }, [viewAll]);
 
-  return (
+  return isMobile ? (
+    <MobileAllAssignments
+      key="all"
+      openLesser={openLesser}
+      projects={isMobile ? projects.slice(0, 7) : projects.slice(0, 7)}
+      onClick={onClick}
+      viewAll={viewAll}
+      leetCode={leetCode}
+    />
+  ) : (
     <motion.div
       onMouseMove={handleMouseMove}
       style={{

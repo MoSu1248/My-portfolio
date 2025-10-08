@@ -6,12 +6,14 @@ import AboutMePortrait from "./AboutMePortrait";
 import AboutDesktop from "./AboutDesktop";
 import AboutMobile from "./AboutMobile";
 import MobilePortrait from "./mobile/MobilePortrait";
+import AppStateProvider from "../../components/AppStateProvider/AppStateProvider";
 import "./About.scss";
 
 const About = forwardRef(() => {
   const [cards, setCards] = useState([]);
   const [zIndex, setZIndex] = useState(0);
   const ref = useRef();
+  
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {

@@ -17,7 +17,7 @@ const Assignments = forwardRef((props, ref) => {
   const [loading, setLoading] = useState(true);
   const [viewLessClicked, setViewLessClicked] = useState(false);
 
-  const { setCurrentSubsection } = useContext(AppState);
+  const { setCurrentSubsection , isMobile } = useContext(AppState);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -103,7 +103,7 @@ const Assignments = forwardRef((props, ref) => {
         loading={loading}
       />
 
-      {viewAll && selected === false ? (
+      {(viewAll && selected === false)  ? (
         <ViewMoreBtn
           handleViewLess={handleViewLess}
           handleViewMore={handleViewMore}
