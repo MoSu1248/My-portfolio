@@ -24,6 +24,12 @@
   width: 70%;
   margin: auto;
   margin-right: 0;
+  @include for-tablet-up {
+    width: 95%;
+  }
+  @include for-mobile-up {
+    width: 100%;
+  }
 }
 
 .all-projects-grid {
@@ -34,6 +40,23 @@
   gap: 3rem;
   overflow-y: scroll;
   height: 60%;
+
+  @include for-tablet-up {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 2rem 1rem;
+    gap: 1rem;
+  }
+
+  @include for-mobile-up {
+    padding: 1rem 2rem;
+    gap: 1rem;
+  }
+
+  @include for-small-up {
+    padding: 1rem 3rem;
+    grid-template-columns: repeat(1, 1fr);
+    margin-bottom: 1rem;
+  }
 }
 
 .all-projects_card {
@@ -49,6 +72,10 @@
   border: 1px solid var(--borders-standard);
   box-shadow: 0 0px 10px rgba(59, 59, 59, 0.192);
 
+  @include for-small-up {
+    min-height: 20rem;
+  }
+
   .project-description {
     @include h3-styling;
     color: var(--grey);
@@ -56,6 +83,15 @@
     font-weight: 200;
     font-size: 0.9rem;
     text-transform: none;
+
+    @include for-tablet-up {
+      font-size: 0.8rem;
+    }
+
+    @include for-small-up {
+      margin-top: 0;
+      display: none;
+    }
   }
 
   img {
@@ -87,6 +123,11 @@
   padding: 1rem 1rem 0rem 1rem;
   height: 50%;
 
+  @include for-small-up {
+    gap: 1.2rem;
+    padding: 1rem 0.7rem;
+  }
+
   .project-type {
     color: var(--red);
     font-size: 0.6rem;
@@ -117,6 +158,9 @@
     background-color: var(--red);
     color: var(--white);
     text-align: center;
+    @include for-tablet-up {
+      opacity: 1;
+    }
 
     a {
       text-decoration: none;
@@ -138,6 +182,10 @@
     font-weight: 700;
     color: var(--red);
     transition: 0.25s ease;
+
+    @include for-tablet-up {
+      opacity: 1;
+    }
     a {
       text-decoration: none;
       color: var(--white);
@@ -162,6 +210,14 @@
     font-size: 0.9rem;
     letter-spacing: 2px;
     width: 50%;
+
+    @include for-tablet-up {
+      font-size: 0.8rem;
+    }
+
+    @include for-mobile-up {
+      font-size: 0.8rem;
+    }
   }
 
   p {
@@ -183,6 +239,12 @@
       height: 2rem;
       padding: 0.5rem 0.6rem;
       background-color: var(--glass-background);
+
+      @include for-tablet-up {
+        width: 2rem;
+        height: 2rem;
+        padding: 0.5rem 0.5rem;
+      }
     }
   }
 }

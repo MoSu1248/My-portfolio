@@ -59,8 +59,20 @@
   background-color: var(--projects-details);
   text-decoration: none;
 
-  @include for-small-up {
+  @include for-tablet-up {
+    width: 60%;
+    font-size: 0.9rem;
+  }
+
+  @include for-mobile-up {
+    width: 90%;
     font-size: 0.8rem;
+    padding: 0.8rem;
+  }
+
+  @include for-small-up {
+    padding: 0.8rem;
+    font-size: 0.7rem;
   }
 
   svg {

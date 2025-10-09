@@ -16,8 +16,11 @@ export default function AppStateProvider({ children }) {
   const [toastMessage, setToastMessage] = useState("");
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const mobileBreakpoint = 1200;
-  const isMobile = windowWidth <= mobileBreakpoint;
+  const tabletBreakpoint = 1200;
+  const mobileBreakpoint = 900;
+
+  const isMobile = windowWidth <= tabletBreakpoint;
+  const isTablet = windowWidth <= mobileBreakpoint;
 
   const showToast = (msg, duration = 3000) => {
     setToastMessage(msg);
@@ -57,8 +60,7 @@ export default function AppStateProvider({ children }) {
         });
       },
       {
-        threshold: 0.1,
-
+        threshold: [0.1, 0.5],
         rootMargin: "0px 0px -40% 0px",
       }
     );
@@ -91,6 +93,7 @@ export default function AppStateProvider({ children }) {
         hoverType,
         showToast,
         isMobile,
+        isTablet,
       }}
     >
       <LightWrapper />

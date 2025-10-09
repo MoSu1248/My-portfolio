@@ -1,9 +1,27 @@
+@use "../../../../styles/index.scss" as *;
+
 .project__description-technology {
   width: 100%;
   display: flex;
   gap: 2rem;
   height: 20%;
   justify-content: center;
+
+  @include for-tablet-up {
+    padding-bottom: 2rem;
+    width: 80%;
+    margin: auto;
+    height: fit-content;
+  }
+
+  @include for-mobile-up {
+    width: 100%;
+    height: fit-content;
+  }
+
+  @include for-small-up {
+    padding: 0rem 0.5rem;
+  }
 
   ul {
     font-size: 0.8rem;
@@ -14,6 +32,15 @@
     width: 70%;
     justify-content: center;
     margin-top: 1rem;
+
+    @include for-desktop-up {
+      width: 90%;
+      gap: 1rem;
+    }
+
+    @include for-tablet-up {
+      padding: 2rem 0rem;
+    }
 
     li {
       letter-spacing: 1px;
@@ -32,6 +59,10 @@
       font-weight: var(--font-weight-medium);
       font-size: 0.75rem;
       padding: 0.3rem 1.2rem;
+
+      @include for-small-up {
+        padding: 6px 14px;
+      }
     }
 
     li:hover {

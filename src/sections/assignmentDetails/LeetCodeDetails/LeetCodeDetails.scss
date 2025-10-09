@@ -11,6 +11,10 @@
   z-index: 100;
   padding: 1.2rem;
   backdrop-filter: blur(10px);
+
+  @include for-small-up {
+    padding: 0.3rem;
+  }
 }
 
 .leetCode__container {
@@ -25,6 +29,23 @@
   width: 60%;
   margin: auto;
   margin-right: 0;
+
+  @include for-desktop-up {
+    width: 70%;
+  }
+
+  @include for-tablet-up {
+    width: 85%;
+  }
+
+  @include for-mobile-up {
+    width: 90%;
+  }
+
+  @include for-small-up {
+    width: 100%;
+    gap: 1rem;
+  }
 
   .window-container {
     display: flex;
@@ -56,6 +77,11 @@
   align-items: center;
   padding: 2rem;
 
+  @include for-tablet-up {
+    width: 100%;
+    padding: 0.5rem;
+  }
+
   h3 {
     @include h3-styling;
     letter-spacing: 2px;
@@ -63,6 +89,14 @@
     font-weight: 700;
     span {
       color: var(--leetcode-green);
+    }
+
+    @include for-tablet-up {
+      font-size: 1rem;
+    }
+
+    @include for-small-up {
+      font-size: 0.8rem;
     }
   }
 
@@ -72,6 +106,10 @@
     align-items: center;
     width: 85%;
     list-style: none;
+
+    @include for-mobile-up {
+      width: 100%;
+    }
 
     li {
       border: none;
@@ -84,6 +122,22 @@
       letter-spacing: 2px;
       border-radius: 2.5px;
       background-color: var(--projects-background);
+
+      @include for-tablet-up {
+        padding: 0.55rem 1rem;
+        font-size: 0.7rem;
+      }
+
+      @include for-mobile-up {
+        padding: 0.55rem 1rem;
+        font-size: 0.7rem;
+        text-align: center;
+      }
+
+      @include for-small-up {
+        padding: 0.5rem 0.5rem;
+        font-size: 0.7rem;
+      }
 
       &.easy {
         box-shadow: 0 0 3px rgba(#1cbaba, 0.6);

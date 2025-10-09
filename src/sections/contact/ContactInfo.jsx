@@ -1,5 +1,8 @@
 import React, { useContext } from "react";
 import { motion } from "framer-motion";
+import LinkedIn from "../../assets/social/LinkedIn.svg?react";
+import Mail from "../../assets/social/mail_icon.svg?react";
+import Github from "../../assets/social/github_icon.svg?react";
 
 import { AppState } from "../../components/AppStateProvider/AppStateProvider";
 import "./ContactInfo.scss";
@@ -8,20 +11,23 @@ export default function ContactInfo({
   itemVariants,
   linkVariants,
 }) {
-  const { setHover, showToast } = useContext(AppState);
+  const { setHover, showToast, isMobile , isTablet } = useContext(AppState);
 
   const links = [
     {
       title: "LinkedIn",
       url: "https://www.linkedin.com/in/mohammed-suhail-rahman-988825245/",
+      icon: <LinkedIn />,
     },
     {
       title: "Email",
       url: "mailto:mohammedsuhailr2@gmail.com",
+      icon: <Mail />,
     },
     {
       title: "Github",
       url: "https://github.com/MoSu1248",
+      icon: <Github />,
     },
   ];
 
@@ -91,7 +97,7 @@ export default function ContactInfo({
                 className="contact-link"
                 variants={linkVariants}
               >
-                {item.title}
+                {isTablet ? item.icon : item.title}
               </motion.a>
             ))}
           </motion.div>

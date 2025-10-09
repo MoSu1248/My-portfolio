@@ -7,6 +7,18 @@
   padding: 1.5rem;
   height: 60%;
 
+  @include for-desktop-up {
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+
+  @include for-tablet-up {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  @include for-small-up {
+    padding: 0.5rem;
+  }
+
   .leetcode-cards {
     padding: 1.2rem;
     border-radius: 5px;
@@ -18,6 +30,15 @@
     border: 1px solid var(--borders-standard);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.25) !important;
+    @include for-tablet-up {
+      width: 100%;
+      padding: 1.7rem;
+    }
+
+    @include for-small-up {
+      width: 100%;
+      padding: 2rem;
+    }
 
     .date-container {
       height: 70%;
@@ -76,6 +97,10 @@
       transform: translateY(-2px) scale(1.05) !important;
       border: 1px solid transparent;
 
+      @include for-small-up {
+        transform: scale(1) !important;
+      }
+
       .click-hint {
         transform: translateY(0);
         opacity: 1;
@@ -106,6 +131,14 @@
       font-size: 1rem;
       font-weight: 600;
       color: var(--white);
+
+      @include for-tablet-up {
+        font-size: 0.9rem;
+      }
+
+      @include for-small-up {
+        font-size: 0.8rem;
+      }
     }
 
     p {

@@ -19,7 +19,7 @@
   @include for-small-up {
     padding: 0.5rem;
     font-size: 0.7rem;
-    width: 55%;
+    width: 65%;
   }
   &:hover {
     transform: scale(1.05) !important;
@@ -74,9 +74,9 @@
   @include for-small-up {
     padding: 0.5rem;
     font-size: 0.7rem;
-    width: 55%;
+    width: 65%;
   }
-  
+
   svg {
     margin-right: 0.5rem;
     stroke: var(--red);

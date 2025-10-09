@@ -16,7 +16,7 @@ export default function AssignmentDetails({ project, handleBack, viewAll }) {
     "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/..."
   );
 
-  const { setLightboxOpen } = useContext(AppState);
+  const { setLightboxOpen, isTablet } = useContext(AppState);
 
   useEffect(() => {
     setLightboxOpen(true);
@@ -33,7 +33,6 @@ export default function AssignmentDetails({ project, handleBack, viewAll }) {
       const timeOut = setTimeout(() => {}, 3000);
     }
   }, [project.imageThumbnail]);
-
 
   return (
     <AnimatePresence key={project.title}>
@@ -101,15 +100,14 @@ export default function AssignmentDetails({ project, handleBack, viewAll }) {
                 compare={project.compare}
               />
             </motion.div>
-
             <div className="project__description">
               <AssignmentText project={project} />
               <AssignmentHighlights project={project} />
               <AssignmentLinks project={project} />
             </div>
+            {isTablet && <AssignmentSkills project={project} />}
           </div>
-
-          <AssignmentSkills project={project} />
+            {!isTablet && <AssignmentSkills project={project} />}
         </motion.div>
       </motion.div>
     </AnimatePresence>

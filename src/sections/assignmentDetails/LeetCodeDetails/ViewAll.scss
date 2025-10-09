@@ -2,7 +2,11 @@
 
 .viewAll-styling {
   @include button-styling(var(--white), #00ff88);
-
   margin: 0 auto;
   margin-top: 5px;
+
+  @include for-tablet-up {
+    margin-bottom: 20px;
+    margin-top: 0;
+  }
 }

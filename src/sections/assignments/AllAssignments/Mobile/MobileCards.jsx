@@ -17,9 +17,10 @@ export default function MobileCards({ project, handleClick, viewAll, index }) {
     }
   }, [project.imageThumbnail]);
   return (
-    <div
+    <motion.div
       className="all-card-image-container"
       onClick={() => handleClick(project)}
+      layoutId={viewAll ? `all-card-${project.id}` : `card-${project.id}`}
     >
       <img
         layoutId={`img-${project.id}`}
@@ -27,6 +28,6 @@ export default function MobileCards({ project, handleClick, viewAll, index }) {
         alt={project.title}
         className="mobile-card-img"
       />
-    </div>
+    </motion.div>
   );
 }

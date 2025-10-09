@@ -14,40 +14,29 @@ export default function MobileAllAssignments({
   leetCode,
   openLesser,
 }) {
-  const { isMobile } = useContext(AppState);
+  const { isMobile, setLightboxOpen } = useContext(AppState);
+ 
 
-//   useEffect(() => {
-//     if (!isMobile || !viewAll) return;
+  //   useEffect(() => {
+  //     if (!isMobile || !viewAll) return;
 
-//     const container = document.body;
+  //     const container = document.body;
 
-//     const preventScroll = (e) => e.preventDefault();
+  //     const preventScroll = (e) => e.preventDefault();
 
-//     container.addEventListener("touchmove", preventScroll, { passive: false });
-//     container.addEventListener("wheel", preventScroll, { passive: false });
+  //     container.addEventListener("touchmove", preventScroll, { passive: false });
+  //     container.addEventListener("wheel", preventScroll, { passive: false });
 
-//     return () => {
-//       container.removeEventListener("touchmove", preventScroll);
-//       container.removeEventListener("wheel", preventScroll);
-//     };
-//   }, [isMobile, viewAll]);
+  //     return () => {
+  //       container.removeEventListener("touchmove", preventScroll);
+  //       container.removeEventListener("wheel", preventScroll);
+  //     };
+  //   }, [isMobile, viewAll]);
 
   return (
     <motion.div className="all-container-mobile ">
       <motion.div
         className="mobile-grid-container"
-        //   initial={{ scale: 0.2, opacity: 0 }}
-        //   animate={{ scale: 1, opacity: 1 }}
-        //   exit={{ scale: 0.2, opacity: 0 }}
-        //   transition={{
-        //     scale: {
-        //       type: "spring",
-        //       damping: 14,
-        //       stiffness: 40,
-        //       duration: viewAll ? 0.8 : 0.3,
-        //       delay: viewAll ? 2.5 : 0,
-        //     },
-        //   }}
       >
         {projects.map((project, index) => (
           <MobileCards

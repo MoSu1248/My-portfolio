@@ -18,6 +18,7 @@
 
   @include for-small-up {
     padding: 1rem 1rem;
+    min-height: 100vh;
   }
 
   .skills-section__container {

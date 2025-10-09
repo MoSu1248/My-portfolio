@@ -26,6 +26,7 @@ export default function Carousel({ images, compare, comparisonImages }) {
       }}
     >
       <Swiper
+        className="swiper_container"
         effect={"coverflow"}
         centeredSlides={true}
         slidesPerView={"auto"}

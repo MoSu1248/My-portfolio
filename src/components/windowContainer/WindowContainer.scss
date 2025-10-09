@@ -1,3 +1,5 @@
+@use "../../styles/index.scss" as *;
+
 .window-container {
   display: flex;
   align-items: center;
@@ -10,6 +12,14 @@
     font-size: 1rem;
     margin: auto;
     letter-spacing: 1px;
+
+    @include for-tablet-up {
+      font-size: 0.85rem;
+    }
+
+    @include for-mobile-up {
+      font-size: 0.75rem;
+    }
   }
   .back__btn {
     position: absolute;

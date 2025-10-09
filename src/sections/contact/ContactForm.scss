@@ -289,6 +289,8 @@
   @include for-mobile-up {
     padding: 10px;
     font-size: 0.9rem;
+    width: 100%;
+    margin: auto;
   }
   @include for-small-up {
     font-size: 0.8rem;
